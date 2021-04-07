@@ -20,5 +20,9 @@ jobs:
            - name: Grant execute permission for gradlew
              run: chmod +x gradlew
            - name: Build with Gradle
-             run: ./gradlew build
+             run: |
+                  ./gradlew build
+                  -Dsonar.projectKey=V_V_test \
+                  -Dsonar.host.url=http://117.16.143.60:9000 \
+                  -Dsonar.login=db53caa2295e5df9e386d5a6e29143b432ddeef7
          
