@@ -1,58 +1,56 @@
 public class Main {
+    private String name;
+    private int age;
+    private float tall;
 
-    /*
-    private static Runningback[] nflplayersreference;
-
-    private static Quarterback[] players;
-
-    private static WideReceiver[] nflplayers; */
-
-    public static void main(String args[]) {
-
-        System.out.println("Hello OOAD Project");
-
-        /*
-        Runningback r = new Runningback("Thomlinsion");
-
-        Quarterback q = new Quarterback("Tom Brady");
-
-        WideReceiver w = new WideReceiver("Steve Smith");
-
-        NFLPlayersReference[] NFLPlayersReference;
-
-
-        Run();// {
-
-        NFLPlayersReference = new NFLPlayersReference[3];
-
-        nflplayersreference[0] = r;
-
-        players[1] = q;
-
-        nflplayers[2] = w;
-
-
-        for (int i = 0; i < nflplayersreference.length; i++) {
-
-            System.out.println("My name is " + nflplayersreference[i].getName());
-
-            nflplayersreference[i].run();
-
-            nflplayersreference[i].run();
-
-            nflplayersreference[i].run();
-
-            System.out.println("NFL offensive threats have great running abilities!");
-
-        } */
-
+    public Main(String name) {
+        this.name = name;
     }
 
-    /*
-    private static void Run() {
+    public Main(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
 
-        System.out.println("Not yet implemented");
+    public Main(String name, float tall){
+        this.name = name;
+        this.tall = tall;
+    }
 
-    } */
+    public Main(String name, int age, float tall){
+        this.name = name;
+        this.age = age;
+        this.tall = tall;
+    }
 
+    public String getName(){
+        return name;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
+    public float getTall(){
+        return tall;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setTall(float tall) {
+        this.tall = tall;
+    }
+
+    public void printInfo(){
+        System.out.println("name: " + name + ", age: " + String.valueOf(age) + ", tall:" + String.valueOf(tall));
+    }
 }
+
+
+
