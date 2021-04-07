@@ -4,9 +4,13 @@ name: 'Java Testing'
 
 on:
   push:
-    branches: [main]
+    branches:
+      -main
+      -develop
   pull_request:
-    branches: [main]					
+    branches:
+      -main
+      -develop
 #빌드, 테스팅
 jobs:
   build_testing:  
