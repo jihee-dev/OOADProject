@@ -1,0 +1,29 @@
+name: 'Java Testing'
+#push에 실행
+#pull_request에 실행 
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+					
+#빌드, 테스팅
+jobs:
+  build&testing:  
+    runs-on: ubuntu-latest
+    steps:
+           - uses: actions/checkout@v2
+           - name: Set up openJDK 11.0.4
+             uses: actions/setup-java@2
+             with: 
+                  java-version: '11.0.4'
+           - name: Grant execute permission for gradlew
+             run: chmod +x gradlew
+           - name: Build with Gradle
+             run: ./gradlew build
+           - name: SonarScan
+             uses: kitabisa/sonarqube-action@v1.1.0
+             with:
+                  host: http://117.16.143.60:9000
+                  login: db53caa2295e5df9e386d5a6e29143b432ddeef7
