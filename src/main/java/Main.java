@@ -1,4 +1,4 @@
- public abstract class NFLPlayersReference {
+ public abstract class Main {
 
     private static Runningback[] nflplayersreference;
 
