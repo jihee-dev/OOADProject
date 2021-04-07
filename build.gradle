@@ -37,3 +37,31 @@ sonarqube {
 jacoco {
     toolVersion = '0.8.5'
 }
+jacocoTestReport {
+    reports {
+        xml.destination file("${buildDir}/jacocoxml")
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
+
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['org.gradle.*']
+
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
+}
