@@ -21,7 +21,5 @@ jobs:
              run: chmod +x gradlew
            - name: Build with Gradle
              run: ./gradlew sonarqube \
-                  -Dsonar.projectKey=OOADProject \
-                  -Dsonar.host.url=http://117.16.143.60:9000 \
-                  -Dsonar.login=db53caa2295e5df9e386d5a6e29143b432ddeef7
+                
          
