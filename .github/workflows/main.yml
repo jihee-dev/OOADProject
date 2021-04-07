@@ -20,5 +20,22 @@ jobs:
            - name: Grant execute permission for gradlew
              run: chmod +x gradlew
            - name: Build with Gradle
-             run: ./gradlew sonarqube -Dsonar.projectKey=OOADProject -Dsonar.host.url=http://117.16.123.60:9000 -Dsonar.login:78250086a21a913460dd236bb1675cbc75d09b69
-         
+             run: ./gradlew sonarqube 
+           - name: Unit Test
+             run: ./gradlew test
+
+           - name: Publish Test Report
+             uses: mikepenz/action-junit-report@v2
+             if: ${{ always() }}
+             with:
+               report_paths: '**/build/test-results/test/TEST-*.xml'
+               github_token: ${{ secrets.GITHUB_TOKEN }}
+
+           - name: Slack Alarm
+             uses: 8398a7/action-slack@v3
+             with:
+               status: ${{ job.status }}
+               fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+             env:
+               SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+             if: always() # Pick up events even if the job fails or is canceled. 
