@@ -21,8 +21,4 @@ jobs:
              run: chmod +x gradlew
            - name: Build with Gradle
              run: ./gradlew build
-           - name: SonarScan
-             uses: kitabisa/sonarqube-action@v1.1.0
-             with:
-                  host: http://117.16.143.60:9000
-                  login: db53caa2295e5df9e386d5a6e29143b432ddeef7
+         
