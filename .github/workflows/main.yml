@@ -20,6 +20,6 @@ jobs:
            - name: Grant execute permission for gradlew
              run: chmod +x gradlew
            - name: Build with Gradle
-             run: ./gradlew sonarqube \
+             run: ./gradlew sonarqube \ -Dsonar.projectKey=OOADProject \ -Dsonar.host.url=http://117.16.143.60:9000 \ -Dsonar.login=78250086a21a913460dd236bb1675cbc75d09b69
                 
          
