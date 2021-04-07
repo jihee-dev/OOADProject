@@ -1,13 +1,17 @@
-public abstract class Main {
+public class Main {
 
+    /*
     private static Runningback[] nflplayersreference;
 
     private static Quarterback[] players;
 
-    private static WideReceiver[] nflplayers;
+    private static WideReceiver[] nflplayers; */
 
     public static void main(String args[]) {
 
+        System.out.println("Hello OOAD Project");
+
+        /*
         Runningback r = new Runningback("Thomlinsion");
 
         Quarterback q = new Quarterback("Tom Brady");
@@ -32,7 +36,7 @@ public abstract class Main {
 
             System.out.println("My name is " + nflplayersreference[i].getName());
 
-                    nflplayersreference[i].run();
+            nflplayersreference[i].run();
 
             nflplayersreference[i].run();
 
@@ -40,14 +44,15 @@ public abstract class Main {
 
             System.out.println("NFL offensive threats have great running abilities!");
 
-        }
+        } */
 
     }
 
+    /*
     private static void Run() {
 
         System.out.println("Not yet implemented");
 
-    }
+    } */
 
 }
