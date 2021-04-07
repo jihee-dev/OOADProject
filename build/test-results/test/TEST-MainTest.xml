@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MainTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2021-04-07T15:23:06" hostname="DESKTOP-3D90TNU" time="0.017">
+  <properties/>
+  <testcase name="printInfo()" classname="MainTest" time="0.008"/>
+  <testcase name="getAge()" classname="MainTest" time="0.001"/>
+  <testcase name="setAge()" classname="MainTest" time="0.001"/>
+  <testcase name="getName()" classname="MainTest" time="0.0"/>
+  <testcase name="getTall()" classname="MainTest" time="0.001"/>
+  <testcase name="setName()" classname="MainTest" time="0.0"/>
+  <testcase name="setTall()" classname="MainTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
