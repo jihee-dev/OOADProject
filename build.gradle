@@ -1,15 +1,17 @@
+//plugins, [java, sonarqube, PMD]
 plugins {
     id 'java'   
     id "org.sonarqube" version "3.1.1"
-    id 'jacoco'
-
+    id 'pmd'
 }
-
+//group & version
 group 'org.example'
 version '1.0-SNAPSHOT'
 
+//repositories, [mavenCentral,Jcenter]
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 test {
@@ -34,34 +36,28 @@ sonarqube {
         property "sonar.login", "78250086a21a913460dd236bb1675cbc75d09b69"
     }
 }
-jacoco {
-    toolVersion = '0.8.5'
+// PMD setting
+pmd {
+    ignoreFailures = false
+    reportsDir = file("${buildDir}/report/PMD")
+    toolVersion = "6.6.0"
 }
-jacocoTestReport {
+
+pmdMain {
     reports {
-        xml.destination file("${buildDir}/jacocoxml")
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
+        xml.destination = file("${pmd.reportsDir}/pmd.xml")
+        html.destination = file("${pmd.reportsDir}/pmd.html")
+        xml.enabled = true
+        html.enabled = true
     }
-}
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit {
-                minimum = 0.5
-            }
-        }
 
-        rule {
-            enabled = false
-            element = 'CLASS'
-            includes = ['org.gradle.*']
-
-            limit {
-                counter = 'LINE'
-                value = 'TOTALCOUNT'
-                maximum = 0.3
-            }
-        }
-    }
 }
+
+
+
+
+
+
+
+
+
