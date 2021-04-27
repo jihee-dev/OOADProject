@@ -25,8 +25,8 @@ dependencies {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "OOADProject"
-        property "sonar.projectKey", "OOADProject"
+        property "sonar.projectName", "teamvv_testing"
+        property "sonar.projectKey", "teamvv_testing"
         property "sonar.sources","src/main/java"
         property "sonar.language","java"
         property "sonar.sourceEncoding", "UTF-8"
