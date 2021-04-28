@@ -41,16 +41,14 @@ sonarqube {
 // Checkstyle setting
 checkstyle {
     ignoreFailures = true
-    reportsDir = file("${buildDir}/report/checkstyle")
+    configFile = file('config/checkstyle/checkstyle.xml')
+    toolVersion = "8.41"
 }
 
 
 checkstyleMain {
     reports {
-        xml.destination = file("${checkstyle.reportsDir}/checkstyle.xml")
-        html.destination = file("${checkstyle.reportsDir}/checkstyle.html")
-        xml.enabled true
+        xml.enabled false
         html.enabled true
-        html.stylesheet resources.text.fromFile('config/xsl/checkstyle-custom.xsl')
     }
 }
