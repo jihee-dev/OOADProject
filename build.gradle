@@ -1,7 +1,10 @@
 plugins {
     id 'java'   
     id "org.sonarqube" version "3.1.1"
+    id "pmd"
     id 'checkstyle'
+    id 'jacoco'
+    id "com.github.spotbugs" version "4.7.0"
 
 }
 //group & version
@@ -41,37 +44,49 @@ pmd {
     ignoreFailures = false
     reportsDir = file("${buildDir}/report/PMD")
     toolVersion = "6.6.0"
-
-
-
+}
+// PMDMain
+pmdMain {
+    reports{
+        xml.enabled true
+        html.enabled true
+        xml.destination = file("${pmd.reportsDir}/pmd.xml")
+        html.destination = file("${pmd.reportsDir}/pmd.html")
+    }
+}
 // Checkstyle setting
 checkstyle {
     ignoreFailures = true
     configFile = file('config/checkstyle/checkstyle.xml')
+    reportsDir = file("${buildDir}/report/checkStyle")
     toolVersion = "8.41"
 }
-
-pmdMain {
-
-
 checkstyleMain {
     reports {
-        xml.enabled false
+        xml.enabled true
         html.enabled true
         xml.destination = file("${pmd.reportsDir}/pmd.xml")
         html.destination = file("${pmd.reportsDir}/pmd.html")
-        xml.enabled = true
-        html.enabled = true
     }
-
 }
 
-
-
-
-
-
-
+jacoco {
+    toolVersion = '0.8.5'
+}
+jacocoTestReport {
+    reports {
+        xml.destination file("${buildDir}/jacocoxml")
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.5
+            }
+        }
 
         rule {
             enabled = false
@@ -86,3 +101,26 @@ checkstyleMain {
         }
     }
 }
+
+spotbugsMain {
+    ignoreFailures = true
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+spotbugsTest {
+    ignoreFailures = true
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
+
+
+
+
+
+
