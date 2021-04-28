@@ -5,7 +5,7 @@ name: 'Java Testing'
 on:
   push:
     branches: 
-      - feature_Findbugs
+      - feature_spotbugs
     #빌드, 테스팅
 jobs:
   build_testing:  
