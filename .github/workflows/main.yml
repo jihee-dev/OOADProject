@@ -3,6 +3,8 @@ name: 'Java Testing'
 #pull_request에 실행 
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [develop]
 #빌드, 테스팅
