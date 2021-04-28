@@ -91,6 +91,20 @@ jacocoTestReport {
         html.destination file("${jacoco.reportsDir}/jacoco.html")
     }
 }
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.50
+            }
+        }
+    }
+}
+// spotbug
 spotbugs {
     ignoreFailures = true
     reportsDir = file("${buildDir}/reports/spotbug")
