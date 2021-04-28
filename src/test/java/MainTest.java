@@ -1,5 +1,7 @@
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.*;
+
 
 class MainTest {
 
@@ -29,5 +31,10 @@ class MainTest {
 
     @Test
     void printInfo() {
+    }
+
+    @Test
+    void retError() {
+        assertEquals(60, 1, 0);
     }
 }
