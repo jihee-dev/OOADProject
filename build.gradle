@@ -1,8 +1,8 @@
-//plugins, [java, sonarqube, PMD]
 plugins {
     id 'java'   
     id "org.sonarqube" version "3.1.1"
-    id 'pmd'
+    id 'checkstyle'
+
 }
 //group & version
 group 'org.example'
@@ -27,12 +27,12 @@ dependencies {
 
 sonarqube {
     properties {
-        property "sonar.projectName", "OOADProject"
-        property "sonar.projectKey", "OOADProject"
+        property "sonar.projectName", "teamvv_testing"
+        property "sonar.projectKey", "teamvv_testing"
         property "sonar.sources","src/main/java"
         property "sonar.language","java"
         property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.host.url", "https://testvv.loca.lt/"
+        property "sonar.host.url", "http://117.16.143.60:9000"
         property "sonar.login", "6af4b270c07ef694980c0fb6a5fba483e4530ca9"
     }
 }
@@ -41,10 +41,23 @@ pmd {
     ignoreFailures = false
     reportsDir = file("${buildDir}/report/PMD")
     toolVersion = "6.6.0"
+
+
+
+// Checkstyle setting
+checkstyle {
+    ignoreFailures = true
+    configFile = file('config/checkstyle/checkstyle.xml')
+    toolVersion = "8.41"
 }
 
 pmdMain {
+
+
+checkstyleMain {
     reports {
+        xml.enabled false
+        html.enabled true
         xml.destination = file("${pmd.reportsDir}/pmd.xml")
         html.destination = file("${pmd.reportsDir}/pmd.html")
         xml.enabled = true
@@ -60,4 +73,16 @@ pmdMain {
 
 
 
+        rule {
+            enabled = false
+            element = 'CLASS'
+            includes = ['org.gradle.*']
 
+            limit {
+                counter = 'LINE'
+                value = 'TOTALCOUNT'
+                maximum = 0.3
+            }
+        }
+    }
+}

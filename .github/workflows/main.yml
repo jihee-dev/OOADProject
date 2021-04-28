@@ -3,10 +3,8 @@ name: 'Java Testing'
 #pull_request에 실행 
 
 on:
-  push:
-    branches: [features_pmd]
   pull_request:
-    branches: [features_pmd]
+    branches: [main]					
 #빌드, 테스팅
 jobs:
   build_testing:  
@@ -20,7 +18,8 @@ jobs:
            - name: Grant execute permission for gradlew
              run: chmod +x gradlew
            - name: Build with Gradle
-             run: ./gradlew sonarqube
+             run: ./gradlew sonarqube           
+
            - name: Slack Alarm
              uses: 8398a7/action-slack@v3
              with:

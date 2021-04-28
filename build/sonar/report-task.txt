@@ -1,6 +1,0 @@
-projectKey=OOADProject
-serverUrl=http://www.team.vk
-serverVersion=8.8.0.42792
-dashboardUrl=http://www.team.vk/dashboard?id=OOADProject
-ceTaskId=AXkUS-ExnQnksYV7tlPE
-ceTaskUrl=http://www.team.vk/api/ce/task?id=AXkUS-ExnQnksYV7tlPE
