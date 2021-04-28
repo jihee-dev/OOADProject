@@ -3,9 +3,10 @@ name: 'Java Testing'
 #pull_request에 실행 
 
 on:
-  pull_request:
-    branches: [develop]
-#빌드, 테스팅
+  push:
+    branches: 
+      - develope
+    #빌드, 테스팅
 jobs:
   build_testing:  
     runs-on: ubuntu-latest
