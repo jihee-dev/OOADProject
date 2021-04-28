@@ -16,11 +16,6 @@ repositories {
     mavenCentral()
     jcenter()
 }
-
-test {
-    useJUnitPlatform()
-}
-
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0' 
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0' 
@@ -42,7 +37,7 @@ sonarqube {
 // PMD setting
 pmd {
     ignoreFailures = false
-    reportsDir = file("${buildDir}/report/PMD")
+    reportsDir = file("${buildDir}/reports/PMD")
     toolVersion = "6.6.0"
 }
 // PMDMain
@@ -58,7 +53,7 @@ pmdMain {
 checkstyle {
     ignoreFailures = true
     configFile = file('config/checkstyle/checkstyle.xml')
-    reportsDir = file("${buildDir}/report/checkStyle")
+    reportsDir = file("${buildDir}/reports/checkStyle")
     toolVersion = "8.41"
 }
 // CheckstyleMain
@@ -73,7 +68,7 @@ checkstyleMain {
 //jacoco setting
 jacoco {
     toolVersion = '0.8.5'
-    reportsDir = file("${buildDir}/report/Jacoco")
+    reportsDir = file("${buildDir}/reports/Jacoco")
 }
 jacocoTestReport {
     reports {
@@ -85,15 +80,15 @@ jacocoTestReport {
 }
 spotbugs {
     ignoreFailures = true
-    reportsDir = file("${buildDir}/report/spotbug")
+    reportsDir = file("${buildDir}/reports/spotbug")
 }
 spotbugsMain {
     ignoreFailures = true
     reports {
         xml.enabled = false
         html.enabled = true
-        xml.destination file("${spotbugs.reportsDir}/jacoco.xml")
-        html.destination file("${spotbugs.reportsDir}/jacoco.html")
+        xml.destination file("${spotbugs.reportsDir}/spotbug.xml")
+        html.destination file("${spotbugs.reportsDir}/spotbug.html")
     }
 }
 spotbugsTest {
@@ -101,8 +96,8 @@ spotbugsTest {
     reports {
         xml.enabled = false
         html.enabled = true
-        xml.destination file("${spotbugs.reportsDir}/jacoco.xml")
-        html.destination file("${spotbugs.reportsDir}/jacoco.html")
+        xml.destination file("${spotbugs.reportsDir}/spotbug_test.xml")
+        html.destination file("${spotbugs.reportsDir}/spotbug_test.html")
     }
 }
 
