@@ -18,7 +18,7 @@ jobs:
            - name: Grant execute permission for gradlew
              run: chmod +x gradlew
            - name: Build with Gradle
-             run: ./gradlew sonarqube           
+             run: ./gradlew sonarqube
 
            - name: Slack Alarm
              uses: 8398a7/action-slack@v3

@@ -11,7 +11,7 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-//repositories, [mavenCentral,Jcenter]
+//repositories, [mavenCentral, Jcenter]
 repositories {
     mavenCentral()
     jcenter()
@@ -102,6 +102,11 @@ jacocoTestCoverageVerification {
                 minimum = 0.50
             }
         }
+    }
+}
+test {
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacoco.exec")
     }
 }
 // spotbug
