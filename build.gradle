@@ -61,62 +61,51 @@ checkstyle {
     reportsDir = file("${buildDir}/report/checkStyle")
     toolVersion = "8.41"
 }
+// CheckstyleMain
 checkstyleMain {
     reports {
         xml.enabled true
         html.enabled true
-        xml.destination = file("${pmd.reportsDir}/pmd.xml")
-        html.destination = file("${pmd.reportsDir}/pmd.html")
+        xml.destination = file("${checkstyle.reportsDir}/checkStyle.xml")
+        html.destination = file("${checkstyle.reportsDir}/checkStyle.html")
     }
 }
-
+//jacoco setting
 jacoco {
     toolVersion = '0.8.5'
+    reportsDir = file("${buildDir}/report/Jacoco")
 }
 jacocoTestReport {
     reports {
-        xml.destination file("${buildDir}/jacocoxml")
-        csv.enabled false
-        html.destination file("${buildDir}/jacocoHtml")
+        xml.enabled = true
+        html.enabled = true
+        xml.destination file("${jacoco.reportsDir}/jacoco.xml")
+        html.destination file("${jacoco.reportsDir}/jacoco.html")
     }
 }
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit {
-                minimum = 0.5
-            }
-        }
-
-        rule {
-            enabled = false
-            element = 'CLASS'
-            includes = ['org.gradle.*']
-
-            limit {
-                counter = 'LINE'
-                value = 'TOTALCOUNT'
-                maximum = 0.3
-            }
-        }
-    }
+spotbugs {
+    ignoreFailures = true
+    reportsDir = file("${buildDir}/report/spotbug")
 }
-
 spotbugsMain {
     ignoreFailures = true
     reports {
         xml.enabled = false
         html.enabled = true
+        xml.destination file("${spotbugs.reportsDir}/jacoco.xml")
+        html.destination file("${spotbugs.reportsDir}/jacoco.html")
     }
 }
-
 spotbugsTest {
     ignoreFailures = true
     reports {
         xml.enabled = false
         html.enabled = true
+        xml.destination file("${spotbugs.reportsDir}/jacoco.xml")
+        html.destination file("${spotbugs.reportsDir}/jacoco.html")
     }
 }
+
 
 
 
