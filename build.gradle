@@ -5,20 +5,18 @@ plugins {
     id 'checkstyle'
     id 'jacoco'
     id "com.github.spotbugs" version "4.7.0"
-
 }
+
+
 //group & version
 group 'org.example'
 version '1.0-SNAPSHOT'
+
 
 //repositories, [mavenCentral,Jcenter]
 repositories {
     mavenCentral()
     jcenter()
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -39,9 +37,16 @@ sonarqube {
         property "sonar.login", "6af4b270c07ef694980c0fb6a5fba483e4530ca9"
     }
 }
+
+
+test {
+    useJUnitPlatform()
+}
+
+
 // PMD setting
 pmd {
-    ignoreFailures = false
+    ignoreFailures = true
     reportsDir = file("${buildDir}/reports/PMD")
     toolVersion = "6.6.0"
 }
@@ -54,6 +59,8 @@ pmdMain {
         html.destination = file("${pmd.reportsDir}/pmd.html")
     }
 }
+
+
 // Checkstyle setting
 checkstyle {
     ignoreFailures = true
@@ -70,7 +77,9 @@ checkstyleMain {
         html.destination = file("${checkstyle.reportsDir}/checkStyle.html")
     }
 }
-//jacoco setting
+
+
+// jacoco setting
 jacoco {
     toolVersion = '0.8.5'
     reportsDir = file("${buildDir}/reports/Jacoco")
@@ -83,10 +92,32 @@ jacocoTestReport {
         html.destination file("${jacoco.reportsDir}/jacoco.html")
     }
 }
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.50
+            }
+        }
+    }
+}
+test {
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacoco.exec")
+    }
+}
+
+
+// spotbugs setting
 spotbugs {
     ignoreFailures = true
     reportsDir = file("${buildDir}/reports/spotbug")
 }
+
 spotbugsMain {
     ignoreFailures = true
     reports {

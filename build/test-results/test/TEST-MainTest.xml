@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="8" skipped="0" failures="1" errors="0" timestamp="2021-04-28T03:39:26" hostname="DESKTOP-IT8D2AQ" time="0.032">
+<testsuite name="MainTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2021-04-29T02:24:57" hostname="DESKTOP-IT8D2AQ" time="0.107">
   <properties/>
-  <testcase name="printInfo()" classname="MainTest" time="0.01"/>
-  <testcase name="getAge()" classname="MainTest" time="0.001"/>
-  <testcase name="setAge()" classname="MainTest" time="0.0"/>
-  <testcase name="retError()" classname="MainTest" time="0.009">
-    <failure message="java.lang.AssertionError: expected:&lt;60.0&gt; but was:&lt;1.0&gt;" type="java.lang.AssertionError">java.lang.AssertionError: expected:&lt;60.0&gt; but was:&lt;1.0&gt;
-	at org.junit.Assert.fail(Assert.java:88)
-	at org.junit.Assert.failNotEquals(Assert.java:834)
-	at org.junit.Assert.assertEquals(Assert.java:575)
-	at org.junit.Assert.assertEquals(Assert.java:700)
-	at MainTest.retError(MainTest.java:38)
+  <testcase name="retError()" classname="MainTest" time="0.104">
+    <failure message="org.opentest4j.AssertionFailedError: positive delta expected but was: &lt;0.0&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: positive delta expected but was: &lt;0.0&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:36)
+	at org.junit.jupiter.api.AssertionUtils.failIllegalDelta(AssertionUtils.java:175)
+	at org.junit.jupiter.api.AssertionUtils.assertValidDelta(AssertionUtils.java:144)
+	at org.junit.jupiter.api.AssertionUtils.floatsAreEqual(AssertionUtils.java:138)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:121)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:117)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:401)
+	at MainTest.retError(MainTest.java:17)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -75,7 +75,7 @@
 	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
 	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
 	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at com.sun.proxy.$Proxy2.stop(Unknown Source)
+	at com.sun.proxy.$Proxy5.stop(Unknown Source)
 	at org.gradle.api.internal.tasks.testing.worker.TestWorker.stop(TestWorker.java:132)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
@@ -94,10 +94,7 @@
 	at java.base/java.lang.Thread.run(Thread.java:834)
 </failure>
   </testcase>
-  <testcase name="getName()" classname="MainTest" time="0.001"/>
-  <testcase name="getTall()" classname="MainTest" time="0.0"/>
-  <testcase name="setName()" classname="MainTest" time="0.001"/>
-  <testcase name="setTall()" classname="MainTest" time="0.001"/>
+  <testcase name="main()" classname="MainTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
