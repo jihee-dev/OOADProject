@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.2.1" sequence="0" timestamp="1619662911102" analysisTimestamp="1619662911153" release="1.0-SNAPSHOT">
+  <Project projectName="OOADProject (spotbugsMain)">
+    <Jar>C:\Users\ggams\IdeaProjects\OOADProject\build\classes\java\main\Main.class</Jar>
+    <SrcDir>C:\Users\ggams\IdeaProjects\OOADProject\src\main\resources</SrcDir>
+    <SrcDir>C:\Users\ggams\IdeaProjects\OOADProject\src\main\java</SrcDir>
+  </Project>
+  <BugInstance type="DLS_DEAD_LOCAL_STORE" priority="2" rank="17" abbrev="DLS" category="STYLE" instanceHash="1afd822b08ef1181e14cebb5022392ef" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="563">
+    <ShortMessage>Dead store to local variable</ShortMessage>
+    <LongMessage>Dead store to N in Main.main(String[])</LongMessage>
+    <Class classname="Main" primary="true">
+      <SourceLine classname="Main" start="6" end="26" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+        <Message>At Main.java:[lines 6-26]</Message>
+      </SourceLine>
+      <Message>In class Main</Message>
+    </Class>
+    <Method classname="Main" name="main" signature="([Ljava/lang/String;)V" isStatic="true" primary="true">
+      <SourceLine classname="Main" start="9" end="26" startBytecode="0" endBytecode="56" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java"/>
+      <Message>In method Main.main(String[])</Message>
+    </Method>
+    <LocalVariable name="N" register="3" pc="35" role="LOCAL_VARIABLE_NAMED">
+      <Message>Local variable named N</Message>
+    </LocalVariable>
+    <SourceLine classname="Main" primary="true" start="11" end="11" startBytecode="34" endBytecode="34" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+      <Message>At Main.java:[line 11]</Message>
+    </SourceLine>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.BASE_VALUE" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.LOCAL_NAME" value="N"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.METHOD_RESULT" value="true"/>
+    <Property name="edu.umd.cs.findbugs.detect.DeadLocalStoreProperty.NO_LOADS" value="true"/>
+  </BugInstance>
+  <BugInstance type="DM_DEFAULT_ENCODING" priority="1" rank="19" abbrev="Dm" category="I18N" instanceHash="b34f5194d3686f7950e7b90da9b19df" instanceOccurrenceNum="0" instanceOccurrenceMax="0">
+    <ShortMessage>Reliance on default encoding</ShortMessage>
+    <LongMessage>Found reliance on default encoding in Main.main(String[]): new java.io.InputStreamReader(InputStream)</LongMessage>
+    <Class classname="Main" primary="true">
+      <SourceLine classname="Main" start="6" end="26" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+        <Message>At Main.java:[lines 6-26]</Message>
+      </SourceLine>
+      <Message>In class Main</Message>
+    </Class>
+    <Method classname="Main" name="main" signature="([Ljava/lang/String;)V" isStatic="true" primary="true">
+      <SourceLine classname="Main" start="9" end="26" startBytecode="0" endBytecode="319" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java"/>
+      <Message>In method Main.main(String[])</Message>
+    </Method>
+    <Method classname="java.io.InputStreamReader" name="&lt;init&gt;" signature="(Ljava/io/InputStream;)V" isStatic="false" role="METHOD_CALLED">
+      <SourceLine classname="java.io.InputStreamReader" start="72" end="79" startBytecode="0" endBytecode="146" sourcefile="InputStreamReader.java" sourcepath="java/io/InputStreamReader.java"/>
+      <Message>Called method new java.io.InputStreamReader(InputStream)</Message>
+    </Method>
+    <SourceLine classname="Main" primary="true" start="9" end="9" startBytecode="11" endBytecode="11" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+      <Message>At Main.java:[line 9]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="NP_DEREFERENCE_OF_READLINE_VALUE" priority="2" rank="15" abbrev="NP" category="STYLE" instanceHash="974663d89b01487b4dc5b7b661eac3a" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Dereference of the result of readLine() without nullcheck</ShortMessage>
+    <LongMessage>Dereference of the result of readLine() without nullcheck in Main.main(String[])</LongMessage>
+    <Class classname="Main" primary="true">
+      <SourceLine classname="Main" start="6" end="26" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+        <Message>At Main.java:[lines 6-26]</Message>
+      </SourceLine>
+      <Message>In class Main</Message>
+    </Class>
+    <Method classname="Main" name="main" signature="([Ljava/lang/String;)V" isStatic="true" primary="true">
+      <SourceLine classname="Main" start="9" end="26" startBytecode="0" endBytecode="319" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java"/>
+      <Message>In method Main.main(String[])</Message>
+    </Method>
+    <LocalVariable name="?" register="-1" pc="24" role="LOCAL_VARIABLE_UNKNOWN">
+      <Message>Local variable stored in JVM register ?</Message>
+    </LocalVariable>
+    <SourceLine classname="Main" primary="true" start="10" end="10" startBytecode="24" endBytecode="24" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+      <Message>At Main.java:[line 10]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugInstance type="NP_IMMEDIATE_DEREFERENCE_OF_READLINE" priority="2" rank="15" abbrev="NP" category="STYLE" instanceHash="f892eeb82d2d76b60760176208e8a7a7" instanceOccurrenceNum="0" instanceOccurrenceMax="0" cweid="476">
+    <ShortMessage>Immediate dereference of the result of readLine()</ShortMessage>
+    <LongMessage>Immediate dereference of the result of readLine() in Main.main(String[])</LongMessage>
+    <Class classname="Main" primary="true">
+      <SourceLine classname="Main" start="6" end="26" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+        <Message>At Main.java:[lines 6-26]</Message>
+      </SourceLine>
+      <Message>In class Main</Message>
+    </Class>
+    <Method classname="Main" name="main" signature="([Ljava/lang/String;)V" isStatic="true" primary="true">
+      <SourceLine classname="Main" start="9" end="26" startBytecode="0" endBytecode="319" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java"/>
+      <Message>In method Main.main(String[])</Message>
+    </Method>
+    <SourceLine classname="Main" primary="true" start="13" end="13" startBytecode="47" endBytecode="47" sourcefile="Main.java" sourcepath="Main.java" relSourcepath="java\Main.java">
+      <Message>At Main.java:[line 13]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugCategory category="I18N">
+    <Description>Internationalization</Description>
+  </BugCategory>
+  <BugPattern type="DLS_DEAD_LOCAL_STORE" abbrev="DLS" category="STYLE">
+    <ShortDescription>Dead store to local variable</ShortDescription>
+    <Details><![CDATA[
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="NP_DEREFERENCE_OF_READLINE_VALUE" abbrev="NP" category="STYLE">
+    <ShortDescription>Dereference of the result of readLine() without nullcheck</ShortDescription>
+    <Details><![CDATA[
+
+  <p> The result of invoking readLine() is dereferenced without checking to see if the result is null. If there are no more lines of text
+to read, readLine() will return null and dereferencing that will generate a null pointer exception.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="NP_IMMEDIATE_DEREFERENCE_OF_READLINE" abbrev="NP" category="STYLE">
+    <ShortDescription>Immediate dereference of the result of readLine()</ShortDescription>
+    <Details><![CDATA[
+
+  <p> The result of invoking readLine() is immediately dereferenced. If there are no more lines of text
+to read, readLine() will return null and dereferencing that will generate a null pointer exception.
+</p>
+
+    ]]></Details>
+  </BugPattern>
+  <BugPattern type="DM_DEFAULT_ENCODING" abbrev="Dm" category="I18N">
+    <ShortDescription>Reliance on default encoding</ShortDescription>
+    <Details><![CDATA[
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      ]]></Details>
+  </BugPattern>
+  <BugCode abbrev="NP" cweid="476">
+    <Description>Null pointer dereference</Description>
+  </BugCode>
+  <BugCode abbrev="Dm">
+    <Description>Dubious method used</Description>
+  </BugCode>
+  <BugCode abbrev="DLS" cweid="563">
+    <Description>Dead local store</Description>
+  </BugCode>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Thu, 29 Apr 2021 11:21:51 +0900" total_classes="1" referenced_classes="26" total_bugs="4" total_size="17" num_packages="1" java_version="11.0.2" vm_version="11.0.2+9" cpu_seconds="8.33" clock_seconds="1.96" peak_mbytes="233.88" alloc_mbytes="512.00" gc_seconds="0.00" priority_2="3" priority_1="1">
+    <FileStats path="Main.java" bugCount="4" size="17" bugHash="ef815e8260b16596734b968ae9bacde6"/>
+    <PackageStats package="" total_bugs="4" total_types="1" total_size="17" priority_2="3" priority_1="1">
+      <ClassStats class="Main" sourceFile="Main.java" interface="false" size="17" bugs="4" priority_2="3" priority_1="1"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="480" invocations="474" avgMicrosecondsPerInvocation="1013" maxMicrosecondsPerInvocation="14891" standardDeviationMicrosecondsPerInvocation="1832"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="122" invocations="26" avgMicrosecondsPerInvocation="4722" maxMicrosecondsPerInvocation="20017" standardDeviationMicrosecondsPerInvocation="6246"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="78" invocations="26" avgMicrosecondsPerInvocation="3006" maxMicrosecondsPerInvocation="14021" standardDeviationMicrosecondsPerInvocation="3624"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="60" invocations="155" avgMicrosecondsPerInvocation="390" maxMicrosecondsPerInvocation="3842" standardDeviationMicrosecondsPerInvocation="545"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="59" invocations="476" avgMicrosecondsPerInvocation="125" maxMicrosecondsPerInvocation="3943" standardDeviationMicrosecondsPerInvocation="237"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="50" invocations="436" avgMicrosecondsPerInvocation="115" maxMicrosecondsPerInvocation="2222" standardDeviationMicrosecondsPerInvocation="226"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="47" invocations="2" avgMicrosecondsPerInvocation="23862" maxMicrosecondsPerInvocation="46746" standardDeviationMicrosecondsPerInvocation="22884"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="46" invocations="48" avgMicrosecondsPerInvocation="973" maxMicrosecondsPerInvocation="24807" standardDeviationMicrosecondsPerInvocation="3573"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="42" invocations="26" avgMicrosecondsPerInvocation="1627" maxMicrosecondsPerInvocation="9844" standardDeviationMicrosecondsPerInvocation="2376"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="30" invocations="26" avgMicrosecondsPerInvocation="1154" maxMicrosecondsPerInvocation="6548" standardDeviationMicrosecondsPerInvocation="1738"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
