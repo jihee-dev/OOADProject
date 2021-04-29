@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2021-04-29T02:33:30" hostname="DESKTOP-3D90TNU" time="0.018">
+<<<<<<< HEAD
+<testsuite name="MainTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2021-04-29T02:24:57" hostname="DESKTOP-IT8D2AQ" time="0.107">
   <properties/>
-  <testcase name="retError()" classname="MainTest" time="0.016">
+  <testcase name="retError()" classname="MainTest" time="0.104">
+=======
+<testsuite name="MainTest" tests="2" skipped="0" failures="1" errors="0" timestamp="2021-04-28T15:03:18" hostname="DESKTOP-3D90TNU" time="0.044">
+  <properties/>
+  <testcase name="retError()" classname="MainTest" time="0.042">
+>>>>>>> da1ba062b7879635d1583e3945f62b655fe0d0c5
     <failure message="org.opentest4j.AssertionFailedError: positive delta expected but was: &lt;0.0&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: positive delta expected but was: &lt;0.0&gt;
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:36)
 	at org.junit.jupiter.api.AssertionUtils.failIllegalDelta(AssertionUtils.java:175)

@@ -5,19 +5,19 @@ plugins {
     id 'checkstyle'
     id 'jacoco'
     id "com.github.spotbugs" version "4.7.0"
-
 }
+
+
 //group & version
 group 'org.example'
 version '1.0-SNAPSHOT'
+
 
 //repositories, [mavenCentral,Jcenter]
 repositories {
     mavenCentral()
     jcenter()
 }
-
-
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0' 
@@ -37,6 +37,13 @@ sonarqube {
         property "sonar.login", "6af4b270c07ef694980c0fb6a5fba483e4530ca9"
     }
 }
+
+
+test {
+    useJUnitPlatform()
+}
+
+
 // PMD setting
 pmd {
     ignoreFailures = true
@@ -52,6 +59,10 @@ pmdMain {
         html.destination = file("${pmd.reportsDir}/pmd.html")
     }
 }
+<<<<<<< HEAD
+
+
+=======
 pmdTest {
     reports{
         xml.enabled true
@@ -60,6 +71,7 @@ pmdTest {
         html.destination = file("${pmd.reportsDir}/pmd_test.html")
     }
 }
+>>>>>>> da1ba062b7879635d1583e3945f62b655fe0d0c5
 // Checkstyle setting
 checkstyle {
     ignoreFailures = true
@@ -76,7 +88,9 @@ checkstyleMain {
         html.destination = file("${checkstyle.reportsDir}/checkStyle.html")
     }
 }
-//jacoco setting
+
+
+// jacoco setting
 jacoco {
     toolVersion = '0.8.5'
     reportsDir = file("${buildDir}/reports/Jacoco")
@@ -89,10 +103,32 @@ jacocoTestReport {
         html.destination file("${jacoco.reportsDir}/jacoco.html")
     }
 }
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.50
+            }
+        }
+    }
+}
+test {
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacoco.exec")
+    }
+}
+
+
+// spotbugs setting
 spotbugs {
     ignoreFailures = true
     reportsDir = file("${buildDir}/reports/spotbug")
 }
+
 spotbugsMain {
     ignoreFailures = true
     reports {
@@ -111,9 +147,7 @@ spotbugsTest {
         html.destination file("${spotbugs.reportsDir}/spotbug_test.html")
     }
 }
-test {
-    useJUnitPlatform()
-}
+
 
 
 

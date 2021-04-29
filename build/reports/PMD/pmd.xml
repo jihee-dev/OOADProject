@@ -2,8 +2,13 @@
 <pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
-    version="6.6.0" timestamp="2021-04-29T11:31:58.958">
+<<<<<<< HEAD
+    version="6.6.0" timestamp="2021-04-29T11:23:37.610">
+<file name="C:\Users\JIWOO\OOADProject\src\main\java\Main.java">
+=======
+    version="6.6.0" timestamp="2021-04-29T00:03:12.788">
 <file name="C:\Users\ggams\IdeaProjects\OOADProject\src\main\java\Main.java">
+>>>>>>> da1ba062b7879635d1583e3945f62b655fe0d0c5
 <violation beginline="11" endline="26" begincolumn="13" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" class="Main" method="main" variable="N" externalInfoUrl="https://pmd.github.io/pmd-6.6.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
 Found 'DU'-anomaly for variable 'N' (lines '11'-'26').
 </violation>
