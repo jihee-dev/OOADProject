@@ -59,8 +59,19 @@ pmdMain {
         html.destination = file("${pmd.reportsDir}/pmd.html")
     }
 }
+<<<<<<< HEAD
 
 
+=======
+pmdTest {
+    reports{
+        xml.enabled true
+        html.enabled true
+        xml.destination = file("${pmd.reportsDir}/pmd_test.xml")
+        html.destination = file("${pmd.reportsDir}/pmd_test.html")
+    }
+}
+>>>>>>> da1ba062b7879635d1583e3945f62b655fe0d0c5
 // Checkstyle setting
 checkstyle {
     ignoreFailures = true
