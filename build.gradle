@@ -25,24 +25,12 @@ dependencies {
     testCompileOnly 'junit:junit:4.12' 
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.1.0'
 }
-
-sonarqube {
-    properties {
-        property "sonar.projectName", "teamvv_testing"
-        property "sonar.projectKey", "teamvv_testing"
-        property "sonar.sources","src/main/java"
-        property "sonar.language","java"
-        property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.host.url", "http://117.16.143.60:9000"
-        property "sonar.login", "6af4b270c07ef694980c0fb6a5fba483e4530ca9"
-    }
-}
-
-
 test {
     useJUnitPlatform()
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacoco.exec")
+    }
 }
-
 
 // PMD setting
 pmd {
@@ -86,7 +74,6 @@ checkstyleMain {
     }
 }
 
-
 // jacoco setting
 jacoco {
     toolVersion = '0.8.5'
@@ -113,13 +100,6 @@ jacocoTestCoverageVerification {
         }
     }
 }
-test {
-    jacoco {
-        destinationFile = file("$buildDir/jacoco/jacoco.exec")
-    }
-}
-
-
 // spotbugs setting
 spotbugs {
     ignoreFailures = true
@@ -145,6 +125,17 @@ spotbugsTest {
     }
 }
 
+sonarqube {
+    properties {
+        property "sonar.projectName", "teamvv_testing"
+        property "sonar.projectKey", "teamvv_testing"
+        property "sonar.sources","src/main/java"
+        property "sonar.language","java"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.host.url", "http://117.16.143.60:9000"
+        property "sonar.login", "6af4b270c07ef694980c0fb6a5fba483e4530ca9"
+    }
+}
 
 
 

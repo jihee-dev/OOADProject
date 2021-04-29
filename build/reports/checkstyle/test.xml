@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.41">
-<file name="C:\Users\JIWOO\OOADProject\src\test\java\MainTest.java">
+<file name="C:\Users\ggams\IdeaProjects\OOADProject\src\test\java\MainTest.java">
 <error line="2" column="1" severity="warning" message="Import statement for &apos;org.junit.jupiter.api.Assertions.assertEquals&apos; is in the wrong order. Should be in the &apos;STATIC&apos; group, expecting not assigned imports on this line." source="com.puppycrawl.tools.checkstyle.checks.imports.CustomImportOrderCheck"/>
 <error line="4" column="1" severity="warning" message="Import statement for &apos;org.junit.Assert.*&apos; is in the wrong order. Should be in the &apos;STATIC&apos; group, expecting not assigned imports on this line." source="com.puppycrawl.tools.checkstyle.checks.imports.CustomImportOrderCheck"/>
 <error line="4" column="31" severity="warning" message="Using the &apos;.*&apos; form of import should be avoided - org.junit.Assert.*." source="com.puppycrawl.tools.checkstyle.checks.imports.AvoidStarImportCheck"/>
