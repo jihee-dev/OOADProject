@@ -17,9 +17,7 @@ repositories {
     jcenter()
 }
 
-test {
-    useJUnitPlatform()
-}
+
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0' 
@@ -113,7 +111,9 @@ spotbugsTest {
         html.destination file("${spotbugs.reportsDir}/spotbug_test.html")
     }
 }
-
+test {
+    useJUnitPlatform()
+}
 
 
 
