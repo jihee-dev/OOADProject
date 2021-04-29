@@ -19,7 +19,7 @@ public class Main {
                 break;
             }
         }
-        // System.out.println("this is carr => " + Arrays.toString(carr));
+        System.out.println("this is carr => " + Arrays.toString(carr));
         // System.out.println("this is arr => " + Arrays.toString(arr));
 
         System.out.println(answer);
