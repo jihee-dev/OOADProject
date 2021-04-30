@@ -34,7 +34,7 @@ test {
 // PMD setting
 pmd {
     ignoreFailures = true
-    reportsDir = file("${buildDir}/reports/pmd")
+//    reportsDir = file("${buildDir}/reports/pmd")
     toolVersion = "6.6.0"
 }
 // PMDMain
@@ -55,7 +55,7 @@ pmdTest {
 checkstyle {
     ignoreFailures = true
     configFile = file('config/checkstyle/checkstyle.xml')
-    reportsDir = file("${buildDir}/reports/checkstyle")
+//    reportsDir = file("${buildDir}/reports/checkstyle")
     toolVersion = "8.41"
 }
 // CheckstyleMain
@@ -76,7 +76,7 @@ checkstyleTest{
 // spotbugs setting
 spotbugs {
     ignoreFailures = true
-    reportsDir = file("${buildDir}/reports/spotbug")
+//    reportsDir = file("${buildDir}/reports/spotbug")
 }
 spotbugsMain {
     reports {
