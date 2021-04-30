@@ -22,6 +22,7 @@ public class Main {
         System.out.println("this is carr => " + Arrays.toString(carr));
         // System.out.println("this is arr => " + Arrays.toString(arr));
 
+        System.out.println("ddd");
         System.out.println(answer);
     }
 }
