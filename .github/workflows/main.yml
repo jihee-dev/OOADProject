@@ -43,6 +43,7 @@ jobs:
 
 
   test_report:
+    needs: build
     name: Test & Report
     runs-on: ubuntu-latest
 
