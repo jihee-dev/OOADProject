@@ -25,35 +25,29 @@ dependencies {
     testCompileOnly 'junit:junit:4.12' 
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.1.0'
 }
+
 test {
+    ignoreFailures = true
     useJUnitPlatform()
-    jacoco {
-        destinationFile = file("$buildDir/jacoco/jacoco.exec")
-    }
 }
 
 // PMD setting
 pmd {
     ignoreFailures = true
-    reportsDir = file("${buildDir}/reports/PMD")
+    reportsDir = file("${buildDir}/reports/pmd")
     toolVersion = "6.6.0"
 }
 // PMDMain
 pmdMain {
     reports{
-        xml.enabled true
+        xml.enabled false
         html.enabled true
-        xml.destination = file("${pmd.reportsDir}/pmd.xml")
-        html.destination = file("${pmd.reportsDir}/pmd.html")
     }
 }
-
 pmdTest {
     reports{
-        xml.enabled true
+        xml.enabled false
         html.enabled true
-        xml.destination = file("${pmd.reportsDir}/pmd_test.xml")
-        html.destination = file("${pmd.reportsDir}/pmd_test.html")
     }
 }
 
@@ -61,30 +55,51 @@ pmdTest {
 checkstyle {
     ignoreFailures = true
     configFile = file('config/checkstyle/checkstyle.xml')
-    reportsDir = file("${buildDir}/reports/checkStyle")
+    reportsDir = file("${buildDir}/reports/checkstyle")
     toolVersion = "8.41"
 }
 // CheckstyleMain
 checkstyleMain {
     reports {
-        xml.enabled true
+        xml.enabled false
         html.enabled true
-        xml.destination = file("${checkstyle.reportsDir}/checkStyle.xml")
-        html.destination = file("${checkstyle.reportsDir}/checkStyle.html")
     }
 }
+checkstyleTest{
+    reports {
+        xml.enabled false
+        html.enabled true
+    } 
+}
+
+
+// spotbugs setting
+spotbugs {
+    ignoreFailures = true
+    reportsDir = file("${buildDir}/reports/spotbug")
+}
+spotbugsMain {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+spotbugsTest {
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}
+
 
 // jacoco setting
 jacoco {
     toolVersion = '0.8.5'
-    reportsDir = file("${buildDir}/reports/Jacoco")
 }
 jacocoTestReport {
     reports {
         xml.enabled = true
         html.enabled = true
-        xml.destination file("${jacoco.reportsDir}/jacoco.xml")
-        html.destination file("${jacoco.reportsDir}/jacoco.html")
     }
 }
 jacocoTestCoverageVerification {
@@ -100,30 +115,12 @@ jacocoTestCoverageVerification {
         }
     }
 }
-// spotbugs setting
-spotbugs {
-    ignoreFailures = true
-    reportsDir = file("${buildDir}/reports/spotbug")
+test {
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacoco.exec")
+    }
 }
 
-spotbugsMain {
-    ignoreFailures = true
-    reports {
-        xml.enabled = false
-        html.enabled = true
-        xml.destination file("${spotbugs.reportsDir}/spotbug.xml")
-        html.destination file("${spotbugs.reportsDir}/spotbug.html")
-    }
-}
-spotbugsTest {
-    ignoreFailures = true
-    reports {
-        xml.enabled = false
-        html.enabled = true
-        xml.destination file("${spotbugs.reportsDir}/spotbug_test.xml")
-        html.destination file("${spotbugs.reportsDir}/spotbug_test.html")
-    }
-}
 
 sonarqube {
     properties {
