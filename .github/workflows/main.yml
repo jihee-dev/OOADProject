@@ -50,6 +50,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       - name: Run Checkstyle
         run: ./gradlew checkstyleMain checkstyleTest --stacktrace
 
@@ -60,8 +63,6 @@ jobs:
           publish_dir: build/reports/checkstyle
           destination_dir: checkstyle
 
-
-
       - name: Run PMD
         run: ./gradlew pmdMain pmdTest
 
@@ -71,7 +72,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: build/reports/pmd
           destination_dir: pmd
-
 
       - name: Run Spotbugs
         run: ./gradlew spotbugsMain spotbugsTest --stacktrace
