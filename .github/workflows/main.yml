@@ -83,6 +83,9 @@ jobs:
           publish_dir: build/reports/spotbugs
           destination_dir: spotbugs
           
+      - name: Jacoco setup
+        run: ./gradlew test -x jacocoTestReport    
+          
       - name: Code Coverage Report
         run: ./gradlew jacocoTestReport jacocoTestCoverageVerification
 
