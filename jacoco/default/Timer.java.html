@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Timer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">Timer.java</span></div><h1>Timer.java</h1><pre class="source lang-java linenums">import java.time.LocalTime;
+import java.util.TimerTask;
+
+public class Timer extends TimerTask {
+    private LocalTime timerTime;
+    private LocalTime runTime;
+    private int count_sec;
+    private boolean isStartedTimer;
+
+    public LocalTime getTimerTime() {
+<span class="fc" id="L11">        return timerTime;</span>
+    }
+
+    public void setTimerTime(LocalTime time) {
+<span class="fc" id="L15">        this.timerTime = time;</span>
+<span class="fc" id="L16">        runTime = timerTime;</span>
+<span class="fc" id="L17">        count_sec = timerTime.toSecondOfDay();</span>
+<span class="fc" id="L18">    }</span>
+
+    public LocalTime getRunTime() {
+<span class="fc" id="L21">        return runTime;</span>
+    }
+
+    public boolean getIsStartedTimer() {
+<span class="fc" id="L25">        return isStartedTimer;</span>
+    }
+
+<span class="fc" id="L28">    Timer() {</span>
+<span class="fc" id="L29">        java.util.Timer timerThread = new java.util.Timer();</span>
+<span class="fc" id="L30">        timerThread.scheduleAtFixedRate(this, 0,1000);</span>
+<span class="fc" id="L31">        timerTime = LocalTime.of(00,00,00);</span>
+<span class="fc" id="L32">        runTime = timerTime;</span>
+<span class="fc" id="L33">    }</span>
+
+    public void startTimer(LocalTime runTime) {
+<span class="fc" id="L36">        isStartedTimer = true;</span>
+<span class="fc" id="L37">        this.runTime = runTime;</span>
+<span class="fc" id="L38">    }</span>
+
+    public void pauseTimer() {
+<span class="fc" id="L41">        isStartedTimer = false;</span>
+<span class="fc" id="L42">    }</span>
+
+    public void resetTimer() {
+<span class="fc" id="L45">        runTime = timerTime;</span>
+<span class="fc" id="L46">        count_sec = timerTime.toSecondOfDay();</span>
+<span class="fc" id="L47">    }</span>
+
+    @Override
+    public void run() {
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if(isStartedTimer) {</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">            if(count_sec &gt; 1) {</span>
+<span class="fc" id="L53">                count_sec--;</span>
+<span class="fc" id="L54">                runTime = runTime.minusSeconds(1);</span>
+            }
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            else if(count_sec == 1){</span>
+<span class="nc" id="L57">                runTime=runTime.minusSeconds(1);</span>
+<span class="nc" id="L58">                isStartedTimer = false;</span>
+<span class="nc" id="L59">                this.resetTimer();</span>
+<span class="nc" id="L60">                Buzzer.reqBeep();</span>
+            }
+        }
+<span class="fc" id="L63">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

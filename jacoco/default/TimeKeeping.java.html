@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TimeKeeping.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">TimeKeeping.java</span></div><h1>TimeKeeping.java</h1><pre class="source lang-java linenums">import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+
+class TimeKeeping {
+<span class="fc" id="L6">    private ZoneId timeZone = ZoneId.of(&quot;+9&quot;);</span>
+<span class="fc" id="L7">    private ZonedDateTime currentTime = ZonedDateTime.now(timeZone);</span>
+    private long subTime;
+
+    //singleTone Design
+<span class="fc" id="L11">    public TimeKeeping(){</span>
+
+<span class="fc" id="L13">    }</span>
+
+    private static class LazyHolder {
+<span class="fc" id="L16">        public static final TimeKeeping INSTANCE = new TimeKeeping();</span>
+    }
+
+    public static TimeKeeping getInstance(){
+<span class="fc" id="L20">        return LazyHolder.INSTANCE;</span>
+    }
+
+    public ZonedDateTime getCurrentTime(){
+<span class="fc" id="L24">        currentTime = currentTime.now(timeZone).plusSeconds(subTime);</span>
+<span class="fc" id="L25">        return currentTime;</span>
+    }
+
+    public void setTime(ZonedDateTime Time){
+<span class="nc" id="L29">        subTime=ChronoUnit.SECONDS.between(currentTime.now(timeZone), Time);</span>
+<span class="nc" id="L30">    }</span>
+
+    public void setTimeZone(ZoneId timeZoneToChange){
+<span class="fc" id="L33">        timeZone = timeZoneToChange;</span>
+<span class="fc" id="L34">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
