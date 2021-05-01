@@ -49,6 +49,21 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+        
+      - name: Set up Junit 
+        uses: mikepenz/action-junit-report@v2
+        if: ${{ always() }}
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy Test Report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build/reports/tests/test
+          destination_dir: junit
+
 
       - name: Run Checkstyle
         run: ./gradlew checkstyleMain checkstyleTest --stacktrace
