@@ -38,9 +38,6 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
           if: always() # Pick up events even if the job fails or is canceled.
 
-      - name: SonnarScanner
-        run: ./gradlew sonarqube
-
 
   test_report:
     needs: build
@@ -97,4 +94,5 @@ jobs:
           destination_dir: jacoco
 
 
-    
+      - name: SonnarScanner
+        run: ./gradlew sonarqube
