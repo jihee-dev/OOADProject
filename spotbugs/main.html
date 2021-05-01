@@ -73,15 +73,30 @@
       <p>SpotBugs version: 4.2.1</p>
       <p>Code analyzed:</p>
       <ul>
-         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Main.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Buzzer.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/ModeSwitch.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Timer.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Alarm.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/GUI$changeGUI.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/TimeKeeping.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Timeout.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/WorldTime.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Stopwatch.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/TimeKeeping$LazyHolder.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Controller.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/GUI.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/TurnipPrice$1.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/TurnipCalc.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/Alarm$1.class</li>
+         <li>/home/runner/work/OOADProject/OOADProject/build/classes/java/main/TurnipPrice.class</li>
       </ul>
       <p>
          <br/>
          <br/>
       </p>
       <h2>Metrics</h2>
-      <p>19 lines of code analyzed,
-	in 1 classes, 
+      <p>916 lines of code analyzed,
+	in 16 classes, 
 	in 1 packages.</p>
       <table width="500" cellpadding="5" cellspacing="2">
          <tr class="tableheader">
@@ -91,23 +106,23 @@
          </tr>
          <tr class="tablerow0">
             <td>High Priority Warnings</td>
-            <td align="right">1</td>
-            <td align="right">52.63</td>
+            <td align="right"/>
+            <td align="right">0.00</td>
          </tr>
          <tr class="tablerow1">
             <td>Medium Priority Warnings</td>
-            <td align="right">3</td>
-            <td align="right">157.89</td>
+            <td align="right">7</td>
+            <td align="right">7.64</td>
          </tr>
          <tr class="$totalClass">
             <td>
                <b>Total Warnings</b>
             </td>
             <td align="right">
-               <b>4</b>
+               <b>7</b>
             </td>
             <td align="right">
-               <b>210.53</b>
+               <b>7.64</b>
             </td>
          </tr>
       </table>
@@ -121,10 +136,13 @@
       <h2>Contents</h2>
       <ul>
          <li>
-            <a href="#Warnings_I18N">Internationalization Warnings</a>
+            <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
          </li>
          <li>
-            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
          </li>
          <li>
             <a href="#Details">Details</a>
@@ -138,98 +156,155 @@
          </tr>
          <tr class="tablerow0">
             <td>
-               <a href="#Warnings_I18N">Internationalization Warnings</a>
+               <a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
             </td>
             <td align="right">1</td>
          </tr>
          <tr class="tablerow1">
             <td>
-               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+               <a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
             </td>
-            <td align="right">3</td>
+            <td align="right">2</td>
          </tr>
          <tr class="tablerow0">
+            <td>
+               <a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+            </td>
+            <td align="right">4</td>
+         </tr>
+         <tr class="tablerow1">
             <td>
                <b>Total</b>
             </td>
             <td align="right">
-               <b>4</b>
+               <b>7</b>
             </td>
          </tr>
       </table>
       <h1>Warnings</h1>
       <p>Click on a warning row to see full context information.</p>
       <h2>
-         <a name="Warnings_I18N">Internationalization Warnings</a>
+         <a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
       </h2>
       <table class="warningtable" width="100%" cellspacing="0">
          <tr class="tableheader">
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e24');">
+         <tr class="tablerow1" onclick="toggleRow('d1e56');">
             <td>
-               <span class="priority-1">Dm</span>
+               <span class="priority-2">Nm</span>
             </td>
-            <td>Found reliance on default encoding in Main.main(String[]): new java.io.InputStreamReader(InputStream)</td>
+            <td>The class name GUI$changeGUI doesn't start with an upper case letter</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e24" style="display: none;">
-                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
-                  <br/>In class Main<br/>In method Main.main(String[])<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At Main.java:[line 9]</p>
+               <p id="d1e56" style="display: none;">
+                  <a href="#NM_CLASS_NAMING_CONVENTION">Bug type NM_CLASS_NAMING_CONVENTION (click for details)</a>
+                  <br/>In class GUI$changeGUI<br/>At GUI.java:[lines 110-216]</p>
             </td>
          </tr>
       </table>
       <h2>
-         <a name="Warnings_STYLE">Dodgy code Warnings</a>
+         <a name="Warnings_CORRECTNESS">Correctness Warnings</a>
       </h2>
       <table class="warningtable" width="100%" cellspacing="0">
          <tr class="tableheader">
             <th align="left">Code</th>
             <th align="left">Warning</th>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e6');">
+         <tr class="tablerow1" onclick="toggleRow('d1e99');">
             <td>
-               <span class="priority-2">DLS</span>
+               <span class="priority-2">NP</span>
             </td>
-            <td>Dead store to N in Main.main(String[])</td>
+            <td>Read of unwritten field time in TurnipCalc.calcPrice(int[], boolean[])</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e6" style="display: none;">
-                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
-                  <br/>In class Main<br/>In method Main.main(String[])<br/>Local variable named N<br/>At Main.java:[line 11]</p>
+               <p id="d1e99" style="display: none;">
+                  <a href="#NP_UNWRITTEN_FIELD">Bug type NP_UNWRITTEN_FIELD (click for details)</a>
+                  <br/>In class TurnipCalc<br/>In method TurnipCalc.calcPrice(int[], boolean[])<br/>Field TurnipCalc.time<br/>At TurnipCalc.java:[line 13]</p>
             </td>
          </tr>
-         <tr class="tablerow0" onclick="toggleRow('d1e39');">
+         <tr class="tablerow0" onclick="toggleRow('d1e115');">
             <td>
-               <span class="priority-2">NP</span>
+               <span class="priority-2">UwF</span>
             </td>
-            <td>Dereference of the result of readLine() without nullcheck in Main.main(String[])</td>
+            <td>Unwritten field: TurnipCalc.time</td>
          </tr>
          <tr class="detailrow0">
             <td/>
             <td>
-               <p id="d1e39" style="display: none;">
-                  <a href="#NP_DEREFERENCE_OF_READLINE_VALUE">Bug type NP_DEREFERENCE_OF_READLINE_VALUE (click for details)</a>
-                  <br/>In class Main<br/>In method Main.main(String[])<br/>Local variable stored in JVM register ?<br/>At Main.java:[line 10]</p>
+               <p id="d1e115" style="display: none;">
+                  <a href="#UWF_UNWRITTEN_FIELD">Bug type UWF_UNWRITTEN_FIELD (click for details)</a>
+                  <br/>In class TurnipCalc<br/>Field TurnipCalc.time<br/>At TurnipCalc.java:[line 13]</p>
             </td>
          </tr>
-         <tr class="tablerow1" onclick="toggleRow('d1e53');">
+      </table>
+      <h2>
+         <a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e22');">
             <td>
-               <span class="priority-2">NP</span>
+               <span class="priority-2">EI</span>
             </td>
-            <td>Immediate dereference of the result of readLine() in Main.main(String[])</td>
+            <td>Controller.getModeIndicator() may expose internal representation by returning modeIndicator</td>
          </tr>
          <tr class="detailrow1">
             <td/>
             <td>
-               <p id="d1e53" style="display: none;">
-                  <a href="#NP_IMMEDIATE_DEREFERENCE_OF_READLINE">Bug type NP_IMMEDIATE_DEREFERENCE_OF_READLINE (click for details)</a>
-                  <br/>In class Main<br/>In method Main.main(String[])<br/>At Main.java:[line 13]</p>
+               <p id="d1e22" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class Controller<br/>In method Controller.getModeIndicator()<br/>Field Controller.modeIndicator<br/>At Controller.java:[line 53]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e65');">
+            <td>
+               <span class="priority-2">EI</span>
+            </td>
+            <td>ModeSwitch.getEnabledMode() may expose internal representation by returning enabledMode</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e65" style="display: none;">
+                  <a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+                  <br/>In class ModeSwitch<br/>In method ModeSwitch.getEnabledMode()<br/>Field ModeSwitch.enabledMode<br/>At ModeSwitch.java:[line 11]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e38');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>Controller.setModeIndicator(int[]) may expose internal representation by storing an externally mutable object into modeIndicator</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e38" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class Controller<br/>In method Controller.setModeIndicator(int[])<br/>Field Controller.modeIndicator<br/>Local variable named mode<br/>At Controller.java:[line 57]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e81');">
+            <td>
+               <span class="priority-2">EI2</span>
+            </td>
+            <td>ModeSwitch.setMode(int[]) may expose internal representation by storing an externally mutable object into enabledMode</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e81" style="display: none;">
+                  <a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+                  <br/>In class ModeSwitch<br/>In method ModeSwitch.setMode(int[])<br/>Field ModeSwitch.enabledMode<br/>Local variable named enabledMode<br/>At ModeSwitch.java:[line 8]</p>
             </td>
          </tr>
       </table>
@@ -237,42 +312,51 @@
          <a name="Details">Details</a>
       </h1>
       <h2>
-         <a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+         <a name="EI_EXPOSE_REP">EI_EXPOSE_REP: May expose internal representation by returning reference to mutable object</a>
       </h2>
 
-<p>
-This instruction assigns a value to a local variable,
-but the value is not read or used in any subsequent instruction.
-Often, this indicates an error, because the value computed is never
-used.
-</p>
-<p>
-Note that Sun's javac compiler often generates dead stores for
-final local variables.  Because SpotBugs is a bytecode-based tool,
-there is no easy way to eliminate these false positives.
+  <p> Returning a reference to a mutable object value stored in one of the object's fields
+  exposes the internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Returning a new copy of the object is better approach in many situations.</p>
+
+    <h2>
+         <a name="EI_EXPOSE_REP2">EI_EXPOSE_REP2: May expose internal representation by incorporating reference to mutable object</a>
+      </h2>
+
+  <p> This code stores a reference to an externally mutable object into the
+  internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Storing a copy of the object is better approach in many situations.</p>
+
+    <h2>
+         <a name="NP_UNWRITTEN_FIELD">NP_UNWRITTEN_FIELD: Read of unwritten field</a>
+      </h2>
+
+  <p> The program is dereferencing a field that does not seem to ever have a non-null value written to it.
+Unless the field is initialized via some mechanism not seen by the analysis,
+dereferencing this value will generate a null pointer exception.
 </p>
 
     <h2>
-         <a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+         <a name="NM_CLASS_NAMING_CONVENTION">NM_CLASS_NAMING_CONVENTION: Class names should start with an upper case letter</a>
       </h2>
 
-<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
-
-      <h2>
-         <a name="NP_DEREFERENCE_OF_READLINE_VALUE">NP_DEREFERENCE_OF_READLINE_VALUE: Dereference of the result of readLine() without nullcheck</a>
-      </h2>
-
-  <p> The result of invoking readLine() is dereferenced without checking to see if the result is null. If there are no more lines of text
-to read, readLine() will return null and dereferencing that will generate a null pointer exception.
+  <p> Class names should be nouns, in mixed case with the first letter of each internal word capitalized. Try to keep your class names simple and descriptive. Use whole words-avoid acronyms and abbreviations (unless the abbreviation is much more widely used than the long form, such as URL or HTML).
 </p>
 
     <h2>
-         <a name="NP_IMMEDIATE_DEREFERENCE_OF_READLINE">NP_IMMEDIATE_DEREFERENCE_OF_READLINE: Immediate dereference of the result of readLine()</a>
+         <a name="UWF_UNWRITTEN_FIELD">UWF_UNWRITTEN_FIELD: Unwritten field</a>
       </h2>
 
-  <p> The result of invoking readLine() is immediately dereferenced. If there are no more lines of text
-to read, readLine() will return null and dereferencing that will generate a null pointer exception.
-</p>
+  <p> This field is never written.&nbsp; All reads of it will return the default
+value. Check for errors (should it have been initialized?), or remove it if it is useless.</p>
 
     </body>
 </html>
