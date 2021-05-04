@@ -5,20 +5,17 @@ plugins {
     id 'checkstyle'
     id 'jacoco'
     id "com.github.spotbugs" version "4.7.0"
-
 }
+
+
 //group & version
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-//repositories, [mavenCentral,Jcenter]
+//repositories, [mavenCentral, Jcenter]
 repositories {
     mavenCentral()
     jcenter()
-}
-
-test {
-    useJUnitPlatform()
 }
 
 dependencies {
@@ -27,66 +24,52 @@ dependencies {
     testCompileOnly 'junit:junit:4.12' 
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.1.0'
 }
-
-sonarqube {
-    properties {
-        property "sonar.projectName", "teamvv_testing"
-        property "sonar.projectKey", "teamvv_testing"
-        property "sonar.sources","src/main/java"
-        property "sonar.language","java"
-        property "sonar.sourceEncoding", "UTF-8"
-        property "sonar.host.url", "http://117.16.143.60:9000/"
-        property "sonar.login", "6af4b270c07ef694980c0fb6a5fba483e4530ca9"
-    }
-}
 // PMD setting
 pmd {
-    ignoreFailures = false
-    reportsDir = file("${buildDir}/reports/PMD")
+    ignoreFailures = true
+//    reportsDir = file("${buildDir}/reports/pmd")
     toolVersion = "6.6.0"
 }
 // PMDMain
 pmdMain {
     reports{
-        xml.enabled true
+        xml.enabled false
         html.enabled true
-        xml.destination = file("${pmd.reportsDir}/pmd.xml")
-        html.destination = file("${pmd.reportsDir}/pmd.html")
     }
 }
+pmdTest {
+    reports{
+        xml.enabled false
+        html.enabled true
+    }
+}
+
 // Checkstyle setting
 checkstyle {
     ignoreFailures = true
     configFile = file('config/checkstyle/checkstyle.xml')
-    reportsDir = file("${buildDir}/reports/checkStyle")
+//    reportsDir = file("${buildDir}/reports/checkstyle")
     toolVersion = "8.41"
 }
 // CheckstyleMain
 checkstyleMain {
     reports {
-        xml.enabled true
+        xml.enabled false
         html.enabled true
-        xml.destination = file("${checkstyle.reportsDir}/checkStyle.xml")
-        html.destination = file("${checkstyle.reportsDir}/checkStyle.html")
     }
 }
-//jacoco setting
-jacoco {
-    toolVersion = '0.8.5'
-    reportsDir = file("${buildDir}/reports/Jacoco")
-}
-jacocoTestReport {
+checkstyleTest{
     reports {
-        xml.enabled = true
-        html.enabled = true
-        xml.destination file("${jacoco.reportsDir}/jacoco.xml")
-        html.destination file("${jacoco.reportsDir}/jacoco.html")
-    }
+        xml.enabled false
+        html.enabled true
+    } 
 }
+// spotbug setting
 spotbugs {
     ignoreFailures = true
     reportsDir = file("${buildDir}/reports/spotbug")
 }
+
 spotbugsMain {
     ignoreFailures = true
     reports {
@@ -105,7 +88,45 @@ spotbugsTest {
         html.destination file("${spotbugs.reportsDir}/spotbug_test.html")
     }
 }
+// jacoco setting
+jacoco {
+    toolVersion = '0.8.5'
+}
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
 
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.00
+            }
+        }
+    }
+}
+test {
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacoco.exec")
+    }
+}
+sonarqube {
+    properties {
+        property "sonar.projectName", "teamvv_testing"
+        property "sonar.projectKey", "teamvv_testing"
+        property "sonar.sources","src/main/java"
+        property "sonar.language","java"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.host.url", "http://117.16.143.60:9000"
+        property "sonar.login", "6af4b270c07ef694980c0fb6a5fba483e4530ca9"
+    }
+}
 
 
 
