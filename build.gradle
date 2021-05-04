@@ -12,8 +12,7 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-
-//repositories, [mavenCentral,Jcenter]
+//repositories, [mavenCentral, Jcenter]
 repositories {
     mavenCentral()
     jcenter()
@@ -100,7 +99,12 @@ jacocoTestCoverageVerification {
         }
     }
 }
-// spotbugs setting
+test {
+    jacoco {
+        destinationFile = file("$buildDir/jacoco/jacoco.exec")
+    }
+}
+// spotbug setting
 spotbugs {
     ignoreFailures = true
     reportsDir = file("${buildDir}/reports/spotbug")

@@ -22,7 +22,7 @@ jobs:
            - name: SonnarScanner 
              run : ./gradlew sonarqube
            - name: Build with Gradle
-             run: ./gradlew build                
+             run: ./gradlew build
            - name: Slack Alarm
              uses: 8398a7/action-slack@v3
              with:
