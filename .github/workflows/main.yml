@@ -4,9 +4,9 @@ name: 'Java Testing'
 
 on:
   push: 
-    branches: [dev_workflow]
+    branches: [main]
   pull_request:
-    branches: [dev_workflow]
+    branches: [main]
 
 
 #빌드, 테스팅
