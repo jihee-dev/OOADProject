@@ -73,14 +73,14 @@
       <p>SpotBugs version: 4.2.1</p>
       <p>Code analyzed:</p>
       <ul>
-         <li>C:\Github\OOADProject\build\classes\java\main\Main.class</li>
+         <li>C:\Users\JIWOO\OOADProject\build\classes\java\main\Main.class</li>
       </ul>
       <p>
          <br/>
          <br/>
       </p>
       <h2>Metrics</h2>
-      <p>6 lines of code analyzed,
+      <p>18 lines of code analyzed,
 	in 1 classes, 
 	in 1 packages.</p>
       <table width="500" cellpadding="5" cellspacing="2">
@@ -91,23 +91,23 @@
          </tr>
          <tr class="tablerow0">
             <td>High Priority Warnings</td>
-            <td align="right"/>
-            <td align="right">0.00</td>
+            <td align="right">1</td>
+            <td align="right">55.56</td>
          </tr>
          <tr class="tablerow1">
             <td>Medium Priority Warnings</td>
-            <td align="right"/>
-            <td align="right">0.00</td>
+            <td align="right">3</td>
+            <td align="right">166.67</td>
          </tr>
          <tr class="$totalClass">
             <td>
                <b>Total Warnings</b>
             </td>
             <td align="right">
-               <b>0</b>
+               <b>4</b>
             </td>
             <td align="right">
-               <b>0.00</b>
+               <b>222.22</b>
             </td>
          </tr>
       </table>
@@ -121,6 +121,12 @@
       <h2>Contents</h2>
       <ul>
          <li>
+            <a href="#Warnings_I18N">Internationalization Warnings</a>
+         </li>
+         <li>
+            <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+         </li>
+         <li>
             <a href="#Details">Details</a>
          </li>
       </ul>
@@ -132,17 +138,141 @@
          </tr>
          <tr class="tablerow0">
             <td>
+               <a href="#Warnings_I18N">Internationalization Warnings</a>
+            </td>
+            <td align="right">1</td>
+         </tr>
+         <tr class="tablerow1">
+            <td>
+               <a href="#Warnings_STYLE">Dodgy code Warnings</a>
+            </td>
+            <td align="right">3</td>
+         </tr>
+         <tr class="tablerow0">
+            <td>
                <b>Total</b>
             </td>
             <td align="right">
-               <b>0</b>
+               <b>4</b>
             </td>
          </tr>
       </table>
       <h1>Warnings</h1>
       <p>Click on a warning row to see full context information.</p>
+      <h2>
+         <a name="Warnings_I18N">Internationalization Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e24');">
+            <td>
+               <span class="priority-1">Dm</span>
+            </td>
+            <td>Found reliance on default encoding in Main.main(String[]): new java.io.InputStreamReader(InputStream)</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e24" style="display: none;">
+                  <a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+                  <br/>In class Main<br/>In method Main.main(String[])<br/>Called method new java.io.InputStreamReader(InputStream)<br/>At Main.java:[line 9]</p>
+            </td>
+         </tr>
+      </table>
+      <h2>
+         <a name="Warnings_STYLE">Dodgy code Warnings</a>
+      </h2>
+      <table class="warningtable" width="100%" cellspacing="0">
+         <tr class="tableheader">
+            <th align="left">Code</th>
+            <th align="left">Warning</th>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e6');">
+            <td>
+               <span class="priority-2">DLS</span>
+            </td>
+            <td>Dead store to N in Main.main(String[])</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e6" style="display: none;">
+                  <a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+                  <br/>In class Main<br/>In method Main.main(String[])<br/>Local variable named N<br/>At Main.java:[line 11]</p>
+            </td>
+         </tr>
+         <tr class="tablerow0" onclick="toggleRow('d1e39');">
+            <td>
+               <span class="priority-2">NP</span>
+            </td>
+            <td>Dereference of the result of readLine() without nullcheck in Main.main(String[])</td>
+         </tr>
+         <tr class="detailrow0">
+            <td/>
+            <td>
+               <p id="d1e39" style="display: none;">
+                  <a href="#NP_DEREFERENCE_OF_READLINE_VALUE">Bug type NP_DEREFERENCE_OF_READLINE_VALUE (click for details)</a>
+                  <br/>In class Main<br/>In method Main.main(String[])<br/>Local variable stored in JVM register ?<br/>At Main.java:[line 10]</p>
+            </td>
+         </tr>
+         <tr class="tablerow1" onclick="toggleRow('d1e53');">
+            <td>
+               <span class="priority-2">NP</span>
+            </td>
+            <td>Immediate dereference of the result of readLine() in Main.main(String[])</td>
+         </tr>
+         <tr class="detailrow1">
+            <td/>
+            <td>
+               <p id="d1e53" style="display: none;">
+                  <a href="#NP_IMMEDIATE_DEREFERENCE_OF_READLINE">Bug type NP_IMMEDIATE_DEREFERENCE_OF_READLINE (click for details)</a>
+                  <br/>In class Main<br/>In method Main.main(String[])<br/>At Main.java:[line 13]</p>
+            </td>
+         </tr>
+      </table>
       <h1>
          <a name="Details">Details</a>
       </h1>
-   </body>
+      <h2>
+         <a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+      </h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    <h2>
+         <a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+      </h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      <h2>
+         <a name="NP_DEREFERENCE_OF_READLINE_VALUE">NP_DEREFERENCE_OF_READLINE_VALUE: Dereference of the result of readLine() without nullcheck</a>
+      </h2>
+
+  <p> The result of invoking readLine() is dereferenced without checking to see if the result is null. If there are no more lines of text
+to read, readLine() will return null and dereferencing that will generate a null pointer exception.
+</p>
+
+    <h2>
+         <a name="NP_IMMEDIATE_DEREFERENCE_OF_READLINE">NP_IMMEDIATE_DEREFERENCE_OF_READLINE: Immediate dereference of the result of readLine()</a>
+      </h2>
+
+  <p> The result of invoking readLine() is immediately dereferenced. If there are no more lines of text
+to read, readLine() will return null and dereferencing that will generate a null pointer exception.
+</p>
+
+    </body>
 </html>

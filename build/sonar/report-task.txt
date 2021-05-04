@@ -1,6 +1,0 @@
-projectKey=teamvv_testing
-serverUrl=https://testvv.loca.lt
-serverVersion=8.8.0.42792
-dashboardUrl=https://testvv.loca.lt/dashboard?id=teamvv_testing
-ceTaskId=AXk3i_sURX7zcV_AVAfg
-ceTaskUrl=https://testvv.loca.lt/api/ce/task?id=AXk3i_sURX7zcV_AVAfg
