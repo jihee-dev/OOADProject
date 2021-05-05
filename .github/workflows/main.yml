@@ -12,7 +12,7 @@ on:
 #빌드, 테스팅
 jobs:
   build:
-    name: Build
+    name: Build & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -29,26 +29,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Slack Alarm
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-          if: always() # Pick up events even if the job fails or is canceled.
-
-
-  test_report:
-    needs: build
-    name: Test & Report
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
         
       - name: Set up Junit 
         uses: mikepenz/action-junit-report@v2
@@ -111,3 +91,13 @@ jobs:
 
       - name: SonnarScanner
         run: ./gradlew sonarqube
+
+
+      - name: Slack Alarm
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          fields: repo,message,commit,author,action,eventName,ref,workflow,job,took # selectable (default: repo,message)
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+          if: always() # Pick up events even if the job fails or is canceled.

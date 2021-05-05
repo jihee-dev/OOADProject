@@ -24,10 +24,17 @@ dependencies {
     testCompileOnly 'junit:junit:4.12' 
     testRuntimeOnly 'org.junit.vintage:junit-vintage-engine:5.1.0'
 }
+
+test {
+    ignoreFailures = true
+    useJUnitPlatform()
+}
+
+
+
 // PMD setting
 pmd {
     ignoreFailures = true
-//    reportsDir = file("${buildDir}/reports/pmd")
     toolVersion = "6.6.0"
 }
 // PMDMain
@@ -48,7 +55,6 @@ pmdTest {
 checkstyle {
     ignoreFailures = true
     configFile = file('config/checkstyle/checkstyle.xml')
-//    reportsDir = file("${buildDir}/reports/checkstyle")
     toolVersion = "8.41"
 }
 // CheckstyleMain
@@ -64,10 +70,10 @@ checkstyleTest{
         html.enabled true
     } 
 }
+
 // spotbug setting
 spotbugs {
     ignoreFailures = true
-    reportsDir = file("${buildDir}/reports/spotbug")
 }
 
 spotbugsMain {
@@ -75,8 +81,6 @@ spotbugsMain {
     reports {
         xml.enabled = false
         html.enabled = true
-        xml.destination file("${spotbugs.reportsDir}/spotbug.xml")
-        html.destination file("${spotbugs.reportsDir}/spotbug.html")
     }
 }
 spotbugsTest {
@@ -84,10 +88,9 @@ spotbugsTest {
     reports {
         xml.enabled = false
         html.enabled = true
-        xml.destination file("${spotbugs.reportsDir}/spotbug_test.xml")
-        html.destination file("${spotbugs.reportsDir}/spotbug_test.html")
     }
 }
+
 // jacoco setting
 jacoco {
     toolVersion = '0.8.5'
@@ -116,6 +119,8 @@ test {
         destinationFile = file("$buildDir/jacoco/jacoco.exec")
     }
 }
+
+
 sonarqube {
     properties {
         property "sonar.projectName", "teamvv_testing"
