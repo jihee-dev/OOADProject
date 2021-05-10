@@ -8,8 +8,8 @@ public class CashGUI extends JFrame {
     DVM DVM;
     Item selectedItem;
     JTextField text = new JTextField(4);
-    JButton button1 = new JButton("ok");
-    JButton button2 = new JButton("Cancel");
+    JButton button1 = new JButton("입력한 금액 투입");
+    JButton button2 = new JButton("취소");
     Container ct = getContentPane();
 
     CashGUI(DVM dvm,Item Selected_Item, int x, int y){
@@ -33,12 +33,19 @@ public class CashGUI extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = DVM.inputCash(Integer.parseInt(text.getText()), selectedItem);
+                int result = -3;
+                try {
+                    result = DVM.inputCash(Integer.parseInt(text.getText()), selectedItem);
+                } catch (NumberFormatException error) {
+                    JOptionPane.showMessageDialog(ct, String.format("에러 : %s", "잘못된 입력값입니다."));
+                }
 
                 if (result >= 0) {
+                    JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
                     // > 0 : 거스름돈 반출
-                    JOptionPane.showMessageDialog(ct, String.format("success : %s", selectedItem.getItemName()));
-                    JOptionPane.showMessageDialog(ct, String.format("거스름돈 : %s", result));
+                    if (result > 0) {
+                        JOptionPane.showMessageDialog(ct, String.format("거스름돈 : %s", result));
+                    }
                     if (selectedItem.getItemAmount()>0) {
                         // 재고 하나줄임
                         DVM.giveItem(selectedItem);
@@ -49,14 +56,14 @@ public class CashGUI extends JFrame {
                     }
                     MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
                     dispose();
+                }  else if (result == -1) {
+                    // -1 : 투입금액 부족
+                    JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "투입한 금액이 부족합니다."));
                 } else if (result == -2) {
                     // 0 : 모두 계산되었지만 거스름돈 부족
-                    JOptionPane.showMessageDialog(ct, String.format("error : %s", "현재 기기에 거스름돈이 부족해 구입이 불가능합니다."));
+                    JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "현재 기기에 거스름돈이 부족해 구입이 불가능합니다."));
                     MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
                     dispose();
-                } else if (result == -1) {
-                    // -1 : 투입금액 부족
-                    JOptionPane.showMessageDialog(ct, String.format("error : %s", "투입한 금액이 부족합니다."));
                 }
             }
         });

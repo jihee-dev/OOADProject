@@ -35,7 +35,7 @@ public class MainGUI extends JFrame {
        button1.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               ItemListGUI itemframe = new ItemListGUI(DVM, getLocation().x, getLocation().y);
+               ItemListGUI itemFrame = new ItemListGUI(DVM, getLocation().x, getLocation().y);
                dispose();
            }
        });

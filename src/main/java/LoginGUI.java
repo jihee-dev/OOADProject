@@ -7,10 +7,11 @@ public class LoginGUI extends JFrame {
 
     DVM DVM;
 
-    JButton button1 = new JButton("Login");
+    JButton button1 = new JButton("로그인");
     JTextField id = new JTextField(6);
     JTextField pw = new JTextField(6);
-    JButton button2 = new JButton("Cancel");
+    JButton button2 = new JButton("취소");
+    Container ct = getContentPane();
 
     LoginGUI(DVM dvm, int x, int y){
         //최상단 UI
@@ -19,7 +20,6 @@ public class LoginGUI extends JFrame {
         setTitle(String.format("%s - Login", DVM.getRegion()));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(x,y);
-        Container ct = getContentPane();
         ct.setLayout(new FlowLayout());
 
 
@@ -39,12 +39,16 @@ public class LoginGUI extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(DVM.login(id.getText(), pw.getText())) {
-                    AdminMenuGUI adMenu = new AdminMenuGUI(DVM, getLocation().x, getLocation().y);
-                    dispose();
+                try {
+                    if(DVM.login(id.getText(), pw.getText())) {
+                        AdminMenuGUI adMenu = new AdminMenuGUI(DVM, getLocation().x, getLocation().y);
+                        dispose();
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, "아이디 혹은 비밀번호가 틀립니다.");
+                } catch (NumberFormatException error) {
+                    JOptionPane.showMessageDialog(ct, String.format("에러 : %s", "잘못된 입력값입니다."));
                 }
-                else
-                    JOptionPane.showMessageDialog(null, "Incorrect ID or Password");
             }
         });
         button2.addActionListener(new ActionListener() {

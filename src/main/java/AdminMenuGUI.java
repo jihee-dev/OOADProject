@@ -7,9 +7,9 @@ public class AdminMenuGUI extends JFrame {
 
     DVM DVM;
 
-    JButton button1 = new JButton("Amount");
-    JButton button2 = new JButton("Cash");
-    JButton button3 = new JButton("Cancel");
+    JButton button1 = new JButton("재고수량 변경");
+    JButton button2 = new JButton("보유현금 변경");
+    JButton button3 = new JButton("취소");
 
     AdminMenuGUI(DVM dvm, int x, int y){
         //최상단 UI

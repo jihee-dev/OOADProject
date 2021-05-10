@@ -7,8 +7,8 @@ public class CardGUI extends JFrame {
     DVM DVM;
     Item selectedItem;
     JTextField cardNumberInput = new JTextField(4);
-    JButton okButton = new JButton("ok");
-    JButton cancelButton = new JButton("Cancel");
+    JButton okButton = new JButton("입력한 번호로 카드 입력");
+    JButton cancelButton = new JButton("취소");
     Container ct = getContentPane();
 
     CardGUI(DVM dvm,Item Selected_Item, int x, int y){
@@ -32,10 +32,16 @@ public class CardGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String cardNumber = cardNumberInput.getText();
-                int result = DVM.insertCard(cardNumber, selectedItem);
+                int result = -3;
+                try {
+                    result = DVM.insertCard(cardNumber, selectedItem);
+                } catch (NumberFormatException error) {
+                    JOptionPane.showMessageDialog(ct, String.format("에러 : %s", "잘못된 입력값입니다."));
+                }
+
                 if (result == 1) {
                     // 1 : 결제성공
-                    JOptionPane.showMessageDialog(ct, String.format("success : %s", selectedItem.getItemName()));
+                    JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
                     if (selectedItem.getItemAmount()>0) {
                         // 재고 하나줄임
                         DVM.giveItem(selectedItem); // 재고 하나줄임
@@ -49,12 +55,12 @@ public class CardGUI extends JFrame {
                     dispose();
                 } else if (result == 0) {
                     // 0 : 한도초과
-                    JOptionPane.showMessageDialog(ct, String.format("error : %s", "카드 한도 초과입니다."));
+                    JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "카드 한도 초과입니다."));
                     CardGUI cardGUI = new CardGUI(DVM, selectedItem, getLocation().x, getLocation().y);
                     dispose();
                 } else if (result == -1) {
                     // -1 : 존재하지 않는 카드
-                    JOptionPane.showMessageDialog(ct, String.format("error : %s", "정상적인 카드가 아닙니다."));
+                    JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "정상적인 카드가 아닙니다."));
                     CardGUI cardGUI = new CardGUI(DVM, selectedItem, getLocation().x, getLocation().y);
                     dispose();
                 }

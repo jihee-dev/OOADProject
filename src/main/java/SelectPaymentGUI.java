@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class SelectPaymentGUI extends JFrame {
     JButton cashButton = new JButton("현금으로 결제");
     JButton cardButton = new JButton("카드로 결제");
-    JButton cancelButton = new JButton("Cancel");
+    JButton cancelButton = new JButton("취소");
     DVM DVM;
     Item Selected_Item;
     Container ct = getContentPane();
@@ -39,14 +39,13 @@ public class SelectPaymentGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CardGUI cardGUI = new CardGUI(DVM,Selected_Item, getLocation().x, getLocation().y);
+                dispose();
             }
         });
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 dispose();
-
                 ItemListGUI ILF = new ItemListGUI(DVM, getLocation().x, getLocation().y);
             }
         });

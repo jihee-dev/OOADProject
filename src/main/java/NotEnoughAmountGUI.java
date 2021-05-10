@@ -8,11 +8,9 @@ public class NotEnoughAmountGUI extends JFrame {
     DVM DVM;
     Item selectedItem;
     JPanel panel = new JPanel();
-    JPanel ExceptionPanel = new JPanel();
-    JButton getLocationButton = new JButton("해당 제품이 존재하는 다른 DVM탐색");
-    JButton getCouponButton = new JButton("BuyCoupon");
-    JButton cancelButton = new JButton("Cancel");
-    JLabel warnLabel = new JLabel("Not Enough Amount!");
+    JButton getLocationButton = new JButton("해당 제품이 존재하는 다른 DVM 확인");
+    JButton getCouponButton = new JButton("쿠폰으로 구매");
+    JButton cancelButton = new JButton("취소");
     Container ct = getContentPane();
 
     NotEnoughAmountGUI(DVM dvm,Item selectedItem, int x, int y){
@@ -34,7 +32,6 @@ public class NotEnoughAmountGUI extends JFrame {
     }
 
     void InitPanels(){
-        this.add(ExceptionPanel);
         this.add(panel);
     }
 
@@ -42,8 +39,6 @@ public class NotEnoughAmountGUI extends JFrame {
         panel.add(getLocationButton);
         panel.add(getCouponButton);
         panel.add(cancelButton);
-
-        ExceptionPanel.add(warnLabel);
     }
 
     void InitListener(){
@@ -74,7 +69,8 @@ public class NotEnoughAmountGUI extends JFrame {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ItemListGUI itemFrame = new ItemListGUI(DVM, getLocation().x, getLocation().y);
+                dispose();
             }
         });
     }

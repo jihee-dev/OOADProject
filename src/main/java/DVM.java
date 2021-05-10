@@ -10,6 +10,7 @@ public class DVM {
     double dist;
     static HashMap<String,String> codeTable = new HashMap<>();
     static ArrayList<DVM> DVMList  = new ArrayList<>();
+
     Payment myPayment;
 
     public class Pair{
@@ -81,6 +82,7 @@ public class DVM {
     void removeCode(String code) {
         codeTable.remove(code);
     }
+
     ArrayList<DVM> sortDVM(ArrayList<DVM> DVMList) {
         DVMList.sort(Comparator.comparing(DVM::getDist));
         return DVMList;
@@ -101,6 +103,11 @@ public class DVM {
         otherDVM = sortDVM(otherDVM);
 
         return otherDVM;
+    }
+
+    //true이면 카드 false 현금
+    boolean SelectPaymentMethod(boolean flag){
+        return true;
     }
 
     int inputCode(String code) {

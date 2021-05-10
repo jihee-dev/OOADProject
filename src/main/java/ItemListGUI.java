@@ -10,7 +10,7 @@ public class ItemListGUI extends JFrame {
 
     JButton button1;
     Container ct = getContentPane();
-    JButton cancelButton = new JButton("Cancel");
+    JButton cancelButton = new JButton("취소");
     JLabel emptyLabel = new JLabel("");
 
     ItemListGUI(DVM dvm, int x, int y){
@@ -31,7 +31,7 @@ public class ItemListGUI extends JFrame {
         for (int i=0; i<itemList.size(); i++) {
             // itemList를 돌며 하나씩 버튼과 설명을 추가
             JButton button = new JButton(itemList.get(i).getItemName());
-            JLabel label = new JLabel(String.format("가격:%d 남은재고량:%d", itemList.get(i).getItemPrice(), itemList.get(i).getItemAmount()));
+            JLabel label = new JLabel(String.format("      가격:%d    남은재고량:%d", itemList.get(i).getItemPrice(), itemList.get(i).getItemAmount()));
             button.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -44,7 +44,7 @@ public class ItemListGUI extends JFrame {
                     if(stock>0){
                         SelectPaymentGUI selectPaymentGUI = new SelectPaymentGUI(DVM,findItem, getLocation().x, getLocation().y);
                     } else {
-                        JOptionPane.showMessageDialog(ct, "재고가 없는 상품을 선택하여 코드 구입만 가능합니다.");
+                        JOptionPane.showMessageDialog(ct, "재고가 없는 상품을 선택하여 쿠폰 구입만 가능합니다.");
                         NotEnoughAmountGUI notEnoughAmountGUI = new NotEnoughAmountGUI(DVM,findItem, getLocation().x, getLocation().y);
                     }
                     dispose();

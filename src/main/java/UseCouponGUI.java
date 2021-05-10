@@ -7,8 +7,8 @@ public class UseCouponGUI extends JFrame {
     DVM DVM;
     String Selected_Item;
     JTextField text = new JTextField(4);
-    JButton button1 = new JButton("ok");
-    JButton button2 = new JButton("Cancel");
+    JButton button1 = new JButton("입력한 번호로 쿠폰번호 입력");
+    JButton button2 = new JButton("취소");
     Container ct = getContentPane();
 
     UseCouponGUI(DVM dvm, int x, int y){
@@ -39,13 +39,13 @@ public class UseCouponGUI extends JFrame {
                     Item findItem = DVM.getItemFromCode(text.getText());
                     DVM.giveItem(findItem);
                     DVM.removeCode(text.getText());
-                    JOptionPane.showMessageDialog(ct, String.format("success : %s", findItem.getItemName()));
+                    JOptionPane.showMessageDialog(ct, String.format("쿠폰으로 구매 성공! : %s", findItem.getItemName()));
                 } else if (result == 0) {
                     // 재고없음
-                    JOptionPane.showMessageDialog(ct, "fail : amount is zero");
+                    JOptionPane.showMessageDialog(ct, "쿠폰으로 구매 실패 : 현재 자판기에 재고가 없습니다.");
                 } else if (result == -1) {
                     // 안맞으면
-                    JOptionPane.showMessageDialog(ct, "fail : invalid code");
+                    JOptionPane.showMessageDialog(ct, "쿠폰으로 구매 실패 : 잘못된 쿠폰번호입니다.");
                 }
             }
         });
