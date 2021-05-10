@@ -33,37 +33,36 @@ public class CashGUI extends JFrame {
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = -3;
                 try {
-                    result = DVM.inputCash(Integer.parseInt(text.getText()), selectedItem);
+                    int result = DVM.inputCash(Integer.parseInt(text.getText()), selectedItem);
+
+                    if (result >= 0) {
+                        JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
+                        // > 0 : 거스름돈 반출
+                        if (result > 0) {
+                            JOptionPane.showMessageDialog(ct, String.format("거스름돈 : %s", result));
+                        }
+                        if (selectedItem.getItemAmount()>0) {
+                            // 재고 하나줄임
+                            DVM.giveItem(selectedItem);
+                        } else {
+                            // code 부여
+                            String code = DVM.giveCode(selectedItem);
+                            JOptionPane.showMessageDialog(ct, String.format("생성된 코드 : %s", code));
+                        }
+                        MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
+                        dispose();
+                    }  else if (result == -1) {
+                        // -1 : 투입금액 부족
+                        JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "투입한 금액이 부족합니다."));
+                    } else if (result == -2) {
+                        // 0 : 모두 계산되었지만 거스름돈 부족
+                        JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "현재 기기에 거스름돈이 부족해 구입이 불가능합니다."));
+                        MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
+                        dispose();
+                    }
                 } catch (NumberFormatException error) {
                     JOptionPane.showMessageDialog(ct, String.format("에러 : %s", "잘못된 입력값입니다."));
-                }
-
-                if (result >= 0) {
-                    JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
-                    // > 0 : 거스름돈 반출
-                    if (result > 0) {
-                        JOptionPane.showMessageDialog(ct, String.format("거스름돈 : %s", result));
-                    }
-                    if (selectedItem.getItemAmount()>0) {
-                        // 재고 하나줄임
-                        DVM.giveItem(selectedItem);
-                    } else {
-                        // code 부여
-                        String code = DVM.giveCode(selectedItem);
-                        JOptionPane.showMessageDialog(ct, String.format("생성된 코드 : %s", code));
-                    }
-                    MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
-                    dispose();
-                }  else if (result == -1) {
-                    // -1 : 투입금액 부족
-                    JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "투입한 금액이 부족합니다."));
-                } else if (result == -2) {
-                    // 0 : 모두 계산되었지만 거스름돈 부족
-                    JOptionPane.showMessageDialog(ct, String.format("구매 실패 : %s", "현재 기기에 거스름돈이 부족해 구입이 불가능합니다."));
-                    MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
-                    dispose();
                 }
             }
         });
