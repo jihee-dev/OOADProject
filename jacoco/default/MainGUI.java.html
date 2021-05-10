@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MainGUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">MainGUI.java</span></div><h1>MainGUI.java</h1><pre class="source lang-java linenums">import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MainGUI extends JFrame {
+
+    DVM DVM;
+<span class="nc" id="L9">    Container ct = getContentPane();</span>
+<span class="nc" id="L10">    JButton button1 = new JButton(&quot;상품 구매&quot;);</span>
+<span class="nc" id="L11">    JButton button2 = new JButton(&quot;쿠폰 사용&quot;);</span>
+<span class="nc" id="L12">    JButton button3 = new JButton(&quot;관리자 로그인&quot;);</span>
+
+<span class="nc" id="L14">   MainGUI(DVM dvm, int x, int y){</span>
+       //최상단 UI
+       //초기화
+<span class="nc" id="L17">       this.DVM = dvm;</span>
+<span class="nc" id="L18">       setTitle(String.format(&quot;%s - Main menu&quot;, DVM.getRegion()));</span>
+<span class="nc" id="L19">       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L20">       setSize(500,200);</span>
+<span class="nc" id="L21">       ct.setLayout(new GridLayout(1,3,5,5));</span>
+<span class="nc" id="L22">       setLocation(x,y);</span>
+<span class="nc" id="L23">       InitComponent();</span>
+<span class="nc" id="L24">       InitListener();</span>
+<span class="nc" id="L25">       setVisible(true);</span>
+<span class="nc" id="L26">   }</span>
+
+   void InitComponent(){
+<span class="nc" id="L29">       ct.add(button1);</span>
+<span class="nc" id="L30">       ct.add(button2);</span>
+<span class="nc" id="L31">       ct.add(button3);</span>
+<span class="nc" id="L32">   }</span>
+
+   void InitListener(){
+<span class="nc" id="L35">       button1.addActionListener(new ActionListener() {</span>
+           @Override
+           public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L38">               ItemListGUI itemFrame = new ItemListGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L39">               dispose();</span>
+<span class="nc" id="L40">           }</span>
+       });
+<span class="nc" id="L42">       button2.addActionListener(new ActionListener() {</span>
+           @Override
+           public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L45">               UseCouponGUI UCF = new UseCouponGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L46">               dispose();</span>
+<span class="nc" id="L47">           }</span>
+       });
+<span class="nc" id="L49">       button3.addActionListener(new ActionListener() {</span>
+           @Override
+           public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L52">               LoginGUI loginGUI = new LoginGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L53">               dispose();</span>
+<span class="nc" id="L54">           }</span>
+       });
+<span class="nc" id="L56">   }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

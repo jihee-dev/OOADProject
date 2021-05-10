@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CardGUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">CardGUI.java</span></div><h1>CardGUI.java</h1><pre class="source lang-java linenums">import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class CardGUI extends JFrame {
+    DVM DVM;
+    Item selectedItem;
+<span class="nc" id="L9">    JTextField cardNumberInput = new JTextField(4);</span>
+<span class="nc" id="L10">    JButton okButton = new JButton(&quot;입력한 번호로 카드 입력&quot;);</span>
+<span class="nc" id="L11">    JButton cancelButton = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L12">    Container ct = getContentPane();</span>
+
+<span class="nc" id="L14">    CardGUI(DVM dvm,Item Selected_Item, int x, int y){</span>
+<span class="nc" id="L15">        this.selectedItem = Selected_Item;</span>
+<span class="nc" id="L16">        this.DVM = dvm;</span>
+<span class="nc" id="L17">        setTitle(String.format(&quot;%s - Pay by card&quot;, DVM.getRegion()));</span>
+<span class="nc" id="L18">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L19">        setLocation(x, y);</span>
+
+<span class="nc" id="L21">        ct.setLayout(new FlowLayout());</span>
+<span class="nc" id="L22">        ct.add(cardNumberInput);</span>
+<span class="nc" id="L23">        ct.add(okButton);</span>
+<span class="nc" id="L24">        ct.add(cancelButton);</span>
+<span class="nc" id="L25">        setSize(500,100);</span>
+<span class="nc" id="L26">        InitListener();</span>
+<span class="nc" id="L27">        setVisible(true);</span>
+<span class="nc" id="L28">    }</span>
+
+    void InitListener(){
+<span class="nc" id="L31">        okButton.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L34">                String cardNumber = cardNumberInput.getText();</span>
+                try {
+<span class="nc" id="L36">                    int result = DVM.insertCard(cardNumber, selectedItem);</span>
+
+<span class="nc bnc" id="L38" title="All 2 branches missed.">                    if (result == 1) {</span>
+                        // 1 : 결제성공
+<span class="nc" id="L40">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 성공! : %s&quot;, selectedItem.getItemName()));</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">                        if (selectedItem.getItemAmount()&gt;0) {</span>
+                            // 재고 하나줄임
+<span class="nc" id="L43">                            DVM.giveItem(selectedItem); // 재고 하나줄임</span>
+                        } else {
+                            // code 부여
+<span class="nc" id="L46">                            String code = DVM.giveCode(selectedItem);</span>
+<span class="nc" id="L47">                            JOptionPane.showMessageDialog(ct, String.format(&quot;생성된 코드 : %s&quot;, code));</span>
+                        }
+<span class="nc" id="L49">                        DVM.myPayment.consumeCard(cardNumber, selectedItem.getItemPrice());</span>
+<span class="nc" id="L50">                        MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L51">                        dispose();</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">                    } else if (result == 0) {</span>
+                        // 0 : 한도초과
+<span class="nc" id="L54">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 실패 : %s&quot;, &quot;카드 한도 초과입니다.&quot;));</span>
+<span class="nc" id="L55">                        CardGUI cardGUI = new CardGUI(DVM, selectedItem, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L56">                        dispose();</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">                    } else if (result == -1) {</span>
+                        // -1 : 존재하지 않는 카드
+<span class="nc" id="L59">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 실패 : %s&quot;, &quot;정상적인 카드가 아닙니다.&quot;));</span>
+<span class="nc" id="L60">                        CardGUI cardGUI = new CardGUI(DVM, selectedItem, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L61">                        dispose();</span>
+                    }
+<span class="nc" id="L63">                } catch (NumberFormatException error) {</span>
+<span class="nc" id="L64">                    JOptionPane.showMessageDialog(ct, String.format(&quot;에러 : %s&quot;, &quot;잘못된 입력값입니다.&quot;));</span>
+<span class="nc" id="L65">                }</span>
+<span class="nc" id="L66">            }</span>
+        });
+<span class="nc" id="L68">        cancelButton.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L71">                dispose();</span>
+<span class="nc" id="L72">                MainGUI MAINGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L73">            }</span>
+        });
+
+<span class="nc" id="L76">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

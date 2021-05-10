@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ManageAmountGUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">ManageAmountGUI.java</span></div><h1>ManageAmountGUI.java</h1><pre class="source lang-java linenums">import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+
+public class ManageAmountGUI extends JFrame {
+
+    DVM DVM;
+
+<span class="nc" id="L11">    JLabel Introduction = new JLabel(&quot;제품 이름 / 수량&quot;);</span>
+<span class="nc" id="L12">    JTextField ItemName = new JTextField(6);</span>
+<span class="nc" id="L13">    JTextField Amount = new JTextField(3);</span>
+<span class="nc" id="L14">    JButton button1 = new JButton(&quot;적용&quot;);</span>
+<span class="nc" id="L15">    JButton cancelButton = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L16">    Container ct = getContentPane();</span>
+
+<span class="nc" id="L18">    ManageAmountGUI(DVM dvm, int x, int y){</span>
+<span class="nc" id="L19">        this.DVM = dvm;</span>
+<span class="nc" id="L20">        setTitle(String.format(&quot;%s - Manage Amount&quot;, DVM.getRegion()));</span>
+<span class="nc" id="L21">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L22">        setLocation(x,y);</span>
+<span class="nc" id="L23">        Amount.addKeyListener(new java.awt.event.KeyAdapter(){</span>
+            /*public void keyReleased(java.awt.event.KeyEvent evt){
+                try{
+                    long number = Long.parseLong(Amount.getText());
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(rootPane,&quot;Only Numbers Allowed&quot;);
+                    Amount.setText(&quot;&quot;);
+                }
+            } */
+            public void keyTyped(KeyEvent evt){
+<span class="nc bnc" id="L33" title="All 2 branches missed.">                if(!Character.isDigit(evt.getKeyChar())){</span>
+<span class="nc" id="L34">                    evt.consume();</span>
+                }
+<span class="nc" id="L36">            }</span>
+        });
+
+<span class="nc" id="L39">        ct.setLayout(new FlowLayout());</span>
+<span class="nc" id="L40">        ct.add(Introduction);</span>
+<span class="nc" id="L41">        ct.add(ItemName);</span>
+<span class="nc" id="L42">        ct.add(Amount);</span>
+<span class="nc" id="L43">        ct.add(button1);</span>
+<span class="nc" id="L44">        ct.add(cancelButton);</span>
+
+<span class="nc" id="L46">        setSize(500,200);</span>
+<span class="nc" id="L47">        InitListener();</span>
+<span class="nc" id="L48">        setVisible(true);</span>
+<span class="nc" id="L49">    }</span>
+
+    void InitListener(){
+<span class="nc" id="L52">        button1.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+<span class="nc bnc" id="L56" title="All 2 branches missed.">                    if(DVM.manageAmount(ItemName.getText(), Integer.parseInt(Amount.getText()))){</span>
+                        //Amount가 양수고 성공적으로 재고를 변경했을경우
+<span class="nc" id="L58">                        JOptionPane.showMessageDialog(null, &quot;재고수량 변경이 성공적으로 처리되었습니다.&quot;);</span>
+<span class="nc" id="L59">                        AdminMenuGUI AM = new AdminMenuGUI(DVM, getLocation().x, getLocation().y);</span>
+                        //MainFrame mf = new MainFrame(DVM);
+<span class="nc" id="L61">                        dispose();</span>
+<span class="nc" id="L62">                    }</span>
+                    else
+<span class="nc" id="L64">                        JOptionPane.showMessageDialog(null, &quot;입력한 상품 이름 혹은 입력한 재고 값이 올바르지 않습니다.&quot;);</span>
+<span class="nc" id="L65">                } catch (NumberFormatException error) {</span>
+<span class="nc" id="L66">                    JOptionPane.showMessageDialog(ct, String.format(&quot;에러 : %s&quot;, &quot;잘못된 입력값입니다.&quot;));</span>
+<span class="nc" id="L67">                }</span>
+<span class="nc" id="L68">            }</span>
+        });
+<span class="nc" id="L70">        cancelButton.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L73">                dispose();</span>
+<span class="nc" id="L74">                AdminMenuGUI mf = new AdminMenuGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L75">            }</span>
+        });
+<span class="nc" id="L77">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

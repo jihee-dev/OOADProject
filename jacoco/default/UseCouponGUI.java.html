@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UseCouponGUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">UseCouponGUI.java</span></div><h1>UseCouponGUI.java</h1><pre class="source lang-java linenums">import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class UseCouponGUI extends JFrame {
+    DVM DVM;
+    String Selected_Item;
+<span class="nc" id="L9">    JTextField text = new JTextField(6);</span>
+<span class="nc" id="L10">    JButton button1 = new JButton(&quot;입력한 번호로 쿠폰번호 입력&quot;);</span>
+<span class="nc" id="L11">    JButton button2 = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L12">    Container ct = getContentPane();</span>
+
+<span class="nc" id="L14">    UseCouponGUI(DVM dvm, int x, int y){</span>
+        //초기화
+<span class="nc" id="L16">        this.Selected_Item = Selected_Item;</span>
+<span class="nc" id="L17">        this.DVM = dvm;</span>
+<span class="nc" id="L18">        setTitle(String.format(&quot;%s - Use coupon&quot;, DVM.getRegion()));</span>
+<span class="nc" id="L19">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L20">        setLocation(x,y);</span>
+<span class="nc" id="L21">        ct.setLayout(new FlowLayout());</span>
+
+<span class="nc" id="L23">        ct.add(text);</span>
+<span class="nc" id="L24">        ct.add(button1);</span>
+<span class="nc" id="L25">        ct.add(button2);</span>
+<span class="nc" id="L26">        setSize(500,100);</span>
+<span class="nc" id="L27">        InitListener();</span>
+<span class="nc" id="L28">        setVisible(true);</span>
+<span class="nc" id="L29">    }</span>
+
+    void InitListener(){
+
+<span class="nc" id="L33">        button1.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L36">                int result = DVM.inputCode(text.getText());</span>
+<span class="nc bnc" id="L37" title="All 2 branches missed.">                if(result == 1) {</span>
+                    // 코드 맞으면
+<span class="nc" id="L39">                    Item findItem = DVM.getItemFromCode(text.getText());</span>
+<span class="nc" id="L40">                    DVM.giveItem(findItem);</span>
+<span class="nc" id="L41">                    DVM.removeCode(text.getText());</span>
+<span class="nc" id="L42">                    JOptionPane.showMessageDialog(ct, String.format(&quot;쿠폰으로 구매 성공! : %s&quot;, findItem.getItemName()));</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">                } else if (result == 0) {</span>
+                    // 재고없음
+<span class="nc" id="L45">                    JOptionPane.showMessageDialog(ct, &quot;쿠폰으로 구매 실패 : 현재 자판기에 재고가 없습니다.&quot;);</span>
+<span class="nc bnc" id="L46" title="All 2 branches missed.">                } else if (result == -1) {</span>
+                    // 안맞으면
+<span class="nc" id="L48">                    JOptionPane.showMessageDialog(ct, &quot;쿠폰으로 구매 실패 : 잘못된 쿠폰번호입니다.&quot;);</span>
+                }
+<span class="nc" id="L50">            }</span>
+        });
+
+<span class="nc" id="L53">        button2.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L56">                MainGUI fr = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L57">                dispose();</span>
+<span class="nc" id="L58">            }</span>
+        });
+
+<span class="nc" id="L61">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

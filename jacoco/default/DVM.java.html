@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DVM.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">DVM.java</span></div><h1>DVM.java</h1><pre class="source lang-java linenums">import java.util.*;
+
+public class DVM {
+    String region;
+    Pair location;
+    int totalCash;
+    String adminID;
+    String adminPW;
+    ArrayList&lt;Item&gt; itemList;
+    double dist;
+<span class="fc" id="L11">    static HashMap&lt;String,String&gt; codeTable = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L12">    static ArrayList&lt;DVM&gt; DVMList  = new ArrayList&lt;&gt;();</span>
+    Payment myPayment;
+
+    public class Pair{
+        int x;
+        int y;
+<span class="fc" id="L18">        Pair(int x , int y){</span>
+<span class="fc" id="L19">            this.x = x;</span>
+<span class="fc" id="L20">            this.y = y;</span>
+<span class="fc" id="L21">        }</span>
+<span class="nc" id="L22">        public int getX(){return this.x;}</span>
+<span class="nc" id="L23">        public int getY(){return this.y;}</span>
+    }
+
+<span class="fc" id="L26">    public DVM(String region, int x, int y, int totalCash, String adminID, String adminPW, ArrayList&lt;Item&gt; itemList, double dist, Payment myPayment) {</span>
+<span class="fc" id="L27">        this.region = region;</span>
+<span class="fc" id="L28">        this.location = new Pair(x,y);</span>
+<span class="fc" id="L29">        this.totalCash = totalCash;</span>
+<span class="fc" id="L30">        this.adminID = adminID;</span>
+<span class="fc" id="L31">        this.adminPW = adminPW;</span>
+<span class="fc" id="L32">        this.itemList = itemList;</span>
+<span class="fc" id="L33">        this.dist = dist;</span>
+<span class="fc" id="L34">        this.myPayment = myPayment;</span>
+<span class="fc" id="L35">        boolean duplicated = false;</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        for(int i=0;i&lt;DVMList.size();i++){</span>
+<span class="pc bpc" id="L37" title="1 of 4 branches missed.">            if(DVMList.get(i).location.x == x &amp;&amp; DVMList.get(i).location.y ==y){</span>
+<span class="fc" id="L38">                duplicated=true;</span>
+            }
+        }
+<span class="fc bfc" id="L41" title="All 2 branches covered.">        if(!duplicated){</span>
+<span class="fc" id="L42">            DVMList.add(this);</span>
+        }
+<span class="fc" id="L44">    }</span>
+
+    double getDist(){
+<span class="fc" id="L47">        return this.dist;</span>
+    }
+    void setDist(double dist){
+<span class="fc" id="L50">        this.dist = dist;</span>
+<span class="fc" id="L51">    }</span>
+
+    public String getRegion() {
+<span class="nc" id="L54">        return region;</span>
+    }
+
+    public Pair getLocation() {
+<span class="nc" id="L58">        return location;</span>
+    }
+
+    public ArrayList&lt;Item&gt; getItemList() {
+<span class="fc" id="L62">        return itemList;</span>
+    }
+
+    public static HashMap&lt;String, String&gt; getCodeTable() {
+<span class="fc" id="L66">        return codeTable;</span>
+    }
+
+    Item getItemFromName(String itemName) {
+        // string값을 기반으로 item을 가져옴
+<span class="fc" id="L71">        Item findItem = new Item();</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        for(Item it : this.itemList){</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">            if(it.getItemName() == itemName)</span>
+<span class="fc" id="L74">                findItem = it;</span>
+<span class="fc" id="L75">        }</span>
+<span class="fc" id="L76">        return findItem;</span>
+    }
+    ArrayList&lt;DVM&gt; getAnotherDVMInfo(String ItemName) {
+<span class="fc" id="L79">        ArrayList&lt;DVM&gt; anotherDVMs = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        for(DVM dvm : DVMList){</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">            if(dvm == this) continue;</span>
+<span class="fc" id="L82">            ArrayList&lt;Item&gt; temp = dvm.getItemList();</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">            for(int i = 0;i&lt;temp.size();i++){</span>
+<span class="fc bfc" id="L84" title="All 4 branches covered.">                if(temp.get(i).getItemName() == ItemName &amp;&amp; temp.get(i).getItemAmount() &gt; 0){</span>
+<span class="fc" id="L85">                    anotherDVMs.add(dvm);</span>
+<span class="fc" id="L86">                    break;</span>
+                }
+            }
+<span class="fc" id="L89">        }</span>
+<span class="fc" id="L90">        return anotherDVMs;</span>
+    }
+
+    void removeCode(String code) {
+<span class="fc" id="L94">        String ret = codeTable.get(code);</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        if (ret!=null) codeTable.remove(code);</span>
+<span class="fc" id="L96">    }</span>
+
+    ArrayList&lt;DVM&gt; sortDVM(ArrayList&lt;DVM&gt; DVMList) {
+<span class="fc" id="L99">        DVMList.sort(Comparator.comparing(DVM::getDist));</span>
+<span class="fc" id="L100">        return DVMList;</span>
+    }
+
+    ArrayList&lt;DVM&gt; getNoneItemLocation(String ItemName){
+       // abs(x1-x2) + abs(y1-y2);
+<span class="fc" id="L105">        ArrayList&lt;DVM&gt; otherDVM = getAnotherDVMInfo(ItemName);</span>
+
+<span class="fc" id="L107">        int cur_x = this.location.x;</span>
+<span class="fc" id="L108">        int cur_y = this.location.y;</span>
+
+<span class="fc bfc" id="L110" title="All 2 branches covered.">        for(int i=0;i&lt;otherDVM.size();i++){</span>
+<span class="fc" id="L111">            int next_x = otherDVM.get(i).location.x;</span>
+<span class="fc" id="L112">            int next_y = otherDVM.get(i).location.y;</span>
+<span class="fc" id="L113">            otherDVM.get(i).setDist(Math.round(Math.sqrt(Math.pow(cur_x - next_x,2) + Math.pow(cur_y-next_y,2))*100)/100.0);</span>
+        }
+<span class="fc" id="L115">        otherDVM = sortDVM(otherDVM);</span>
+
+<span class="fc" id="L117">        return otherDVM;</span>
+    }
+
+    int inputCode(String code) {
+<span class="fc" id="L121">        boolean codeValidity = codeValidation(code);</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">        if (codeValidity) {</span>
+<span class="fc" id="L123">            Item findItem = getItemFromCode(code);</span>
+<span class="fc" id="L124">            int itemAmount = findItem.getItemAmount();</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">            if (itemAmount &gt; 0) {</span>
+<span class="fc" id="L126">                return 1;</span>
+            } else {
+<span class="fc" id="L128">                return 0;</span>
+            }
+        } else {
+<span class="fc" id="L131">            return -1;</span>
+        }
+    }
+    // 코드 존재하는지 확인하는 함수
+    boolean codeValidation(String code) {
+<span class="fc" id="L136">        return codeTable.keySet().contains(code);</span>
+    }
+
+    // 코드에 해당하는 아이템 리턴해주는 함수
+    Item getItemFromCode(String code) {
+<span class="fc" id="L141">        Item item = new Item();</span>
+<span class="fc" id="L142">        String itemName = codeTable.get(code);</span>
+<span class="fc bfc" id="L143" title="All 2 branches covered.">        for(int i=0;i&lt;itemList.size();i++){</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">            if(itemList.get(i).getItemName() == itemName){</span>
+<span class="fc" id="L145">                item = itemList.get(i);</span>
+            }
+        }
+<span class="fc" id="L148">        return item;</span>
+    }
+
+    //로그인
+    boolean login(String id, String pw){
+<span class="fc bfc" id="L153" title="All 4 branches covered.">        if(this.adminID.equals(id) &amp;&amp; this.adminPW.equals(pw))</span>
+<span class="fc" id="L154">            return true;</span>
+        else
+<span class="fc" id="L156">            return false;</span>
+    }
+
+    //재고관리
+    boolean manageAmount(String ItemName, int newAmount){
+<span class="fc" id="L161">        boolean flag = false;</span>
+<span class="fc bfc" id="L162" title="All 2 branches covered.">        for(int i=0; i&lt;itemList.size();i++){</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">            if(itemList.get(i).getItemName().equals(ItemName)){</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">                if(itemList.get(i).changeAmount(newAmount)){</span>
+<span class="fc" id="L165">                    flag=true;</span>
+<span class="fc" id="L166">                    break;</span>
+                }
+                else
+<span class="fc" id="L169">                    flag=false;</span>
+            }
+        }
+<span class="fc" id="L172">        return flag;</span>
+    }
+
+    boolean manageAmountCash(int newAmountCash){
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        if(newAmountCash&gt;=0) {</span>
+<span class="fc" id="L177">            this.totalCash = newAmountCash;</span>
+<span class="fc" id="L178">            return true;</span>
+        }
+        else
+<span class="fc" id="L181">            return false;</span>
+    }
+
+    // cash
+    int inputCash(int inputCash, Item selectedItem) {
+<span class="fc" id="L186">        int result = myPayment.calculatePriceCash(inputCash,selectedItem);</span>
+<span class="fc bfc" id="L187" title="All 2 branches covered.">        if (checkTotalCash(result)) {</span>
+<span class="fc" id="L188">            result = -2;</span>
+        }
+<span class="fc" id="L190">        return result;</span>
+    }
+    boolean checkTotalCash(int change) {
+        // totalCash보다 change가 크다면 true리턴
+<span class="fc bfc" id="L194" title="All 2 branches covered.">        return change &gt; this.totalCash;</span>
+    }
+
+    // card
+    int insertCard(String cardNumber, Item selectedItem) {
+<span class="fc" id="L199">        int result = myPayment.calculatePriceCard(cardNumber,selectedItem);</span>
+<span class="fc" id="L200">        return result;</span>
+    }
+
+    void giveItem(Item selectedItem) {
+<span class="fc bfc" id="L204" title="All 2 branches covered.">        if (selectedItem.getItemAmount() &gt; 0) {</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">            for (Item item: itemList) {</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">                if (item.getItemName() == selectedItem.getItemName()) {</span>
+<span class="fc" id="L207">                    item.reduceAmount();</span>
+                }
+<span class="fc" id="L209">            }</span>
+        }
+<span class="fc" id="L211">    }</span>
+
+    String giveCode(Item selectedItem) {
+<span class="fc" id="L214">        char[] tmp = new char[6];</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">        for(int i=0; i&lt;tmp.length; i++) {</span>
+<span class="fc" id="L216">            int div = (int) Math.floor( Math.random() * 2 );</span>
+
+<span class="fc bfc" id="L218" title="All 2 branches covered.">            if(div == 0) { // 0이면 숫자로</span>
+<span class="fc" id="L219">                tmp[i] = (char) (Math.random() * 10 + '0') ;</span>
+            }else { //1이면 알파벳
+<span class="fc" id="L221">                tmp[i] = (char) (Math.random() * 26 + 'A') ;</span>
+            }
+        }
+<span class="fc" id="L224">        String code = new String(tmp);</span>
+<span class="pc bpc" id="L225" title="1 of 2 branches missed.">        while (codeTable.keySet().contains(code)) {</span>
+<span class="nc" id="L226">            tmp = new char[6];</span>
+<span class="nc bnc" id="L227" title="All 2 branches missed.">            for(int i=0; i&lt;tmp.length; i++) {</span>
+<span class="nc" id="L228">                int div = (int) Math.floor( Math.random() * 2 );</span>
+
+<span class="nc bnc" id="L230" title="All 2 branches missed.">                if(div == 0) { // 0이면 숫자로</span>
+<span class="nc" id="L231">                    tmp[i] = (char) (Math.random() * 10 + '0') ;</span>
+                }else { //1이면 알파벳
+<span class="nc" id="L233">                    tmp[i] = (char) (Math.random() * 26 + 'A') ;</span>
+                }
+            }
+<span class="nc" id="L236">            code = new String(tmp);</span>
+        }
+<span class="fc" id="L238">        codeTable.put(code, selectedItem.getItemName());</span>
+<span class="fc" id="L239">        return code;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AdminMenuGUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">AdminMenuGUI.java</span></div><h1>AdminMenuGUI.java</h1><pre class="source lang-java linenums">import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class AdminMenuGUI extends JFrame {
+
+    DVM DVM;
+
+<span class="nc" id="L10">    JButton button1 = new JButton(&quot;재고수량 변경&quot;);</span>
+<span class="nc" id="L11">    JButton button2 = new JButton(&quot;보유현금 변경&quot;);</span>
+<span class="nc" id="L12">    JButton button3 = new JButton(&quot;취소&quot;);</span>
+
+<span class="nc" id="L14">    AdminMenuGUI(DVM dvm, int x, int y){</span>
+        //최상단 UI
+        //초기화
+<span class="nc" id="L17">        this.DVM = dvm;</span>
+<span class="nc" id="L18">        setTitle(String.format(&quot;%s - AdminMenu&quot;, DVM.getRegion()));</span>
+<span class="nc" id="L19">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L20">        setLocation(x, y);</span>
+
+<span class="nc" id="L22">        Container ct = getContentPane();</span>
+<span class="nc" id="L23">        ct.setLayout(new FlowLayout());</span>
+<span class="nc" id="L24">        ct.add(button1);</span>
+<span class="nc" id="L25">        ct.add(button2);</span>
+<span class="nc" id="L26">        ct.add(button3);</span>
+
+        //제품 활성화 , 쿠폰사용 , 관리자로그인
+
+<span class="nc" id="L30">        setSize(500,200);</span>
+<span class="nc" id="L31">        InitListener();</span>
+<span class="nc" id="L32">        setVisible(true);</span>
+<span class="nc" id="L33">    }</span>
+
+    void InitListener(){
+<span class="nc" id="L36">        button1.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L39">                ManageAmountGUI MAGUI = new ManageAmountGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L40">                dispose();</span>
+<span class="nc" id="L41">            }</span>
+<span class="nc" id="L42">        });button2.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L45">                ManageCashGUI MCGUI = new ManageCashGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L46">                dispose();</span>
+<span class="nc" id="L47">            }</span>
+<span class="nc" id="L48">        });button3.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L51">                MainGUI MCGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L52">                dispose();</span>
+<span class="nc" id="L53">            }</span>
+        });
+<span class="nc" id="L55">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

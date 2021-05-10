@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CashGUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">OOADProject</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">CashGUI.java</span></div><h1>CashGUI.java</h1><pre class="source lang-java linenums">import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+public class CashGUI extends JFrame {
+    DVM DVM;
+    Item selectedItem;
+<span class="nc" id="L10">    JTextField text = new JTextField(4);</span>
+<span class="nc" id="L11">    JButton button1 = new JButton(&quot;입력한 금액 투입&quot;);</span>
+<span class="nc" id="L12">    JButton button2 = new JButton(&quot;취소&quot;);</span>
+<span class="nc" id="L13">    Container ct = getContentPane();</span>
+
+<span class="nc" id="L15">    CashGUI(DVM dvm,Item Selected_Item, int x, int y){</span>
+<span class="nc" id="L16">        this.selectedItem = Selected_Item;</span>
+<span class="nc" id="L17">        this.DVM = dvm;</span>
+<span class="nc" id="L18">        setTitle(String.format(&quot;%s - Pay by cash&quot;, DVM.getRegion()));</span>
+<span class="nc" id="L19">        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</span>
+<span class="nc" id="L20">        setLocation(x,y);</span>
+
+<span class="nc" id="L22">        ct.setLayout(new FlowLayout());</span>
+
+<span class="nc" id="L24">        ct.add(text);</span>
+<span class="nc" id="L25">        ct.add(button1);</span>
+<span class="nc" id="L26">        ct.add(button2);</span>
+<span class="nc" id="L27">        setSize(500,100);</span>
+<span class="nc" id="L28">        InitListener();</span>
+<span class="nc" id="L29">        setVisible(true);</span>
+<span class="nc" id="L30">    }</span>
+
+    void InitListener(){
+<span class="nc" id="L33">        button1.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+<span class="nc" id="L37">                    int result = DVM.inputCash(Integer.parseInt(text.getText()), selectedItem);</span>
+
+<span class="nc bnc" id="L39" title="All 2 branches missed.">                    if (result &gt;= 0) {</span>
+<span class="nc" id="L40">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 성공! : %s&quot;, selectedItem.getItemName()));</span>
+                        // &gt; 0 : 거스름돈 반출
+<span class="nc bnc" id="L42" title="All 2 branches missed.">                        if (result &gt; 0) {</span>
+<span class="nc" id="L43">                            JOptionPane.showMessageDialog(ct, String.format(&quot;거스름돈 : %s&quot;, result));</span>
+                        }
+<span class="nc bnc" id="L45" title="All 2 branches missed.">                        if (selectedItem.getItemAmount()&gt;0) {</span>
+                            // 재고 하나줄임
+<span class="nc" id="L47">                            DVM.giveItem(selectedItem);</span>
+                        } else {
+                            // code 부여
+<span class="nc" id="L50">                            String code = DVM.giveCode(selectedItem);</span>
+<span class="nc" id="L51">                            JOptionPane.showMessageDialog(ct, String.format(&quot;생성된 코드 : %s&quot;, code));</span>
+                        }
+<span class="nc" id="L53">                        MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L54">                        dispose();</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">                    }  else if (result == -1) {</span>
+                        // -1 : 투입금액 부족
+<span class="nc" id="L57">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 실패 : %s&quot;, &quot;투입한 금액이 부족합니다.&quot;));</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">                    } else if (result == -2) {</span>
+                        // 0 : 모두 계산되었지만 거스름돈 부족
+<span class="nc" id="L60">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 실패 : %s&quot;, &quot;현재 기기에 거스름돈이 부족해 구입이 불가능합니다.&quot;));</span>
+<span class="nc" id="L61">                        MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L62">                        dispose();</span>
+                    }
+<span class="nc" id="L64">                } catch (NumberFormatException error) {</span>
+<span class="nc" id="L65">                    JOptionPane.showMessageDialog(ct, String.format(&quot;에러 : %s&quot;, &quot;잘못된 입력값입니다.&quot;));</span>
+<span class="nc" id="L66">                }</span>
+<span class="nc" id="L67">            }</span>
+        });
+<span class="nc" id="L69">        button2.addActionListener(new ActionListener() {</span>
+            @Override
+            public void actionPerformed(ActionEvent e) {
+<span class="nc" id="L72">                dispose();</span>
+<span class="nc" id="L73">                MainGUI MAINGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L74">            }</span>
+        });
+
+<span class="nc" id="L77">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
