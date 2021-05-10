@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class UseCouponGUI extends JFrame {
     DVM DVM;
     String Selected_Item;
-    JTextField text = new JTextField(4);
+    JTextField text = new JTextField(6);
     JButton button1 = new JButton("입력한 번호로 쿠폰번호 입력");
     JButton button2 = new JButton("취소");
     Container ct = getContentPane();

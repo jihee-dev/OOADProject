@@ -10,7 +10,6 @@ public class DVM {
     double dist;
     static HashMap<String,String> codeTable = new HashMap<>();
     static ArrayList<DVM> DVMList  = new ArrayList<>();
-
     Payment myPayment;
 
     public class Pair{
@@ -33,7 +32,15 @@ public class DVM {
         this.itemList = itemList;
         this.dist = dist;
         this.myPayment = myPayment;
-        DVMList.add(this);
+        boolean duplicated = false;
+        for(int i=0;i<DVMList.size();i++){
+            if(DVMList.get(i).location.x == x && DVMList.get(i).location.y ==y){
+                duplicated=true;
+            }
+        }
+        if(!duplicated){
+            DVMList.add(this);
+        }
     }
 
     double getDist(){
@@ -55,6 +62,10 @@ public class DVM {
         return itemList;
     }
 
+    public static HashMap<String, String> getCodeTable() {
+        return codeTable;
+    }
+
     Item getItemFromName(String itemName) {
         // string값을 기반으로 item을 가져옴
         Item findItem = new Item();
@@ -66,8 +77,8 @@ public class DVM {
     }
     ArrayList<DVM> getAnotherDVMInfo(String ItemName) {
         ArrayList<DVM> anotherDVMs = new ArrayList<>();
-
         for(DVM dvm : DVMList){
+            if(dvm == this) continue;
             ArrayList<Item> temp = dvm.getItemList();
             for(int i = 0;i<temp.size();i++){
                 if(temp.get(i).getItemName() == ItemName && temp.get(i).getItemAmount() > 0){
@@ -80,7 +91,8 @@ public class DVM {
     }
 
     void removeCode(String code) {
-        codeTable.remove(code);
+        String ret = codeTable.get(code);
+        if (ret!=null) codeTable.remove(code);
     }
 
     ArrayList<DVM> sortDVM(ArrayList<DVM> DVMList) {
@@ -103,11 +115,6 @@ public class DVM {
         otherDVM = sortDVM(otherDVM);
 
         return otherDVM;
-    }
-
-    //true이면 카드 false 현금
-    boolean SelectPaymentMethod(boolean flag){
-        return true;
     }
 
     int inputCode(String code) {
@@ -154,7 +161,7 @@ public class DVM {
         boolean flag = false;
         for(int i=0; i<itemList.size();i++){
             if(itemList.get(i).getItemName().equals(ItemName)){
-                if(itemList.get(i).changeAmount(ItemName, newAmount)){
+                if(itemList.get(i).changeAmount(newAmount)){
                     flag=true;
                     break;
                 }
@@ -194,23 +201,39 @@ public class DVM {
     }
 
     void giveItem(Item selectedItem) {
-        for (Item item: itemList) {
-            if (item.getItemName() == selectedItem.getItemName()) {
-                item.reduceAmount();
+        if (selectedItem.getItemAmount() > 0) {
+            for (Item item: itemList) {
+                if (item.getItemName() == selectedItem.getItemName()) {
+                    item.reduceAmount();
+                }
             }
         }
     }
 
     String giveCode(Item selectedItem) {
-        Random random = new Random(); //랜덤 객체 생성(디폴트 시드값 : 현재시간)
-        random.setSeed(System.currentTimeMillis()); //시드값 설정을 따로 할수도 있음
-        int randomResult = random.nextInt(8999);
-        randomResult += 1000;
-        String code = Integer.toString(randomResult);
+        char[] tmp = new char[6];
+        for(int i=0; i<tmp.length; i++) {
+            int div = (int) Math.floor( Math.random() * 2 );
+
+            if(div == 0) { // 0이면 숫자로
+                tmp[i] = (char) (Math.random() * 10 + '0') ;
+            }else { //1이면 알파벳
+                tmp[i] = (char) (Math.random() * 26 + 'A') ;
+            }
+        }
+        String code = new String(tmp);
         while (codeTable.keySet().contains(code)) {
-            randomResult = random.nextInt(8999);
-            randomResult += 1000;
-            code = Integer.toString(randomResult);
+            tmp = new char[6];
+            for(int i=0; i<tmp.length; i++) {
+                int div = (int) Math.floor( Math.random() * 2 );
+
+                if(div == 0) { // 0이면 숫자로
+                    tmp[i] = (char) (Math.random() * 10 + '0') ;
+                }else { //1이면 알파벳
+                    tmp[i] = (char) (Math.random() * 26 + 'A') ;
+                }
+            }
+            code = new String(tmp);
         }
         codeTable.put(code, selectedItem.getItemName());
         return code;

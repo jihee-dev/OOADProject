@@ -17,12 +17,16 @@ public class Payment {
 
     public int calculatePriceCash(int inputCash, Item selectedItem) {
         int itemPrice = selectedItem.getItemPrice();
-        boolean sufficient = isSufficient(inputCash, itemPrice);
-        if (sufficient) {
-            return calculateChange(inputCash, itemPrice);
-        } else {
-            return -1;
+        if(itemPrice>0) {
+            boolean sufficient = isSufficient(inputCash, itemPrice);
+            if (sufficient) {
+                return calculateChange(inputCash, itemPrice);
+            } else {
+                return -1;
+            }
         }
+        else
+            return -2;
     }
 
     public boolean isSufficient(int limit, int itemPrice) {
@@ -38,15 +42,20 @@ public class Payment {
     }
 
     public int calculatePriceCard(String inputCardNumber, Item selectedItem) {
-        if (isValidCard(inputCardNumber)) {
-            int itemPrice = selectedItem.getItemPrice();
-            if (isSufficient(validCardList.get(inputCardNumber),itemPrice)) {
-                return 1;
+        int itemPrice = selectedItem.getItemPrice();
+        if(itemPrice>0) {
+            if (isValidCard(inputCardNumber)) {
+                if (isSufficient(validCardList.get(inputCardNumber), itemPrice)) {
+                    return 1;
+                } else {
+                    return 0;
+                }
             } else {
-                return 0;
+                return -1;
             }
-        } else {
-            return -1;
+        }
+        else{
+            return -2;
         }
     }
 

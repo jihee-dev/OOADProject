@@ -1,7 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DVMTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-10T04:05:51" hostname="DESKTOP-TEV2AP7" time="0.003">
+<testsuite name="DVMTest" tests="37" skipped="0" failures="0" errors="0" timestamp="2021-05-10T13:46:58" hostname="DESKTOP-TEV2AP7" time="0.113">
   <properties/>
-  <testcase name="testMyAdd" classname="DVMTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="sortDVM()" classname="DVMTest" time="0.03"/>
+  <testcase name="getAnotherDVMInfo1()" classname="DVMTest" time="0.001"/>
+  <testcase name="getAnotherDVMInfo2()" classname="DVMTest" time="0.001"/>
+  <testcase name="getAnotherDVMInfo3()" classname="DVMTest" time="0.009"/>
+  <testcase name="login2()" classname="DVMTest" time="0.004"/>
+  <testcase name="login3()" classname="DVMTest" time="0.001"/>
+  <testcase name="login4()" classname="DVMTest" time="0.002"/>
+  <testcase name="manageAmount2()" classname="DVMTest" time="0.0"/>
+  <testcase name="manageAmount3()" classname="DVMTest" time="0.001"/>
+  <testcase name="manageAmount4()" classname="DVMTest" time="0.001"/>
+  <testcase name="removeCode2()" classname="DVMTest" time="0.001"/>
+  <testcase name="codeValidation2()" classname="DVMTest" time="0.001"/>
+  <testcase name="manageAmount()" classname="DVMTest" time="0.001"/>
+  <testcase name="codeValidation()" classname="DVMTest" time="0.001"/>
+  <testcase name="insertCard2()" classname="DVMTest" time="0.001"/>
+  <testcase name="insertCard3()" classname="DVMTest" time="0.0"/>
+  <testcase name="login()" classname="DVMTest" time="0.001"/>
+  <testcase name="manageAmountCash2()" classname="DVMTest" time="0.001"/>
+  <testcase name="checkTotalCash2()" classname="DVMTest" time="0.003"/>
+  <testcase name="insertCard()" classname="DVMTest" time="0.0"/>
+  <testcase name="getItemFromCode()" classname="DVMTest" time="0.001"/>
+  <testcase name="getItemFromName()" classname="DVMTest" time="0.001"/>
+  <testcase name="removeCode()" classname="DVMTest" time="0.0"/>
+  <testcase name="getItemFromCode2()" classname="DVMTest" time="0.0"/>
+  <testcase name="checkTotalCash()" classname="DVMTest" time="0.001"/>
+  <testcase name="giveCode()" classname="DVMTest" time="0.0"/>
+  <testcase name="giveItem()" classname="DVMTest" time="0.001"/>
+  <testcase name="inputCash2()" classname="DVMTest" time="0.001"/>
+  <testcase name="inputCash3()" classname="DVMTest" time="0.0"/>
+  <testcase name="inputCode2()" classname="DVMTest" time="0.0"/>
+  <testcase name="inputCode3()" classname="DVMTest" time="0.001"/>
+  <testcase name="getNoneItemLocation()" classname="DVMTest" time="0.001"/>
+  <testcase name="giveCode2()" classname="DVMTest" time="0.001"/>
+  <testcase name="giveItem2()" classname="DVMTest" time="0.0"/>
+  <testcase name="inputCash()" classname="DVMTest" time="0.0"/>
+  <testcase name="inputCode()" classname="DVMTest" time="0.0"/>
+  <testcase name="manageAmountCash()" classname="DVMTest" time="0.001"/>
+  <system-out><![CDATA[Another DVM 1
+Another DVM 2
+2
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

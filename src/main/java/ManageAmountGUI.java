@@ -8,6 +8,7 @@ public class ManageAmountGUI extends JFrame {
 
     DVM DVM;
 
+    JLabel Introduction = new JLabel("제품 이름 / 수량");
     JTextField ItemName = new JTextField(6);
     JTextField Amount = new JTextField(3);
     JButton button1 = new JButton("적용");
@@ -20,14 +21,14 @@ public class ManageAmountGUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(x,y);
         Amount.addKeyListener(new java.awt.event.KeyAdapter(){
-           /*public void keyReleased(java.awt.event.KeyEvent evt){
-               try{
-                   long number = Long.parseLong(Amount.getText());
-               }catch(Exception e){
-                   JOptionPane.showMessageDialog(rootPane,"Only Numbers Allowed");
-                   Amount.setText("");
-               }
-           } */
+            /*public void keyReleased(java.awt.event.KeyEvent evt){
+                try{
+                    long number = Long.parseLong(Amount.getText());
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(rootPane,"Only Numbers Allowed");
+                    Amount.setText("");
+                }
+            } */
             public void keyTyped(KeyEvent evt){
                 if(!Character.isDigit(evt.getKeyChar())){
                     evt.consume();
@@ -36,7 +37,7 @@ public class ManageAmountGUI extends JFrame {
         });
 
         ct.setLayout(new FlowLayout());
-
+        ct.add(Introduction);
         ct.add(ItemName);
         ct.add(Amount);
         ct.add(button1);

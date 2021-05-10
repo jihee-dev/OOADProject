@@ -30,7 +30,7 @@ public class Item {
         return itemAmount;
     }
 
-    public boolean changeAmount(String ItemName, int newAmount){
+    public boolean changeAmount(int newAmount){
         if(newAmount>=0) {
             this.itemAmount = newAmount;
             return true;
@@ -40,6 +40,6 @@ public class Item {
     }
 
     public void reduceAmount() {
-        itemAmount -= 1;
+        if (itemAmount > 0) itemAmount -= 1;
     }
 }
