@@ -37,7 +37,6 @@ public class CardGUI extends JFrame {
 
                     if (result == 1) {
                         // 1 : 결제성공
-                        JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
                         if (selectedItem.getItemAmount()>0) {
                             // 재고 하나줄임
                             DVM.giveItem(selectedItem); // 재고 하나줄임
@@ -47,6 +46,7 @@ public class CardGUI extends JFrame {
                             JOptionPane.showMessageDialog(ct, String.format("생성된 코드 : %s", code));
                         }
                         DVM.myPayment.consumeCard(cardNumber, selectedItem.getItemPrice());
+                        JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
                         MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
                         dispose();
                     } else if (result == 0) {

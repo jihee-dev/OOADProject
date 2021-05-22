@@ -24,22 +24,42 @@ public class DVM {
     }
 
     public DVM(String region, int x, int y, int totalCash, String adminID, String adminPW, ArrayList<Item> itemList, double dist, Payment myPayment) {
-        this.region = region;
-        this.location = new Pair(x,y);
-        this.totalCash = totalCash;
-        this.adminID = adminID;
-        this.adminPW = adminPW;
-        this.itemList = itemList;
-        this.dist = dist;
-        this.myPayment = myPayment;
-        boolean duplicated = false;
-        for(int i=0;i<DVMList.size();i++){
-            if(DVMList.get(i).location.x == x && DVMList.get(i).location.y ==y){
-                duplicated=true;
+        if (DVMList.size() == 10) {
+            System.out.println("자판기는 최대 10개까지만 생성 가능합니다.");
+            System.out.println("[" + region + "]자판기는 생성되지 않았습니다.");
+        } else if (itemList.size() != 20) {
+            System.out.println("아이템리스트는 반드시 20개의 아이템을 보유해야 합니다.");
+            System.out.println("[" + region + "]자판기는 생성되지 않았습니다.");
+        }  else {
+            int availableItem = 0;
+            for (int i=0; i<20; i++) {
+                if (itemList.get(i).getItemAmount() > 0) {
+                    availableItem += 1;
+                }
             }
-        }
-        if(!duplicated){
-            DVMList.add(this);
+            if (availableItem != 7) {
+                System.out.println("재고가 유효한 상품이 7개가 아닌 자판기는 생성할 수 없습니다.");
+                System.out.println("[" + region + "]자판기는 생성되지 않았습니다.");                
+            } else {
+                this.region = region;
+                this.location = new Pair(x,y);
+                this.totalCash = totalCash;
+                this.adminID = adminID;
+                this.adminPW = adminPW;
+                this.itemList = itemList;
+                this.dist = dist;
+                this.myPayment = myPayment;
+                boolean duplicated = false;
+                for(int i=0;i<DVMList.size();i++){
+                    if(DVMList.get(i).location.x == x && DVMList.get(i).location.y ==y){
+                        duplicated=true;
+                    }
+                }
+                if(!duplicated){
+                    DVMList.add(this);
+                }
+
+            }
         }
     }
 
@@ -70,7 +90,7 @@ public class DVM {
         // string값을 기반으로 item을 가져옴
         Item findItem = new Item();
         for(Item it : this.itemList){
-            if(it.getItemName() == itemName)
+            if(it.getItemName().equals(itemName))
                 findItem = it;
         }
         return findItem;
@@ -81,7 +101,7 @@ public class DVM {
             if(dvm == this) continue;
             ArrayList<Item> temp = dvm.getItemList();
             for(int i = 0;i<temp.size();i++){
-                if(temp.get(i).getItemName() == ItemName && temp.get(i).getItemAmount() > 0){
+                if(temp.get(i).getItemName().equals(ItemName) && temp.get(i).getItemAmount() > 0){
                     anotherDVMs.add(dvm);
                     break;
                 }
@@ -141,7 +161,7 @@ public class DVM {
         Item item = new Item();
         String itemName = codeTable.get(code);
         for(int i=0;i<itemList.size();i++){
-            if(itemList.get(i).getItemName() == itemName){
+            if(itemList.get(i).getItemName().equals(itemName)){
                 item = itemList.get(i);
             }
         }
@@ -203,8 +223,9 @@ public class DVM {
     void giveItem(Item selectedItem) {
         if (selectedItem.getItemAmount() > 0) {
             for (Item item: itemList) {
-                if (item.getItemName() == selectedItem.getItemName()) {
+                if (item.getItemName().equals(selectedItem.getItemName())) {
                     item.reduceAmount();
+                    totalCash += item.getItemPrice();
                 }
             }
         }
@@ -236,6 +257,7 @@ public class DVM {
             code = new String(tmp);
         }
         codeTable.put(code, selectedItem.getItemName());
+        totalCash += selectedItem.getItemPrice();
         return code;
     }
 }
