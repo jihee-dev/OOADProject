@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PaymentTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-05-10T15:33:09" hostname="DESKTOP-TEV2AP7" time="0.043">
+<testsuite name="PaymentTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2021-05-23T07:44:00" hostname="DESKTOP-TEV2AP7" time="0.042">
   <properties/>
   <testcase name="calculateChange()" classname="PaymentTest" time="0.001"/>
   <testcase name="consumeCard()" classname="PaymentTest" time="0.001"/>
-  <testcase name="isValidCard()" classname="PaymentTest" time="0.001"/>
-  <testcase name="isSufficient2()" classname="PaymentTest" time="0.0"/>
-  <testcase name="calculatePriceCard()" classname="PaymentTest" time="0.001"/>
-  <testcase name="calculatePriceCash()" classname="PaymentTest" time="0.001"/>
+  <testcase name="isValidCard()" classname="PaymentTest" time="0.002"/>
+  <testcase name="isSufficient2()" classname="PaymentTest" time="0.002"/>
+  <testcase name="calculatePriceCard()" classname="PaymentTest" time="0.004"/>
+  <testcase name="calculatePriceCash()" classname="PaymentTest" time="0.005"/>
   <testcase name="isSufficient()" classname="PaymentTest" time="0.001"/>
-  <testcase name="calculatePriceCard2()" classname="PaymentTest" time="0.001"/>
+  <testcase name="calculatePriceCard2()" classname="PaymentTest" time="0.0"/>
   <testcase name="calculatePriceCard3()" classname="PaymentTest" time="0.0"/>
-  <testcase name="calculatePriceCard4()" classname="PaymentTest" time="0.0"/>
+  <testcase name="calculatePriceCard4()" classname="PaymentTest" time="0.001"/>
   <testcase name="calculatePriceCash2()" classname="PaymentTest" time="0.001"/>
-  <testcase name="calculatePriceCash3()" classname="PaymentTest" time="0.003"/>
+  <testcase name="calculatePriceCash3()" classname="PaymentTest" time="0.001"/>
   <testcase name="isValidCard2()" classname="PaymentTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

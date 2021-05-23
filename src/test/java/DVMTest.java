@@ -9,55 +9,96 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DVMTest {
-
     @Test
-    void getItemFromName() {
-
+    void getRegion() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
-        ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems1.add(new Item("Coke", 3, 1000, 0));
-        anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems1.add(new Item("Latte", 10, 1000, 10));
-
-        ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems2.add(new Item("Coke", 3, 1000, 0));
-        anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        assertEquals(mainDVM.region, mainDVM.getRegion());
+    }
+
+    @Test
+    void getLocation() {
+        ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 0));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 1));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
+        Payment mainDVMPayment = new Payment();
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        assertEquals(mainDVM.location, mainDVM.getLocation());
+    }
+
+    @Test
+    void getItemFromName() {
+        ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
+        Payment mainDVMPayment = new Payment();
 
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 
-        String[] SuccessItemNames = {"Sprite","Mint Sprite","Coke","Mint Coke","Water","Sparkling","Coffee","Mint Coffee","Milk Coffee","Latte"};
+        String[] SuccessItemNames = {"Sprite","Mint Sprite","Coke","Mint Coke","Water","Sparkling","Coffee","Mint Coffee","Milk Coffee","Latte","Espresso","Beer","Fanta Orange","Fanta Grape","2%","Tonic Water","Whisky","Vodka","Brandy","Champagne"};
 
         //success
         boolean flag = true;
@@ -74,42 +115,74 @@ class DVMTest {
 
     @Test
     void getAnotherDVMInfo1() {
-
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
+        anotherItems1.add(new Item("Sprite", 1, 1000, 1));
+        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 0));
         anotherItems1.add(new Item("Coke", 3, 1000, 0));
         anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems1.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
+        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 0));
         anotherItems1.add(new Item("Latte", 10, 1000, 10));
 
+        anotherItems1.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems1.add(new Item("Beer", 12, 1000, 0));
+        anotherItems1.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems1.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems1.add(new Item("2%", 15, 1000, 0));
+        anotherItems1.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems1.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems1.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems1.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems1.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
+        anotherItems2.add(new Item("Sprite", 1, 1000, 1));
+        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 0));
         anotherItems2.add(new Item("Coke", 3, 1000, 0));
         anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems2.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 0));
+        anotherItems2.add(new Item("Latte", 10, 1000, 10));
+
+        anotherItems2.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems2.add(new Item("Beer", 12, 1000, 0));
+        anotherItems2.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems2.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems2.add(new Item("2%", 15, 1000, 0));
+        anotherItems2.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems2.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems2.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems2.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         Payment anotherDVM1Payment = new Payment();
@@ -118,7 +191,6 @@ class DVMTest {
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
         DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
-        //TestCase 1
         ArrayList<DVM> TestDVMList1 =  mainDVM.getAnotherDVMInfo("Sprite");
         assertEquals(2,TestDVMList1.size());
         mainDVM.DVMList.clear();
@@ -126,50 +198,32 @@ class DVMTest {
 
     @Test
     void getAnotherDVMInfo2() {
-
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
-        ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems1.add(new Item("Coke", 3, 1000, 0));
-        anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems1.add(new Item("Latte", 10, 1000, 10));
-
-        ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems2.add(new Item("Coke", 3, 1000, 0));
-        anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
 
         DVM mainDVM = new DVM("5",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("6",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("7 ",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 
         ArrayList<DVM> TestDVMList2 = mainDVM.getAnotherDVMInfo("Coke");
         assertEquals(0,TestDVMList2.size());
@@ -178,42 +232,74 @@ class DVMTest {
 
     @Test
     void getAnotherDVMInfo3() {
-
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems1.add(new Item("Sprite", 1, 1000, 0));
         anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems1.add(new Item("Coke", 3, 1000, 0));
         anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems1.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
+        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 0));
         anotherItems1.add(new Item("Latte", 10, 1000, 10));
 
+        anotherItems1.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems1.add(new Item("Beer", 12, 1000, 0));
+        anotherItems1.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems1.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems1.add(new Item("2%", 15, 1000, 0));
+        anotherItems1.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems1.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems1.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems1.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems1.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems2.add(new Item("Sprite", 1, 1000, 0));
         anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems2.add(new Item("Coke", 3, 1000, 0));
         anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems2.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 0));
+        anotherItems2.add(new Item("Latte", 10, 1000, 10));
+
+        anotherItems2.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems2.add(new Item("Beer", 12, 1000, 0));
+        anotherItems2.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems2.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems2.add(new Item("2%", 15, 1000, 0));
+        anotherItems2.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems2.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems2.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems2.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         Payment anotherDVM1Payment = new Payment();
@@ -235,50 +321,32 @@ class DVMTest {
     }
     @Test
     void removeCode() {
-
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
-        ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems1.add(new Item("Coke", 3, 1000, 0));
-        anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems1.add(new Item("Latte", 10, 1000, 10));
-
-        ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems2.add(new Item("Coke", 3, 1000, 0));
-        anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
 
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
         //Testing Success
         HashMap<String,String> test_table = mainDVM.getCodeTable();
 
@@ -294,48 +362,31 @@ class DVMTest {
     @Test
     void removeCode2() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
-        ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems1.add(new Item("Coke", 3, 1000, 0));
-        anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems1.add(new Item("Latte", 10, 1000, 10));
-
-        ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems2.add(new Item("Coke", 3, 1000, 0));
-        anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
 
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 
         //Testing 부여되지 않은 코드일 경우
         //런타임 에러가 나지 않는다면 flag = true
@@ -352,40 +403,73 @@ class DVMTest {
     @Test
     void sortDVM() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems1.add(new Item("Sprite", 1, 1000, 0));
         anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems1.add(new Item("Coke", 3, 1000, 0));
         anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems1.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
+        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 0));
         anotherItems1.add(new Item("Latte", 10, 1000, 10));
 
+        anotherItems1.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems1.add(new Item("Beer", 12, 1000, 0));
+        anotherItems1.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems1.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems1.add(new Item("2%", 15, 1000, 0));
+        anotherItems1.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems1.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems1.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems1.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems1.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems2.add(new Item("Sprite", 1, 1000, 0));
         anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems2.add(new Item("Coke", 3, 1000, 0));
         anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems2.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 0));
+        anotherItems2.add(new Item("Latte", 10, 1000, 10));
+
+        anotherItems2.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems2.add(new Item("Beer", 12, 1000, 0));
+        anotherItems2.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems2.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems2.add(new Item("2%", 15, 1000, 0));
+        anotherItems2.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems2.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems2.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems2.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         Payment anotherDVM1Payment = new Payment();
@@ -409,40 +493,73 @@ class DVMTest {
     @Test
     void getNoneItemLocation() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems1.add(new Item("Sprite", 1, 1000, 12));
         anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems1.add(new Item("Coke", 3, 1000, 0));
         anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems1.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
+        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 0));
         anotherItems1.add(new Item("Latte", 10, 1000, 10));
 
+        anotherItems1.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems1.add(new Item("Beer", 12, 1000, 0));
+        anotherItems1.add(new Item("Fanta Orange", 13, 1000, 0));
+        anotherItems1.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems1.add(new Item("2%", 15, 1000, 0));
+        anotherItems1.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems1.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems1.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems1.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems1.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems2.add(new Item("Sprite", 1, 1000, 3));
         anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems2.add(new Item("Coke", 3, 1000, 0));
         anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        anotherItems2.add(new Item("Sparkling", 6, 1000, 0));
+        anotherItems2.add(new Item("Coffee", 7, 1000, 0));
+        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 0));
+        anotherItems2.add(new Item("Latte", 10, 1000, 10));
+
+        anotherItems2.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems2.add(new Item("Beer", 12, 1000, 0));
+        anotherItems2.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems2.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems2.add(new Item("2%", 15, 1000, 0));
+        anotherItems2.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems2.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems2.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems2.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         Payment anotherDVM1Payment = new Payment();
@@ -462,50 +579,32 @@ class DVMTest {
 
     @Test
     void inputCode() {
-
         ArrayList<Item> myItems = new ArrayList<>();
         myItems.add(new Item("Sprite", 1, 1000, 10));
-        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 0));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
-        ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems1.add(new Item("Coke", 3, 1000, 0));
-        anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems1.add(new Item("Latte", 10, 1000, 10));
-
-        ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems2.add(new Item("Coke", 3, 1000, 0));
-        anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
 
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 
         HashMap<String,String> test_table = mainDVM.getCodeTable();
         Item test_item = mainDVM.getItemList().get(0);
@@ -518,42 +617,74 @@ class DVMTest {
 
     @Test
     void inputCode2() {
-
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems1.add(new Item("Sprite", 1, 1000, 12));
         anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems1.add(new Item("Coke", 3, 1000, 0));
         anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems1.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
+        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 0));
         anotherItems1.add(new Item("Latte", 10, 1000, 10));
 
+        anotherItems1.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems1.add(new Item("Beer", 12, 1000, 0));
+        anotherItems1.add(new Item("Fanta Orange", 13, 1000, 0));
+        anotherItems1.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems1.add(new Item("2%", 15, 1000, 0));
+        anotherItems1.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems1.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems1.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems1.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems1.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems2.add(new Item("Sprite", 1, 1000, 3));
         anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems2.add(new Item("Coke", 3, 1000, 0));
         anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        anotherItems2.add(new Item("Sparkling", 6, 1000, 0));
+        anotherItems2.add(new Item("Coffee", 7, 1000, 0));
+        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 0));
+        anotherItems2.add(new Item("Latte", 10, 1000, 10));
+
+        anotherItems2.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems2.add(new Item("Beer", 12, 1000, 0));
+        anotherItems2.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems2.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems2.add(new Item("2%", 15, 1000, 0));
+        anotherItems2.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems2.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems2.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems2.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         Payment anotherDVM1Payment = new Payment();
@@ -574,42 +705,74 @@ class DVMTest {
     }
     @Test
     void inputCode3() {
-
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems1.add(new Item("Sprite", 1, 1000, 12));
         anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems1.add(new Item("Coke", 3, 1000, 0));
         anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
+        anotherItems1.add(new Item("Sparkling", 6, 1000, 0));
         anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
+        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 0));
         anotherItems1.add(new Item("Latte", 10, 1000, 10));
 
+        anotherItems1.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems1.add(new Item("Beer", 12, 1000, 0));
+        anotherItems1.add(new Item("Fanta Orange", 13, 1000, 0));
+        anotherItems1.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems1.add(new Item("2%", 15, 1000, 0));
+        anotherItems1.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems1.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems1.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems1.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems1.add(new Item("Champagne", 20, 2000, 0));
+
         ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
+        anotherItems2.add(new Item("Sprite", 1, 1000, 3));
         anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
         anotherItems2.add(new Item("Coke", 3, 1000, 0));
         anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
         anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        anotherItems2.add(new Item("Sparkling", 6, 1000, 0));
+        anotherItems2.add(new Item("Coffee", 7, 1000, 0));
+        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 1));
+        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 0));
+        anotherItems2.add(new Item("Latte", 10, 1000, 10));
+
+        anotherItems2.add(new Item("Espresso", 11, 1000, 0));
+        anotherItems2.add(new Item("Beer", 12, 1000, 0));
+        anotherItems2.add(new Item("Fanta Orange", 13, 1000, 1));
+        anotherItems2.add(new Item("Fanta Grape", 14, 1000, 0));
+        anotherItems2.add(new Item("2%", 15, 1000, 0));
+        anotherItems2.add(new Item("Tonic Water", 16, 1000, 0));
+        anotherItems2.add(new Item("Whisky", 17, 1000, 0));
+        anotherItems2.add(new Item("Vodka", 18, 1000, 0));
+        anotherItems2.add(new Item("Brandy", 19, 1000, 0));
+        anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         Payment anotherDVM1Payment = new Payment();
@@ -630,48 +793,31 @@ class DVMTest {
     @Test
     void codeValidation() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
-        ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems1.add(new Item("Coke", 3, 1000, 0));
-        anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems1.add(new Item("Latte", 10, 1000, 10));
-
-        ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems2.add(new Item("Coke", 3, 1000, 0));
-        anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
 
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 
         //등록된 코드일경우 success = true
         HashMap<String,String> test_table = mainDVM.getCodeTable();
@@ -686,48 +832,31 @@ class DVMTest {
     @Test
     void codeValidation2() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
 
-        ArrayList<Item> anotherItems1 = new ArrayList<>();
-        anotherItems1.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems1.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems1.add(new Item("Coke", 3, 1000, 0));
-        anotherItems1.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems1.add(new Item("Water", 5, 1000, 10));
-        anotherItems1.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems1.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems1.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems1.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems1.add(new Item("Latte", 10, 1000, 10));
-
-        ArrayList<Item> anotherItems2 = new ArrayList<>();
-        anotherItems2.add(new Item("Sprite", 1, 1000, 10));
-        anotherItems2.add(new Item("Mint Sprite", 2, 1000, 10));
-        anotherItems2.add(new Item("Coke", 3, 1000, 0));
-        anotherItems2.add(new Item("Mint Coke", 4, 1000, 10));
-        anotherItems2.add(new Item("Water", 5, 1000, 10));
-        anotherItems2.add(new Item("Sparkling", 6, 1000, 10));
-        anotherItems2.add(new Item("Coffee", 7, 1000, 10));
-        anotherItems2.add(new Item("Mint Coffee", 8, 1000, 10));
-        anotherItems2.add(new Item("Milk Coffee", 9, 1000, 10));
-        anotherItems2.add(new Item("Latte", 10, 1000, 0));
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
 
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 
         //등록되지 않은 코드 failed = false
         HashMap<String,String> test_table = mainDVM.getCodeTable();
@@ -744,6 +873,26 @@ class DVMTest {
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 1000, 10);
         myItems.add(sprite);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 0));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -759,6 +908,26 @@ class DVMTest {
         Item sprite = new Item("Sprite", 1, 1000, 10);
         Item latte = new Item("Latte", 10, 1000, 10);
         myItems.add(sprite);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 1));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte is horse", 10, 1000, 0));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 0));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -774,6 +943,27 @@ class DVMTest {
         //정상입력
     void login() {
         ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         String id = "admin"; String pw = "1234";
@@ -782,6 +972,27 @@ class DVMTest {
         //id만 다를 경우
     void login2() {
         ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         String id = "ad"; String pw = "1234";
@@ -790,6 +1001,27 @@ class DVMTest {
         //pw만 다를 경우
     void login3() {
         ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         String id = "admin"; String pw = "134";
@@ -798,7 +1030,30 @@ class DVMTest {
         //id, pw 둘다 다를 경우
     void login4() {
         ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
+
         Payment mainDVMPayment = new Payment();
+
         DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         String id = "ad"; String pw = "134";
         assertTrue(!dvm.login(id, pw));
@@ -810,16 +1065,27 @@ class DVMTest {
         //정상입력
     void manageAmount() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
 
@@ -831,16 +1097,27 @@ class DVMTest {
         //아이템 이름 오류
     void manageAmount2() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
 
@@ -852,16 +1129,27 @@ class DVMTest {
         //입력 수량 오류
     void manageAmount3() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
 
@@ -873,16 +1161,27 @@ class DVMTest {
         //이름,수량 입력 오류
     void manageAmount4() {
         ArrayList<Item> myItems = new ArrayList<>();
-        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Sprite", 1, 1000, 0));
         myItems.add(new Item("Mint Sprite", 2, 1000, 10));
         myItems.add(new Item("Coke", 3, 1000, 0));
         myItems.add(new Item("Mint Coke", 4, 1000, 10));
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
 
@@ -898,6 +1197,27 @@ class DVMTest {
         //newAmountCash>0
     void manageAmountCash() {
         ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         int newAmountCash = 5000;
@@ -906,6 +1226,27 @@ class DVMTest {
         //newAmountCash<0
     void manageAmountCash2() {
         ArrayList<Item> myItems = new ArrayList<>();
+        myItems.add(new Item("Sprite", 1, 1000, 0));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 1));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         int newAmountCash = -5000;
@@ -925,9 +1266,20 @@ class DVMTest {
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 1500, "admin", "1234", myItems,0, mainDVMPayment);
         int inputCash = 2000; Item selectedItem = new Item("Sprite", 1, 1000, 10);
@@ -944,9 +1296,20 @@ class DVMTest {
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
         int inputCash = 2000; Item selectedItem = new Item("Sprite", 1, 1000, 10);
@@ -963,9 +1326,20 @@ class DVMTest {
         myItems.add(new Item("Water", 5, 1000, 10));
         myItems.add(new Item("Sparkling", 6, 1000, 0));
         myItems.add(new Item("Coffee", 7, 1000, 10));
-        myItems.add(new Item("Mint Coffee", 8, 1000, 10));
-        myItems.add(new Item("Milk Coffee", 9, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
         myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
         Payment mainDVMPayment = new Payment();
         DVM dvm = new DVM("Main DVM",10,3, 1500, "admin", "1234", myItems,0, mainDVMPayment);
         int inputCash = 500; Item selectedItem = new Item("Sprite", 1, 1000, 10);
@@ -978,8 +1352,27 @@ class DVMTest {
     @Test
     void checkTotalCash() { // change > totalCash
         ArrayList<Item> myItems = new ArrayList<>();
-        Item sprite = new Item("Sprite", 1, 1000, 10);
-        myItems.add(sprite);
+        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 10000, "admin", "1234", myItems,0, mainDVMPayment);
@@ -991,8 +1384,27 @@ class DVMTest {
     @Test
     void checkTotalCash2() { // change <= totalCash
         ArrayList<Item> myItems = new ArrayList<>();
-        Item sprite = new Item("Sprite", 1, 1000, 10);
-        myItems.add(sprite);
+        myItems.add(new Item("Sprite", 1, 1000, 10));
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 10000, "admin", "1234", myItems,0, mainDVMPayment);
@@ -1008,6 +1420,26 @@ class DVMTest {
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 1000, 10);
         myItems.add(sprite);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -1021,6 +1453,26 @@ class DVMTest {
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 999999, 10);
         myItems.add(sprite);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -1034,6 +1486,26 @@ class DVMTest {
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 999999, 10);
         myItems.add(sprite);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -1049,25 +1521,27 @@ class DVMTest {
     void giveItem() { // 재고가 떨어지는지 확인
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 1000, 10);
-        Item mintSprite = new Item("Mint Sprite", 2, 1000, 10);
-        Item coke = new Item("Coke", 3, 1000, 0);
-        Item mindCoke = new Item("Mint Coke", 4, 1000, 10);
-        Item water = new Item("Water", 5, 1000, 10);
-        Item sparkling = new Item("Sparkling", 6, 1000, 0);
-        Item coffee = new Item("Coffee", 7, 1000, 10);
-        Item mintCoffee = new Item("Mint Coffee", 8, 1000, 10);
-        Item milkCoffee = new Item("Milk Coffee", 9, 1000, 10);
-        Item latte = new Item("Latte", 10, 1000, 10);
         myItems.add(sprite);
-        myItems.add(mintSprite);
-        myItems.add(coke);
-        myItems.add(mindCoke);
-        myItems.add(water);
-        myItems.add(sparkling);
-        myItems.add(coffee);
-        myItems.add(mintCoffee);
-        myItems.add(milkCoffee);
-        myItems.add(latte);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -1083,25 +1557,27 @@ class DVMTest {
     void giveItem2() { // 0이하로 떨어지지 않는지 확인
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 1000, 10);
-        Item mintSprite = new Item("Mint Sprite", 2, 1000, 10);
-        Item coke = new Item("Coke", 3, 1000, 0);
-        Item mindCoke = new Item("Mint Coke", 4, 1000, 10);
-        Item water = new Item("Water", 5, 1000, 10);
-        Item sparkling = new Item("Sparkling", 6, 1000, 0);
-        Item coffee = new Item("Coffee", 7, 1000, 10);
-        Item mintCoffee = new Item("Mint Coffee", 8, 1000, 10);
-        Item milkCoffee = new Item("Milk Coffee", 9, 1000, 10);
-        Item latte = new Item("Latte", 10, 1000, 10);
         myItems.add(sprite);
-        myItems.add(mintSprite);
-        myItems.add(coke);
-        myItems.add(mindCoke);
-        myItems.add(water);
-        myItems.add(sparkling);
-        myItems.add(coffee);
-        myItems.add(mintCoffee);
-        myItems.add(milkCoffee);
-        myItems.add(latte);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -1118,25 +1594,28 @@ class DVMTest {
     void giveCode() { // 코드 생성확인 + 다른 상품에 대한 코드가 다르게 도출되는지 확인
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 1000, 10);
-        Item mintSprite = new Item("Mint Sprite", 2, 1000, 10);
-        Item coke = new Item("Coke", 3, 1000, 0);
-        Item mindCoke = new Item("Mint Coke", 4, 1000, 10);
-        Item water = new Item("Water", 5, 1000, 10);
-        Item sparkling = new Item("Sparkling", 6, 1000, 0);
-        Item coffee = new Item("Coffee", 7, 1000, 10);
-        Item mintCoffee = new Item("Mint Coffee", 8, 1000, 10);
-        Item milkCoffee = new Item("Milk Coffee", 9, 1000, 10);
-        Item latte = new Item("Latte", 10, 1000, 10);
         myItems.add(sprite);
+        Item mintSprite = new Item("Sprite", 2, 1000, 10);
         myItems.add(mintSprite);
-        myItems.add(coke);
-        myItems.add(mindCoke);
-        myItems.add(water);
-        myItems.add(sparkling);
-        myItems.add(coffee);
-        myItems.add(mintCoffee);
-        myItems.add(milkCoffee);
-        myItems.add(latte);
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
@@ -1156,25 +1635,27 @@ class DVMTest {
     void giveCode2() { // 코드 생성확인 + 같은 상품에 대한 코드도 다르게 도출되는지 확인
         ArrayList<Item> myItems = new ArrayList<>();
         Item sprite = new Item("Sprite", 1, 1000, 10);
-        Item mintSprite = new Item("Mint Sprite", 2, 1000, 10);
-        Item coke = new Item("Coke", 3, 1000, 0);
-        Item mindCoke = new Item("Mint Coke", 4, 1000, 10);
-        Item water = new Item("Water", 5, 1000, 10);
-        Item sparkling = new Item("Sparkling", 6, 1000, 0);
-        Item coffee = new Item("Coffee", 7, 1000, 10);
-        Item mintCoffee = new Item("Mint Coffee", 8, 1000, 10);
-        Item milkCoffee = new Item("Milk Coffee", 9, 1000, 10);
-        Item latte = new Item("Latte", 10, 1000, 10);
         myItems.add(sprite);
-        myItems.add(mintSprite);
-        myItems.add(coke);
-        myItems.add(mindCoke);
-        myItems.add(water);
-        myItems.add(sparkling);
-        myItems.add(coffee);
-        myItems.add(mintCoffee);
-        myItems.add(milkCoffee);
-        myItems.add(latte);
+        myItems.add(new Item("Mint Sprite", 2, 1000, 10));
+        myItems.add(new Item("Coke", 3, 1000, 0));
+        myItems.add(new Item("Mint Coke", 4, 1000, 10));
+        myItems.add(new Item("Water", 5, 1000, 10));
+        myItems.add(new Item("Sparkling", 6, 1000, 0));
+        myItems.add(new Item("Coffee", 7, 1000, 10));
+        myItems.add(new Item("Mint Coffee", 8, 1000, 0));
+        myItems.add(new Item("Milk Coffee", 9, 1000, 0));
+        myItems.add(new Item("Latte", 10, 1000, 10));
+
+        myItems.add(new Item("Espresso", 11, 1000, 0));
+        myItems.add(new Item("Beer", 12, 1000, 0));
+        myItems.add(new Item("Fanta Orange", 13, 1000, 1));
+        myItems.add(new Item("Fanta Grape", 14, 1000, 0));
+        myItems.add(new Item("2%", 15, 1000, 0));
+        myItems.add(new Item("Tonic Water", 16, 1000, 0));
+        myItems.add(new Item("Whisky", 17, 1000, 0));
+        myItems.add(new Item("Vodka", 18, 1000, 0));
+        myItems.add(new Item("Brandy", 19, 1000, 0));
+        myItems.add(new Item("Champagne", 20, 2000, 0));
 
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
