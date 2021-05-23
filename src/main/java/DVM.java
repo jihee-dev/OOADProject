@@ -232,18 +232,9 @@ public class DVM {
     }
 
     String giveCode(Item selectedItem) {
-        char[] tmp = new char[6];
-        for(int i=0; i<tmp.length; i++) {
-            int div = (int) Math.floor( Math.random() * 2 );
-
-            if(div == 0) { // 0이면 숫자로
-                tmp[i] = (char) (Math.random() * 10 + '0') ;
-            }else { //1이면 알파벳
-                tmp[i] = (char) (Math.random() * 26 + 'A') ;
-            }
-        }
-        String code = new String(tmp);
-        while (codeTable.keySet().contains(code)) {
+        char[] tmp;
+        String code = "000000";
+        while (code == "000000" || codeTable.keySet().contains(code)) {
             tmp = new char[6];
             for(int i=0; i<tmp.length; i++) {
                 int div = (int) Math.floor( Math.random() * 2 );
