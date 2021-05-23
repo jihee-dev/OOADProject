@@ -39,10 +39,10 @@ public class CashGUI extends JFrame {
                     if (result >= 0) {
                         if (selectedItem.getItemAmount()>0) {
                             // 재고 하나줄임
-                            DVM.giveItem(selectedItem);
+                            DVM.giveItem(selectedItem, true);
                         } else {
                             // code 부여
-                            String code = DVM.giveCode(selectedItem);
+                            String code = DVM.giveCode(selectedItem, true);
                             JOptionPane.showMessageDialog(ct, String.format("생성된 코드 : %s", code));
                         }
                         // > 0 : 거스름돈 반출

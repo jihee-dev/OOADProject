@@ -39,10 +39,10 @@ public class CardGUI extends JFrame {
                         // 1 : 결제성공
                         if (selectedItem.getItemAmount()>0) {
                             // 재고 하나줄임
-                            DVM.giveItem(selectedItem); // 재고 하나줄임
+                            DVM.giveItem(selectedItem, false); // 재고 하나줄임
                         } else {
                             // code 부여
-                            String code = DVM.giveCode(selectedItem);
+                            String code = DVM.giveCode(selectedItem, false);
                             JOptionPane.showMessageDialog(ct, String.format("생성된 코드 : %s", code));
                         }
                         DVM.myPayment.consumeCard(cardNumber, selectedItem.getItemPrice());

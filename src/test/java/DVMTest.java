@@ -283,7 +283,7 @@ class DVMTest {
         HashMap<String,String> test_table = mainDVM.getCodeTable();
 
         Item testItem = myItems.get(0);
-        String code = mainDVM.giveCode(testItem);
+        String code = mainDVM.giveCode(testItem,false);
         mainDVM.removeCode(code);
 
         String result = test_table.get(code);
@@ -509,7 +509,7 @@ class DVMTest {
 
         HashMap<String,String> test_table = mainDVM.getCodeTable();
         Item test_item = mainDVM.getItemList().get(0);
-        String test_code = mainDVM.giveCode(test_item);
+        String test_code = mainDVM.giveCode(test_item,false);
         int success_ret_code = mainDVM.inputCode(test_code);
         // 성공 = 1
         assertEquals(1,success_ret_code);
@@ -566,7 +566,7 @@ class DVMTest {
         HashMap<String,String> test_table = mainDVM.getCodeTable();
 
         Item No_Amount_Item = anotherDVM2.getItemList().get(2);
-        String Fail_code = mainDVM.giveCode(No_Amount_Item);
+        String Fail_code = mainDVM.giveCode(No_Amount_Item,false);
         int No_Amount_ret_code = mainDVM.inputCode(Fail_code);
         //현재 재고가 부족하므로 코드 반환값 = 0
         assertEquals(0,No_Amount_ret_code);
@@ -676,7 +676,7 @@ class DVMTest {
         //등록된 코드일경우 success = true
         HashMap<String,String> test_table = mainDVM.getCodeTable();
         Item test_item = mainDVM.getItemList().get(0);
-        String success_test_code = mainDVM.giveCode(test_item);
+        String success_test_code = mainDVM.giveCode(test_item,false);
         boolean success = test_table.containsKey(success_test_code);
         assertEquals(true,success);
         mainDVM.DVMList.clear();
@@ -748,7 +748,7 @@ class DVMTest {
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
 
-        String code = mainDVM.giveCode(sprite);
+        String code = mainDVM.giveCode(sprite,false);
         Item findItem = mainDVM.getItemFromCode(code);
         assertEquals(sprite, findItem);
     }
@@ -763,7 +763,7 @@ class DVMTest {
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
 
-        String code = mainDVM.giveCode(latte);
+        String code = mainDVM.giveCode(latte,false);
         Item findItem = mainDVM.getItemFromCode(code);
         assertTrue(findItem.getItemName()=="null");
     }
@@ -1073,9 +1073,9 @@ class DVMTest {
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
 
         assertEquals(10, sprite.getItemAmount());
-        mainDVM.giveItem(sprite);
+        mainDVM.giveItem(sprite,false);
         assertEquals(9, sprite.getItemAmount());
-        mainDVM.giveItem(sprite);
+        mainDVM.giveItem(sprite,true);
         assertEquals(8, sprite.getItemAmount());
     }
 
@@ -1107,7 +1107,7 @@ class DVMTest {
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
 
         for (int i=0; i<100; i++) {
-            mainDVM.giveItem(sprite);
+            mainDVM.giveItem(sprite, false);
         }
         assertEquals(0, sprite.getItemAmount());
     }
@@ -1141,11 +1141,11 @@ class DVMTest {
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
 
-        String code = mainDVM.giveCode(sprite);
+        String code = mainDVM.giveCode(sprite,false);
         boolean validity = mainDVM.codeValidation(code);
         assertTrue(validity);
 
-        String code2 = mainDVM.giveCode(mintSprite);
+        String code2 = mainDVM.giveCode(mintSprite,false);
         boolean validity2 = mainDVM.codeValidation(code);
         assertTrue(validity2);
 
@@ -1179,11 +1179,11 @@ class DVMTest {
         Payment mainDVMPayment = new Payment();
         DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
 
-        String code = mainDVM.giveCode(sprite);
+        String code = mainDVM.giveCode(sprite,false);
         boolean validity = mainDVM.codeValidation(code);
         assertTrue(validity);
 
-        String code2 = mainDVM.giveCode(sprite);
+        String code2 = mainDVM.giveCode(sprite,false);
         boolean validity2 = mainDVM.codeValidation(code2);
         assertTrue(validity2);
         

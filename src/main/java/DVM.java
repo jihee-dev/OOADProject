@@ -220,18 +220,18 @@ public class DVM {
         return result;
     }
 
-    void giveItem(Item selectedItem) {
+    void giveItem(Item selectedItem, Boolean payByCash) {
         if (selectedItem.getItemAmount() > 0) {
             for (Item item: itemList) {
                 if (item.getItemName().equals(selectedItem.getItemName())) {
                     item.reduceAmount();
-                    totalCash += item.getItemPrice();
+                    if (payByCash) totalCash += item.getItemPrice();
                 }
             }
         }
     }
 
-    String giveCode(Item selectedItem) {
+    String giveCode(Item selectedItem, Boolean payByCash) {
         char[] tmp;
         String code = "000000";
         while (code == "000000" || codeTable.keySet().contains(code)) {
@@ -248,7 +248,7 @@ public class DVM {
             code = new String(tmp);
         }
         codeTable.put(code, selectedItem.getItemName());
-        totalCash += selectedItem.getItemPrice();
+        if (payByCash) totalCash += selectedItem.getItemPrice();
         return code;
     }
 }
