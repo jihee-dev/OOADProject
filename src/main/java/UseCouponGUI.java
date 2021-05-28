@@ -37,7 +37,7 @@ public class UseCouponGUI extends JFrame {
                 if(result == 1) {
                     // 코드 맞으면
                     Item findItem = DVM.getItemFromCode(text.getText());
-                    DVM.giveItem(findItem);
+                    DVM.giveItem(findItem, false);
                     DVM.removeCode(text.getText());
                     JOptionPane.showMessageDialog(ct, String.format("쿠폰으로 구매 성공! : %s", findItem.getItemName()));
                 } else if (result == 0) {

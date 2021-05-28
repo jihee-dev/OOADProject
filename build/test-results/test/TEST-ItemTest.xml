@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ItemTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-10T13:46:58" hostname="DESKTOP-TEV2AP7" time="0.004">
+<testsuite name="ItemTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-05-23T07:44:00" hostname="DESKTOP-TEV2AP7" time="0.007">
   <properties/>
-  <testcase name="reduceAmount2()" classname="ItemTest" time="0.0"/>
-  <testcase name="changeAmount2()" classname="ItemTest" time="0.001"/>
+  <testcase name="reduceAmount2()" classname="ItemTest" time="0.001"/>
+  <testcase name="changeAmount2()" classname="ItemTest" time="0.0"/>
   <testcase name="reduceAmount()" classname="ItemTest" time="0.001"/>
-  <testcase name="changeAmount()" classname="ItemTest" time="0.0"/>
+  <testcase name="changeAmount()" classname="ItemTest" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

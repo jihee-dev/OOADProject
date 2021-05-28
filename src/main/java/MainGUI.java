@@ -23,6 +23,10 @@ public class MainGUI extends JFrame {
        InitComponent();
        InitListener();
        setVisible(true);
+       if (dvm.getRegion() == null) {
+           JOptionPane.showMessageDialog(ct, String.format("에러 : %s", "유효하지 않은 DVM"));
+           dispose();
+       }
    }
 
    void InitComponent(){

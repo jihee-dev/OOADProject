@@ -37,19 +37,19 @@ public class CashGUI extends JFrame {
                     int result = DVM.inputCash(Integer.parseInt(text.getText()), selectedItem);
 
                     if (result >= 0) {
-                        JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
+                        if (selectedItem.getItemAmount()>0) {
+                            // 재고 하나줄임
+                            DVM.giveItem(selectedItem, true);
+                        } else {
+                            // code 부여
+                            String code = DVM.giveCode(selectedItem, true);
+                            JOptionPane.showMessageDialog(ct, String.format("생성된 코드 : %s", code));
+                        }
                         // > 0 : 거스름돈 반출
                         if (result > 0) {
                             JOptionPane.showMessageDialog(ct, String.format("거스름돈 : %s", result));
                         }
-                        if (selectedItem.getItemAmount()>0) {
-                            // 재고 하나줄임
-                            DVM.giveItem(selectedItem);
-                        } else {
-                            // code 부여
-                            String code = DVM.giveCode(selectedItem);
-                            JOptionPane.showMessageDialog(ct, String.format("생성된 코드 : %s", code));
-                        }
+                        JOptionPane.showMessageDialog(ct, String.format("구매 성공! : %s", selectedItem.getItemName()));
                         MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);
                         dispose();
                     }  else if (result == -1) {

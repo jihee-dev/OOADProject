@@ -17,7 +17,7 @@ public class ItemListGUI extends JFrame {
         //초기화
         this.DVM = dvm;
         setTitle(String.format("%s - Item List", DVM.getRegion()));
-        setSize(500,500);
+        setSize(800,500);
         setVisible(true);
         setLocation(x,y);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
