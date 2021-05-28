@@ -37,16 +37,16 @@ public class CardGUI extends JFrame {
 
 <span class="nc bnc" id="L38" title="All 2 branches missed.">                    if (result == 1) {</span>
                         // 1 : 결제성공
-<span class="nc" id="L40">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 성공! : %s&quot;, selectedItem.getItemName()));</span>
-<span class="nc bnc" id="L41" title="All 2 branches missed.">                        if (selectedItem.getItemAmount()&gt;0) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">                        if (selectedItem.getItemAmount()&gt;0) {</span>
                             // 재고 하나줄임
-<span class="nc" id="L43">                            DVM.giveItem(selectedItem); // 재고 하나줄임</span>
+<span class="nc" id="L42">                            DVM.giveItem(selectedItem, false); // 재고 하나줄임</span>
                         } else {
                             // code 부여
-<span class="nc" id="L46">                            String code = DVM.giveCode(selectedItem);</span>
-<span class="nc" id="L47">                            JOptionPane.showMessageDialog(ct, String.format(&quot;생성된 코드 : %s&quot;, code));</span>
+<span class="nc" id="L45">                            String code = DVM.giveCode(selectedItem, false);</span>
+<span class="nc" id="L46">                            JOptionPane.showMessageDialog(ct, String.format(&quot;생성된 코드 : %s&quot;, code));</span>
                         }
-<span class="nc" id="L49">                        DVM.myPayment.consumeCard(cardNumber, selectedItem.getItemPrice());</span>
+<span class="nc" id="L48">                        DVM.myPayment.consumeCard(cardNumber, selectedItem.getItemPrice());</span>
+<span class="nc" id="L49">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 성공! : %s&quot;, selectedItem.getItemName()));</span>
 <span class="nc" id="L50">                        MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
 <span class="nc" id="L51">                        dispose();</span>
 <span class="nc bnc" id="L52" title="All 2 branches missed.">                    } else if (result == 0) {</span>

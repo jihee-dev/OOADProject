@@ -37,19 +37,19 @@ public class CashGUI extends JFrame {
 <span class="nc" id="L37">                    int result = DVM.inputCash(Integer.parseInt(text.getText()), selectedItem);</span>
 
 <span class="nc bnc" id="L39" title="All 2 branches missed.">                    if (result &gt;= 0) {</span>
-<span class="nc" id="L40">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 성공! : %s&quot;, selectedItem.getItemName()));</span>
-                        // &gt; 0 : 거스름돈 반출
-<span class="nc bnc" id="L42" title="All 2 branches missed.">                        if (result &gt; 0) {</span>
-<span class="nc" id="L43">                            JOptionPane.showMessageDialog(ct, String.format(&quot;거스름돈 : %s&quot;, result));</span>
-                        }
-<span class="nc bnc" id="L45" title="All 2 branches missed.">                        if (selectedItem.getItemAmount()&gt;0) {</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">                        if (selectedItem.getItemAmount()&gt;0) {</span>
                             // 재고 하나줄임
-<span class="nc" id="L47">                            DVM.giveItem(selectedItem);</span>
+<span class="nc" id="L42">                            DVM.giveItem(selectedItem, true);</span>
                         } else {
                             // code 부여
-<span class="nc" id="L50">                            String code = DVM.giveCode(selectedItem);</span>
-<span class="nc" id="L51">                            JOptionPane.showMessageDialog(ct, String.format(&quot;생성된 코드 : %s&quot;, code));</span>
+<span class="nc" id="L45">                            String code = DVM.giveCode(selectedItem, true);</span>
+<span class="nc" id="L46">                            JOptionPane.showMessageDialog(ct, String.format(&quot;생성된 코드 : %s&quot;, code));</span>
                         }
+                        // &gt; 0 : 거스름돈 반출
+<span class="nc bnc" id="L49" title="All 2 branches missed.">                        if (result &gt; 0) {</span>
+<span class="nc" id="L50">                            JOptionPane.showMessageDialog(ct, String.format(&quot;거스름돈 : %s&quot;, result));</span>
+                        }
+<span class="nc" id="L52">                        JOptionPane.showMessageDialog(ct, String.format(&quot;구매 성공! : %s&quot;, selectedItem.getItemName()));</span>
 <span class="nc" id="L53">                        MainGUI mainGUI = new MainGUI(DVM, getLocation().x, getLocation().y);</span>
 <span class="nc" id="L54">                        dispose();</span>
 <span class="nc bnc" id="L55" title="All 2 branches missed.">                    }  else if (result == -1) {</span>

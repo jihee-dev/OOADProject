@@ -37,7 +37,7 @@ public class UseCouponGUI extends JFrame {
 <span class="nc bnc" id="L37" title="All 2 branches missed.">                if(result == 1) {</span>
                     // 코드 맞으면
 <span class="nc" id="L39">                    Item findItem = DVM.getItemFromCode(text.getText());</span>
-<span class="nc" id="L40">                    DVM.giveItem(findItem);</span>
+<span class="nc" id="L40">                    DVM.giveItem(findItem, false);</span>
 <span class="nc" id="L41">                    DVM.removeCode(text.getText());</span>
 <span class="nc" id="L42">                    JOptionPane.showMessageDialog(ct, String.format(&quot;쿠폰으로 구매 성공! : %s&quot;, findItem.getItemName()));</span>
 <span class="nc bnc" id="L43" title="All 2 branches missed.">                } else if (result == 0) {</span>

@@ -23,37 +23,41 @@ public class MainGUI extends JFrame {
 <span class="nc" id="L23">       InitComponent();</span>
 <span class="nc" id="L24">       InitListener();</span>
 <span class="nc" id="L25">       setVisible(true);</span>
-<span class="nc" id="L26">   }</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">       if (dvm.getRegion() == null) {</span>
+<span class="nc" id="L27">           JOptionPane.showMessageDialog(ct, String.format(&quot;에러 : %s&quot;, &quot;유효하지 않은 DVM&quot;));</span>
+<span class="nc" id="L28">           dispose();</span>
+       }
+<span class="nc" id="L30">   }</span>
 
    void InitComponent(){
-<span class="nc" id="L29">       ct.add(button1);</span>
-<span class="nc" id="L30">       ct.add(button2);</span>
-<span class="nc" id="L31">       ct.add(button3);</span>
-<span class="nc" id="L32">   }</span>
+<span class="nc" id="L33">       ct.add(button1);</span>
+<span class="nc" id="L34">       ct.add(button2);</span>
+<span class="nc" id="L35">       ct.add(button3);</span>
+<span class="nc" id="L36">   }</span>
 
    void InitListener(){
-<span class="nc" id="L35">       button1.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L39">       button1.addActionListener(new ActionListener() {</span>
            @Override
            public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L38">               ItemListGUI itemFrame = new ItemListGUI(DVM, getLocation().x, getLocation().y);</span>
-<span class="nc" id="L39">               dispose();</span>
-<span class="nc" id="L40">           }</span>
+<span class="nc" id="L42">               ItemListGUI itemFrame = new ItemListGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L43">               dispose();</span>
+<span class="nc" id="L44">           }</span>
        });
-<span class="nc" id="L42">       button2.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L46">       button2.addActionListener(new ActionListener() {</span>
            @Override
            public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L45">               UseCouponGUI UCF = new UseCouponGUI(DVM, getLocation().x, getLocation().y);</span>
-<span class="nc" id="L46">               dispose();</span>
-<span class="nc" id="L47">           }</span>
+<span class="nc" id="L49">               UseCouponGUI UCF = new UseCouponGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L50">               dispose();</span>
+<span class="nc" id="L51">           }</span>
        });
-<span class="nc" id="L49">       button3.addActionListener(new ActionListener() {</span>
+<span class="nc" id="L53">       button3.addActionListener(new ActionListener() {</span>
            @Override
            public void actionPerformed(ActionEvent e) {
-<span class="nc" id="L52">               LoginGUI loginGUI = new LoginGUI(DVM, getLocation().x, getLocation().y);</span>
-<span class="nc" id="L53">               dispose();</span>
-<span class="nc" id="L54">           }</span>
+<span class="nc" id="L56">               LoginGUI loginGUI = new LoginGUI(DVM, getLocation().x, getLocation().y);</span>
+<span class="nc" id="L57">               dispose();</span>
+<span class="nc" id="L58">           }</span>
        });
-<span class="nc" id="L56">   }</span>
+<span class="nc" id="L60">   }</span>
 
 
 }
