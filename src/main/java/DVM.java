@@ -13,53 +13,58 @@ public class DVM {
     Payment myPayment;
 
     public class Pair{
-        int x;
-        int y;
+        double x;
+        double y;
         Pair(int x , int y){
             this.x = x;
             this.y = y;
         }
-        public int getX(){return this.x;}
-        public int getY(){return this.y;}
+        public double getX(){return this.x;}
+        public double getY(){return this.y;}
     }
 
-    public DVM(String region, int x, int y, int totalCash, String adminID, String adminPW, ArrayList<Item> itemList, double dist, Payment myPayment) {
+    public DVM(String region, int x, int y, int totalCash, String adminID, String adminPW, ArrayList<Item> itemList) {
         if (DVMList.size() == 10) {
             System.out.println("자판기는 최대 10개까지만 생성 가능합니다.");
-            System.out.println("[" + region + "]자판기는 생성되지 않았습니다.");
-        } else if (itemList.size() != 20) {
-            System.out.println("아이템리스트는 반드시 20개의 아이템을 보유해야 합니다.");
-            System.out.println("[" + region + "]자판기는 생성되지 않았습니다.");
-        }  else {
-            int availableItem = 0;
-            for (int i=0; i<20; i++) {
-                if (itemList.get(i).getItemAmount() > 0) {
-                    availableItem += 1;
-                }
-            }
-            if (availableItem != 7) {
-                System.out.println("재고가 유효한 상품이 7개가 아닌 자판기는 생성할 수 없습니다.");
-                System.out.println("[" + region + "]자판기는 생성되지 않았습니다.");                
-            } else {
-                this.region = region;
-                this.location = new Pair(x,y);
-                this.totalCash = totalCash;
-                this.adminID = adminID;
-                this.adminPW = adminPW;
-                this.itemList = itemList;
-                this.dist = dist;
-                this.myPayment = myPayment;
-                boolean duplicated = false;
-                for(int i=0;i<DVMList.size();i++){
-                    if(DVMList.get(i).location.x == x && DVMList.get(i).location.y ==y){
-                        duplicated=true;
-                    }
-                }
-                if(!duplicated){
-                    DVMList.add(this);
-                }
+            System.out.println(String.format("[%s]자판기는 생성되지 않았습니다.", region));
+            return;
+        }
 
+        if (itemList.size() != 20) {
+            System.out.println("아이템리스트는 반드시 20개의 아이템을 보유해야 합니다.");
+            System.out.println(String.format("[%s]자판기는 생성되지 않았습니다.", region));
+            return;
+        }
+
+        int availableItem = 0;
+        for (int i=0; i<20; i++) {
+            if (itemList.get(i).getItemAmount() > 0) {
+                availableItem += 1;
             }
+        }
+        if (availableItem != 7) {
+            System.out.println("재고가 유효한 상품이 7개가 아닌 자판기는 생성할 수 없습니다.");
+            System.out.println(String.format("[%s]자판기는 생성되지 않았습니다.", region));
+            return;
+        }
+
+        this.region = region;
+        this.location = new Pair(x,y);
+        this.totalCash = totalCash;
+        this.adminID = adminID;
+        this.adminPW = adminPW;
+        this.itemList = itemList;
+        this.dist = 0;
+        this.myPayment = new Payment();
+        boolean duplicated = false;
+
+        for(int i=0;i<DVMList.size();i++){
+            if(DVMList.get(i).location.x == x && DVMList.get(i).location.y ==y){
+                duplicated=true;
+            }
+        }
+        if(!duplicated){
+            DVMList.add(this);
         }
     }
 
@@ -124,13 +129,13 @@ public class DVM {
        // abs(x1-x2) + abs(y1-y2);
         ArrayList<DVM> otherDVM = getAnotherDVMInfo(ItemName);
 
-        int cur_x = this.location.x;
-        int cur_y = this.location.y;
+        double cur_x = this.location.x;
+        double cur_y = this.location.y;
 
         for(int i=0;i<otherDVM.size();i++){
-            int next_x = otherDVM.get(i).location.x;
-            int next_y = otherDVM.get(i).location.y;
-            otherDVM.get(i).setDist(Math.round(Math.sqrt(Math.pow(cur_x - next_x,2) + Math.pow(cur_y-next_y,2))*100)/100.0);
+            double next_x = otherDVM.get(i).location.x;
+            double next_y = otherDVM.get(i).location.y;
+            otherDVM.get(i).setDist(Math.round(Math.sqrt(Math.pow(cur_x - next_x,2.0) + Math.pow(cur_y-next_y,2.0))*100)/100.0);
         }
         otherDVM = sortDVM(otherDVM);
 
@@ -220,7 +225,7 @@ public class DVM {
         return result;
     }
 
-    void giveItem(Item selectedItem, Boolean payByCash) {
+    void giveItem(Item selectedItem, boolean payByCash) {
         if (selectedItem.getItemAmount() > 0) {
             for (Item item: itemList) {
                 if (item.getItemName().equals(selectedItem.getItemName())) {
@@ -231,10 +236,10 @@ public class DVM {
         }
     }
 
-    String giveCode(Item selectedItem, Boolean payByCash) {
+    String giveCode(Item selectedItem, boolean payByCash) {
         char[] tmp;
         String code = "000000";
-        while (code == "000000" || codeTable.keySet().contains(code)) {
+        while (code.equals("000000") || codeTable.keySet().contains(code)) {
             tmp = new char[6];
             for(int i=0; i<tmp.length; i++) {
                 int div = (int) Math.floor( Math.random() * 2 );

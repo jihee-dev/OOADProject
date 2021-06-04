@@ -34,8 +34,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         assertEquals(mainDVM.region, mainDVM.getRegion());
     }
 
@@ -64,8 +63,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         assertEquals(mainDVM.location, mainDVM.getLocation());
     }
 
@@ -94,9 +92,8 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
 
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String[] SuccessItemNames = {"Sprite","Mint Sprite","Coke","Mint Coke","Water","Sparkling","Coffee","Mint Coffee","Milk Coffee","Latte","Espresso","Beer","Fanta Orange","Fanta Grape","2%","Tonic Water","Whisky","Vodka","Brandy","Champagne"};
 
@@ -184,13 +181,9 @@ class DVMTest {
         anotherItems2.add(new Item("Brandy", 19, 1000, 0));
         anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
+        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1);
+        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2);
         ArrayList<DVM> TestDVMList1 =  mainDVM.getAnotherDVMInfo("Sprite");
         assertEquals(2,TestDVMList1.size());
         mainDVM.DVMList.clear();
@@ -221,9 +214,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM mainDVM = new DVM("5",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("5",10,3, 500, "admin", "1234", myItems);
 
         ArrayList<DVM> TestDVMList2 = mainDVM.getAnotherDVMInfo("Coke");
         assertEquals(0,TestDVMList2.size());
@@ -301,13 +292,9 @@ class DVMTest {
         anotherItems2.add(new Item("Brandy", 19, 1000, 0));
         anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
+        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1);
+        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2);
 
         ArrayList<DVM> TestDVMList3 = mainDVM.getAnotherDVMInfo("Water");
         int cnt = 0;
@@ -344,9 +331,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         //Testing Success
         HashMap<String,String> test_table = mainDVM.getCodeTable();
 
@@ -384,9 +369,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         //Testing 부여되지 않은 코드일 경우
         //런타임 에러가 나지 않는다면 flag = true
@@ -471,13 +454,9 @@ class DVMTest {
         anotherItems2.add(new Item("Brandy", 19, 1000, 0));
         anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
+        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1);
+        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2);
 
         //sorted_list 가 오름차순이 아닐경우 flag = false.
 
@@ -561,13 +540,9 @@ class DVMTest {
         anotherItems2.add(new Item("Brandy", 19, 1000, 0));
         anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
+        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1);
+        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2);
         String test_Item = "Sprite";
         ArrayList<DVM> lists = mainDVM.getNoneItemLocation(test_Item);
         boolean flag = true;
@@ -602,9 +577,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         HashMap<String,String> test_table = mainDVM.getCodeTable();
         Item test_item = mainDVM.getItemList().get(0);
@@ -686,13 +659,9 @@ class DVMTest {
         anotherItems2.add(new Item("Brandy", 19, 1000, 0));
         anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
+        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1);
+        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2);
 
         HashMap<String,String> test_table = mainDVM.getCodeTable();
 
@@ -774,13 +743,9 @@ class DVMTest {
         anotherItems2.add(new Item("Brandy", 19, 1000, 0));
         anotherItems2.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
+        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1);
+        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2);
 
         HashMap<String,String> test_table = mainDVM.getCodeTable();
 
@@ -815,9 +780,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         //등록된 코드일경우 success = true
         HashMap<String,String> test_table = mainDVM.getCodeTable();
@@ -854,9 +817,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         //등록되지 않은 코드 failed = false
         HashMap<String,String> test_table = mainDVM.getCodeTable();
@@ -894,8 +855,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String code = mainDVM.giveCode(sprite,false);
         Item findItem = mainDVM.getItemFromCode(code);
@@ -929,8 +889,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String code = mainDVM.giveCode(latte,false);
         Item findItem = mainDVM.getItemFromCode(code);
@@ -964,8 +923,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         String id = "admin"; String pw = "1234";
         assertTrue(dvm.login(id, pw));
     }@Test
@@ -993,8 +952,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         String id = "ad"; String pw = "1234";
         assertTrue(!dvm.login(id, pw));
     }@Test
@@ -1022,8 +981,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         String id = "admin"; String pw = "134";
         assertTrue(!dvm.login(id, pw));
     }@Test
@@ -1052,9 +1011,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         String id = "ad"; String pw = "134";
         assertTrue(!dvm.login(id, pw));
     }
@@ -1087,9 +1044,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String ItemName = "Coke"; int newAmount = 12;
         assertTrue(dvm.manageAmount(ItemName, newAmount));
@@ -1119,9 +1074,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String ItemName = "Cola"; int newAmount = 12;
         assertTrue(!dvm.manageAmount(ItemName, newAmount));
@@ -1151,9 +1104,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String ItemName = "Coke"; int newAmount = -3;
         assertTrue(!dvm.manageAmount(ItemName, newAmount));
@@ -1183,9 +1134,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String ItemName = "Cola"; int newAmount = -3;
         assertTrue(!dvm.manageAmount(ItemName, newAmount));
@@ -1218,8 +1167,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         int newAmountCash = 5000;
         assertTrue(dvm.manageAmountCash(newAmountCash));
     }@Test
@@ -1247,8 +1196,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         int newAmountCash = -5000;
         assertTrue(!dvm.manageAmountCash(newAmountCash));
     }
@@ -1280,8 +1229,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 1500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 1500, "admin", "1234", myItems);
         int inputCash = 2000; Item selectedItem = new Item("Sprite", 1, 1000, 10);
         int result = dvm.inputCash(inputCash, selectedItem);
         assertEquals(1000,result);
@@ -1310,8 +1259,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
         int inputCash = 2000; Item selectedItem = new Item("Sprite", 1, 1000, 10);
         int result = dvm.inputCash(inputCash, selectedItem);
         assertEquals(-2,result);
@@ -1340,8 +1289,8 @@ class DVMTest {
         myItems.add(new Item("Vodka", 18, 1000, 0));
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
-        Payment mainDVMPayment = new Payment();
-        DVM dvm = new DVM("Main DVM",10,3, 1500, "admin", "1234", myItems,0, mainDVMPayment);
+
+        DVM dvm = new DVM("Main DVM",10,3, 1500, "admin", "1234", myItems);
         int inputCash = 500; Item selectedItem = new Item("Sprite", 1, 1000, 10);
         int result = dvm.inputCash(inputCash, selectedItem);
         assertEquals(-1,result);
@@ -1374,8 +1323,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 10000, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 10000, "admin", "1234", myItems);
 
         boolean result = mainDVM.checkTotalCash(5000000);
         assertTrue(result);
@@ -1406,8 +1354,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 10000, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 10000, "admin", "1234", myItems);
 
         boolean result = mainDVM.checkTotalCash(500);
         assertFalse(result);
@@ -1441,8 +1388,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         int result = mainDVM.insertCard("1234", sprite);
         assertEquals(1, result);
@@ -1474,8 +1420,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         int result = mainDVM.insertCard("3572", sprite);
         assertEquals(0, result);
@@ -1507,8 +1452,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         int result = mainDVM.insertCard("이상한번호", sprite);
         assertEquals(-1, result);
@@ -1543,8 +1487,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         assertEquals(10, sprite.getItemAmount());
         mainDVM.giveItem(sprite,false);
@@ -1579,8 +1522,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         for (int i=0; i<100; i++) {
             mainDVM.giveItem(sprite, false);
@@ -1617,8 +1559,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String code = mainDVM.giveCode(sprite,false);
         boolean validity = mainDVM.codeValidation(code);
@@ -1657,8 +1598,7 @@ class DVMTest {
         myItems.add(new Item("Brandy", 19, 1000, 0));
         myItems.add(new Item("Champagne", 20, 2000, 0));
 
-        Payment mainDVMPayment = new Payment();
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
 
         String code = mainDVM.giveCode(sprite,false);
         boolean validity = mainDVM.codeValidation(code);

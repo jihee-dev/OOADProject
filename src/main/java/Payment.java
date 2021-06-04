@@ -1,18 +1,19 @@
 import java.util.*;
 
 public class Payment {
-    static HashMap<String, Integer> validCardList = new HashMap<>() {{
-        put("1234", 999999);
-        put("5678", 200000);
-        put("4543", 999999);
-        put("3572", 1000);
-        put("1589", 999999);
-        put("3257", 200000);
-        put("1088", 999999);
-        put("0088", 4000);
-    }};
+    static HashMap<String, Integer> validCardList = new HashMap<>();
 
     public Payment() {
+        if (validCardList.isEmpty()) {
+            validCardList.put("1234", 999999);
+            validCardList.put("5678", 200000);
+            validCardList.put("4543", 999999);
+            validCardList.put("3572", 1000);
+            validCardList.put("1589", 999999);
+            validCardList.put("3257", 200000);
+            validCardList.put("1088", 999999);
+            validCardList.put("0088", 4000);
+        }
     }
 
     public int calculatePriceCash(int inputCash, Item selectedItem) {

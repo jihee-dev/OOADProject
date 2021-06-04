@@ -73,13 +73,9 @@ public class Main {
         anotherItems2.add(new Item("Brandy", 19, 1000, 0));
         anotherItems2.add(new Item("Champagne", 20, 2000, 1));
 
-        Payment mainDVMPayment = new Payment();
-        Payment anotherDVM1Payment = new Payment();
-        Payment anotherDVM2Payment = new Payment();
-
-        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems,0, mainDVMPayment);
-        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1,0, anotherDVM1Payment);
-        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
+        DVM mainDVM = new DVM("Main DVM",10,3, 500, "admin", "1234", myItems);
+        DVM anotherDVM = new DVM("Another DVM 1",3,4, 5000000, "admin", "1234", anotherItems1);
+        DVM anotherDVM2 = new DVM("Another DVM 2",17,15, 5000000, "admin", "1234", anotherItems2);
 //        DVM anotherDVM3 = new DVM("Another DVM 3",16,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 //        DVM anotherDVM4 = new DVM("Another DVM 4",14,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
 //        DVM anotherDVM5 = new DVM("Another DVM 5",15,15, 5000000, "admin", "1234", anotherItems2,0, anotherDVM2Payment);
